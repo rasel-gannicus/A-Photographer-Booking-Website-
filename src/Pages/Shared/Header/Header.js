@@ -1,6 +1,6 @@
 import React from 'react';
 import './Header.css';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import auth from '../../../Utilities/firebase.init';
 import { useAuthState, useSignOut } from 'react-firebase-hooks/auth';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -20,6 +20,7 @@ const Header = () => {
         headerParent.classList.add('active');
         headerIcon.classList.add('hidden');
     }
+
     //---------------- this function will hide menu when the X-Mark icon will be clicked in mobile view
     function hideMenu() {
         const headerParent = document.querySelector('.header-main-parent');
@@ -58,7 +59,7 @@ const Header = () => {
 
                     <NavLink onClick={hideMenu} to="/about" className={({ isActive }) => (isActive ? 'active' : 'inactive')} >About Me</NavLink>
 
-                    {user ? <a onClick={signOut} href="#">Logout</a> : <NavLink onClick={hideMenu} to="/login" className={({ isActive }) => (isActive ? 'active' : 'inactive')}>Login</NavLink>}
+                    {user ? <Link to="/profile">Profile</Link> : <NavLink onClick={hideMenu} to="/login" className={({ isActive }) => (isActive ? 'active' : 'inactive')}>Login</NavLink>}
                 </div>
             </div>
             <div className="header-icon">

@@ -76,11 +76,11 @@ const SignUp = () => {
                 <hr width='70%' className='mx-auto' />
                 <form action="" onSubmit={handleSubmit}>
                     <div className="input-field ">
-                        <input type="text" name="" id="" required />
+                        <input type="name" name="Name" id="" required />
                         <span className='input-placeholder'>Your Name </span>
                     </div>
                     <div className="input-field ">
-                        <input onBlur={handleEmail} type="text" name="" id="" required />
+                        <input onBlur={handleEmail} type="email" name="email" id="" required />
                         <span className='input-placeholder'>Your Email </span>
                     </div>
                     <div className="input-field ">

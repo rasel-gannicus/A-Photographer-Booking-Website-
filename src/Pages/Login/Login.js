@@ -78,7 +78,7 @@ const Login = () => {
                 <hr width='70%' className='mx-auto' />
                 <form action="" onSubmit={handleSubmit}>
                     <div className="input-field ">
-                        <input onBlur={handleEmail} type="text" name="" id="" required />
+                        <input onBlur={handleEmail} type="email" name="Email" id="" required />
                         <span className='input-placeholder'>Your Email </span>
                     </div>
                     <div className="input-field ">
