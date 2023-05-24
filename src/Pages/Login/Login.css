@@ -1,0 +1,71 @@
+
+.login-div{
+    border-radius: 5px;
+    background: white;
+    padding: 30px 20px !important;
+    width: 400px;
+}
+
+.login-button-div button{
+    width: 100%;
+    margin-top: 0px ;
+    margin-bottom: 25px;
+    box-shadow: none;
+}
+.red-text{
+    color: #1976D2;
+    cursor: pointer;
+    font-weight: 600;
+}
+.or-div{
+    position: relative;
+    margin: 25px 0;
+}
+.or-div p{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 0 3px;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.social-login-div-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.social-login-div-icon img{
+    width: 100%;
+}
+.social-login{
+    width: 45px;
+    height: 45px;
+    border: 3px solid #334E60;
+    padding: 7px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.forgot-password{
+    /* text-align: left; */
+}
+.forgot-password p{
+    /* margin: 0; */
+    color: #528DD7;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+@media only screen and (max-width:430px){
+    .login-div{
+        width: 90%;
+    }
+}

@@ -9,7 +9,7 @@ import Contact from './Contact/Contact';
 
 const Home = () => {
     return (
-        <div  className='home-div app-div'>
+        <div className='home-div app-div'>
             <Banner></Banner>
             <About></About>
             <ShowCase></ShowCase>
