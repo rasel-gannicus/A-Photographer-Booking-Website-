@@ -15,6 +15,7 @@ import ProductCart from '../Pages/ProductCart/ProductCart';
 import Error from '../Pages/Error/Error';
 import Profile from '../Pages/Profile/Profile';
 import PrivateRoute from '../Utilities/PrivateRoute/PrivateRoute';
+import PublicRoute from '../Utilities/PublicRoute/PublicRoute';
 
 const Routes = createBrowserRouter([
     {
@@ -27,7 +28,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path : '/login',
-                element : <Login></Login> 
+                element : <PublicRoute><Login></Login></PublicRoute> 
             },
             {
                 path : '/checkout',
@@ -47,7 +48,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path : '/signup',
-                element : <SignUp></SignUp>
+                element : <PublicRoute><SignUp></SignUp></PublicRoute>
             },
             {
                 path : '/bookingCart',
