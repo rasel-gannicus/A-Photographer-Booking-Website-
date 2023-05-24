@@ -13,6 +13,7 @@ import BookingCart from '../Pages/BookingCart/BookingCart';
 import Shop from '../Pages/Shop/Shop';
 import ProductCart from '../Pages/ProductCart/ProductCart';
 import Error from '../Pages/Error/Error';
+import Profile from '../Pages/Profile/Profile';
 
 const Routes = createBrowserRouter([
     {
@@ -62,6 +63,10 @@ const Routes = createBrowserRouter([
             {
                 path : '/about',
                 element : <About></About>
+            },
+            {
+                path : '/profile',
+                element : <Profile></Profile>
             },
             {
                 path : '*',
