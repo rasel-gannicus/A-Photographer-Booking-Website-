@@ -1,0 +1,39 @@
+
+
+.hideMe{
+    display: none;
+}
+
+.catagory{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px auto;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+.catagory p{
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.catagory-detail{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    row-gap: 10px;
+}
+.catagory-detail button{
+    outline: none;
+    border: 3px solid #045B62;
+    background: white;
+    padding: 5px 13px;
+}
+
+.product-title{
+    color: crimson;
+}

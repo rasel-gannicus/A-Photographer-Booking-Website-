@@ -1,0 +1,45 @@
+
+.product-card-parent-div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    width: 90%;
+}
+
+
+
+.cart-calculation p{
+    font-size: 18px;
+    font-weight: 600;
+    margin: 5px 0;
+}
+.cart-calculation table{
+    border: 3px solid #253745;
+    border-radius: 5px;
+    box-shadow:  0 10px 15px rgba(0,0,0,0.5);
+}
+.cart-calculation table tr td{
+    text-align: left;
+    padding: 10px 25px;
+    font-weight: 500;
+}
+.cart-calculation table tr td:nth-child(2) {
+    font-weight: 700;
+}
+
+.last-tr{
+    border-bottom:  2px solid crimson;
+}
+.cart-calculation button{
+    outline:  none;
+    height: 50px ;
+    padding: 0 20px;
+    background: crimson;
+    color: white;
+    font-weight: 500;
+    border: none;
+    font-size: 18px;
+    box-shadow:  0 10px 15px rgba(0,0,0,0.5);
+}

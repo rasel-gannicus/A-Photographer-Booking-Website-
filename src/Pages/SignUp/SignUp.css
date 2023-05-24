@@ -1,0 +1,10 @@
+
+.error-message p{
+    color: red;
+}
+.login-div .input-field span{
+    color: #ccc;
+}
+.spinner-signup{
+    display: none;
+}
