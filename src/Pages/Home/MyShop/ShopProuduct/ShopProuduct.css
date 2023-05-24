@@ -1,0 +1,98 @@
+
+
+
+
+.product-img-parent{
+    border: 5px solid #253745 ;
+    padding: 25px ;
+    background: white;
+    margin: auto;
+    position: relative;
+    width: 300px;
+    height: 335px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.product-img{
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    right: 25px;
+}
+.product-img img{
+    width: 100%;
+    z-index: 50;
+}
+
+.product-first-div{
+    background: rgba(255, 255, 255, 0.358);
+    z-index: 100;
+    position: absolute;
+    top: -250px;
+    left: 25px;
+    right: 25px;
+    border-top: 3px solid #253745;
+    border-left: 3px solid #253745;
+    border-right: 3px solid #253745;
+    transition: all 0.3s;
+    height: 139px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.product-second-div{
+    background: rgba(255, 255, 255, 0.358);
+    z-index: 100;
+    position: absolute;
+    bottom: -250px;
+    left: 25px;
+    right: 25px;
+    border-bottom: 3px solid #253745;
+    border-left: 3px solid #253745;
+    border-right: 3px solid #253745;
+    transition: all 0.3s;
+    height: 139px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.product-img-parent:hover .product-first-div{
+    top: 25px;
+}
+.product-img-parent:hover .product-second-div{
+    bottom: 25px;
+}
+
+
+.product-first-div button, .product-second-div button{
+    background: white;
+    outline: none;
+    padding: 8px 12px;
+    font-weight: 600;
+    color: #253745;
+    border: 3px solid #253745;
+}
+.product-first-div button:hover  , .product-second-div button:hover{
+    background: #FED01A;
+    color: black;
+}
+
+.price{
+    background: white;
+    color: #2a2a2a;
+    z-index: 40;
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    border-radius: 2px;
+    border: 2px solid #253745;
+    opacity: 1;
+}
+.price p{
+    font-weight: 700;
+    margin-bottom: 0;
+    padding: 3px 10px;
+}
+.product-img-parent:hover .price{
+    opacity: 0;
+}
