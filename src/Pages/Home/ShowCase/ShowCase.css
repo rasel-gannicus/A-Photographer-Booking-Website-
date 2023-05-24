@@ -1,0 +1,119 @@
+
+/* -------------------- 
+css codes for 'My Works'
+-------------------------*/
+
+
+
+.showCase-div{
+    margin: 50px 0;
+}
+.showcaseDiv-child{
+    padding: 25px 15px;  
+}
+.showCase-div img{
+    width: 100%
+}
+
+.showcase-card{
+    overflow: hidden;
+    z-index: -5000;
+}
+
+
+.layer-parent{
+    position: relative;
+}
+
+.layer{
+    background: rgba(10, 10, 107, 0.73);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 50px;
+    color: white;
+}
+
+.layer h1{
+    font-weight: 700;
+}
+.layer-2{
+    background: rgba(185, 28, 28, 0.67);
+}
+.layer-3 h1{    
+    color: white !important;
+}
+
+.layer-3{
+    background: rgba(4, 92, 98, 0.664);
+}
+.layer-4{
+    background: rgba(255, 217, 0, 0.386);
+}
+
+
+/* ------------------------------------------
+ Pop Up display  
+----------------------------------------------*/
+.showcase-popup-parent{
+    display: none;
+}
+.showcase-popup-parent.active{
+    background: rgba(0, 0, 0, 0.529);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    z-index: 60;
+}
+.showcase-popup{
+    background: white;
+}
+
+/* -------------- style for Potrait Photography Pop Up display -----------------*/
+.show-popup-portrait, .show-popup-street , .show-popup-wedding , .show-popup-wild{
+    display: none;
+}
+.show-popup-portrait.active , .show-popup-street.active , .show-popup-wedding.active, .show-popup-wild.active{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    background: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 98%;
+    height: 98%;
+}
+.clickable-div{
+    cursor: pointer;
+}
+
+/* style for close icon at the top right corner for closing pop up display  */
+.close-icon{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #2c2c2c;
+    color: #C6C6C6;
+    font-size: 20px;      
+    cursor: pointer;  
+}
+
+
+@media only screen and (max-width:767px){
+    .layer{
+        padding: 15px;
+        color: white;
+    }
+}

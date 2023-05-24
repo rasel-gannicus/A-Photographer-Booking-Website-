@@ -1,0 +1,49 @@
+
+
+.portraitdiv-parent{
+    position: relative;
+    width:100%;
+    overflow: scroll;
+}
+.portraitdiv-parent h2{
+    margin-bottom: 0 !important;
+    color: #2c2c2c;
+}
+.carousel-img-div img{
+    width: 450px !important;
+}
+
+
+
+@media only screen and (max-width:480px){
+    .portraitdiv-parent{
+        width: 100%;
+    }
+    .carousel-img-div img{
+        width: 90% !important;
+    }
+}
+
+/*--------------------------------------------------- 
+For ipads, tablet:  
+---------------------------------------------------*/
+@media only screen and (min-width:481px) and (max-width:768px) {
+    .portraitdiv-parent{
+        width: 90%;
+    }
+    .carousel-img-div img{
+        width: 350px !important;
+    }
+}
+
+/*-----------------------------------------
+ For Small screen, laptop:  
+-----------------------------------------*/
+@media only screen and (min-width:769px) and (max-width:1024px) {
+    .portraitdiv-parent{
+        width: 90%;
+    }
+    .carousel-img-div img{
+        width: 350px !important;
+    }
+}
