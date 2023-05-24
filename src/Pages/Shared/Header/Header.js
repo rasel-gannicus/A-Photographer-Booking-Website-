@@ -9,7 +9,8 @@ import menuLogo from '../../../assets/img/banner-bg.png';
 import headerLogo from '../../../assets/img/Icons/photographer.png';
 
 const Header = () => {
-    //---------------- this function will show menu when the bar icon will be clicked in mobile view
+    
+    //----- this function will show menu when the bar icon will be clicked in mobile view
     function showMenu() {
         const headerParent = document.querySelector('.header-main-parent');
         const headerIcon = document.querySelector('.header-icon');
