@@ -10,7 +10,7 @@ const Main = () => {
             <Outlet></Outlet>
             <Footer></Footer>
         </div>
-    );
+    )
 };
 
 export default Main;
