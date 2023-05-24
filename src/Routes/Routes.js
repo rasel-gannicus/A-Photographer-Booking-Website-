@@ -14,6 +14,7 @@ import Shop from '../Pages/Shop/Shop';
 import ProductCart from '../Pages/ProductCart/ProductCart';
 import Error from '../Pages/Error/Error';
 import Profile from '../Pages/Profile/Profile';
+import PrivateRoute from '../Utilities/PrivateRoute/PrivateRoute';
 
 const Routes = createBrowserRouter([
     {
@@ -42,7 +43,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path : '/wishlist',
-                element : <Wishlist></Wishlist>
+                element : <PrivateRoute><Wishlist></Wishlist></PrivateRoute>
             },
             {
                 path : '/signup',
@@ -66,7 +67,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path : '/profile',
-                element : <Profile></Profile>
+                element : <PrivateRoute><Profile></Profile></PrivateRoute>
             },
             {
                 path : '*',

@@ -70,11 +70,8 @@ const SignUp = () => {
     useEffect(() => {
         if (user || user2 || user3 || user4) {
             const pics = 'https://i.ibb.co/DbsKJ2g/user-3.png';
-            console.log('User created');
-            
+
             updateProfile({displayName : displayname, photoURL : pics }).then(response => {
-                console.log("displayName: ",displayname);
-                console.log('response from updating displayname : ', response);
                 navigate('/');
             }).catch(err => {
                 console.log(err);
@@ -85,7 +82,7 @@ const SignUp = () => {
             errorText.innerText = `${error.message}`;
             spinnerSignup.style.display = 'none';
         }
-    }, [user, user2, user3, user4, error, displayname, navigate, errorText, spinnerSignup.style, updateProfile])
+    }, [user, user2, user3, user4, error, displayname, navigate, errorText, spinnerSignup?.style, updateProfile])
 
     return (
         <div>

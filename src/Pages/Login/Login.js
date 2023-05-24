@@ -15,13 +15,15 @@ const Login = () => {
     const navigate = useNavigate();
     let location = useLocation();
     let from = location.state?.from?.pathname || "/";
+
+    // --- taking user to registration page if user want to sign up
     function navigation() {
         navigate('/signup');
     }
-    const[email, setEmail] = useState('');
-    const[password, setPassword] = useState('');
 
-    
+
+    const[email, setEmail] = useState('');
+    const[password, setPassword] = useState('');    
 
      // this function will get email from user and will reserve it to 'email' state
      function handleEmail(e){
