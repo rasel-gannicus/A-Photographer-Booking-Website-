@@ -1,6 +1,6 @@
 import React from 'react';
 import './Header.css';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../Utilities/firebase.init';
 import { useAuthState, useSignOut } from 'react-firebase-hooks/auth';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -41,6 +41,11 @@ const Header = () => {
     // --- using react-firebase-hook to sign out and to get user data  
     const [user] = useAuthState(auth);
     const [signOut] = useSignOut(auth);
+
+    // ---
+    const location = useLocation();
+    const{pathname} = location ; 
+    const isProfileActive = pathname.includes('profile'); 
     return (
         <div className='header-div'>
             <div className="header-main-parent">
@@ -59,7 +64,11 @@ const Header = () => {
 
                     <NavLink onClick={hideMenu} to="/about" className={({ isActive }) => (isActive ? 'active' : 'inactive')} >About Me</NavLink>
 
-                    {user ? <NavLink to="/profile/">Profile</NavLink> : <NavLink onClick={hideMenu} to="/login" className={({ isActive }) => (isActive ? 'active' : 'inactive')}>Login</NavLink>}
+                    {user ? <NavLink to="/profile/"  
+                    className={isProfileActive ? 'active' : 'inactive'}
+                    // className={({ isActive }) => (isActive ? 'active' : 'inactive')}
+                    // className={({ isActive }) => (isActive ? 'active' : 'inactive')}
+                    >Profile</NavLink> : <NavLink onClick={hideMenu} to="/login" className={({ isActive }) => (isActive ? 'active' : 'inactive')}>Login</NavLink>}
                 </div>
             </div>
             <div className="header-icon">
