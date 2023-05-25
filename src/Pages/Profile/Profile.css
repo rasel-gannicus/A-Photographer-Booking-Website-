@@ -1,0 +1,26 @@
+
+
+.profile-div{
+    border: 3px solid ;
+    background-color: white;
+    border-radius: 5px;
+    padding: 15px 30px;
+}
+
+/* --- css for profile header --- */
+
+.profile-header-div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+.profile-header-left a{
+    margin-right: 15px;
+    text-decoration: none;
+    color: #2a2a2a;
+    font-weight: 600;
+    font-size: 20px;
+}

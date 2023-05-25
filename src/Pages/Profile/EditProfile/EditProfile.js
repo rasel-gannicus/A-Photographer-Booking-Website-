@@ -3,7 +3,7 @@ import React from 'react';
 const EditProfile = () => {
     return (
         <div>
-            <h2>Edit Profile here</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti facere nemo vel labore exercitationem eum illum aperiam quidem nam itaque.</p>
         </div>
     );
 };
