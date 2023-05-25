@@ -32,10 +32,10 @@ const Routes = createBrowserRouter([
                 path : '/profile/',
                 element : <PrivateRoute><Profile></Profile></PrivateRoute>,
                 children : [
-                    // {
-                    //     path : '/profile',
-                    //     element : <ProfileDetails></ProfileDetails>
-                    // },
+                    {
+                        path : '/profile/',
+                        element : <ProfileDetails></ProfileDetails>
+                    },
                     {
                         path : '/profile/profileDetails',
                         element : <ProfileDetails></ProfileDetails>
