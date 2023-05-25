@@ -91,15 +91,15 @@ For mobile:
     }
 
     .profile-header-left a {
-    margin-right: 15px;
-    margin-top: 0;
-    text-decoration: none;
-    color: #2a2a2a;
-    font-weight: 600 ;
-    font-size: 20px;
-    padding: 5px 10px;
-    border: 2px solid white;
-}
+        margin-right: 15px;
+        margin-top: 0;
+        text-decoration: none;
+        color: #2a2a2a;
+        font-weight: 600;
+        font-size: 20px;
+        padding: 5px 10px;
+        border: 2px solid white;
+    }
 
     .activeHeader {
         color: #00AF80 !important;
@@ -107,7 +107,7 @@ For mobile:
         /* border-right: 2px solid grey;
         border-top: 2px solid grey;
         background: white; */
-        border-radius: 5px ;
+        border-radius: 5px;
         padding: 5px 10px;
         font-size: 20px;
         /* font-weight: 700 !important; */
@@ -119,4 +119,52 @@ For mobile:
 /*--------------------------------------------------- 
 For ipads, tablet:  
 ---------------------------------------------------*/
-@media only screen and (min-width:481px) and (max-width:768px) {}
+@media only screen and (min-width:481px) and (max-width:768px) {
+    .profile-header-div {
+        display: flex;
+        flex-direction: column-reverse;
+        row-gap: 30px;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+        margin-bottom: 60px;
+        border-bottom: none;
+    }
+
+    .profile-header-left {
+        margin-bottom: 0px;
+        /* padding: 20px 0; */
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 5px;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 15px;
+        border-bottom: 2px solid grey
+    }
+
+    .profile-header-left a {
+        margin-right: 15px;
+        margin-top: 0;
+        text-decoration: none;
+        color: #2a2a2a;
+        font-weight: 600;
+        font-size: 20px;
+        padding: 5px 10px;
+        border: 2px solid white;
+    }
+
+    .activeHeader {
+        color: #00AF80 !important;
+        border: 2px solid grey !important;
+        /* border-right: 2px solid grey;
+        border-top: 2px solid grey;
+        background: white; */
+        border-radius: 5px;
+        padding: 5px 10px;
+        font-size: 20px;
+        /* font-weight: 700 !important; */
+        margin-top: 0;
+    }
+
+}
