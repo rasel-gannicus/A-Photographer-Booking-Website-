@@ -28,9 +28,13 @@ const Routes = createBrowserRouter([
                 element : <Home></Home>
             },
             {
-                path : '/profile',
+                path : '/profile/',
                 element : <PrivateRoute><Profile></Profile></PrivateRoute>,
                 children : [
+                    // {
+                    //     path : '/profile',
+                    //     element : <ProfileDetails></ProfileDetails>
+                    // },
                     {
                         path : '/profile/profileDetails',
                         element : <ProfileDetails></ProfileDetails>

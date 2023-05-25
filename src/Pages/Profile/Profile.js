@@ -14,7 +14,6 @@ const Profile = () => {
     }
     return (
         <div>
-            <h2>Profile here</h2>
             {/* <button onClick={handleLogout}>Logout Here</button> */}
 
             <div className="container">
