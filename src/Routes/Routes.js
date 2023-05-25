@@ -28,7 +28,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path : '/login',
-                element : <PublicRoute><Login></Login></PublicRoute> 
+                element : <Login></Login>
             },
             {
                 path : '/checkout',
@@ -48,7 +48,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path : '/signup',
-                element : <PublicRoute><SignUp></SignUp></PublicRoute>
+                element : <SignUp></SignUp>
             },
             {
                 path : '/bookingCart',

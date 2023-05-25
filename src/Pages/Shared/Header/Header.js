@@ -59,7 +59,7 @@ const Header = () => {
 
                     <NavLink onClick={hideMenu} to="/about" className={({ isActive }) => (isActive ? 'active' : 'inactive')} >About Me</NavLink>
 
-                    {user ? <Link to="/profile">Profile</Link> : <NavLink onClick={hideMenu} to="/login" className={({ isActive }) => (isActive ? 'active' : 'inactive')}>Login</NavLink>}
+                    {user ? <NavLink to="/profile">Profile</NavLink> : <NavLink onClick={hideMenu} to="/login" className={({ isActive }) => (isActive ? 'active' : 'inactive')}>Login</NavLink>}
                 </div>
             </div>
             <div className="header-icon">

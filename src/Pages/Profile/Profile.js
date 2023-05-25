@@ -2,6 +2,8 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../Utilities/firebase.init';
 import { signOut } from 'firebase/auth';
+import ProfileHeader from './ProfileHeader';
+import { Outlet } from 'react-router-dom';
 
 const Profile = () => {
     const[user, loading, error] = useAuthState(auth);
@@ -12,7 +14,12 @@ const Profile = () => {
     return (
         <div>
             <h2>Profile here</h2> 
-            <button onClick={handleLogout}>Logout Here</button>
+            {/* <button onClick={handleLogout}>Logout Here</button> */}
+
+            <div className="profile-div">
+                <ProfileHeader></ProfileHeader>
+                <Outlet></Outlet>
+            </div>
         </div>
     );
 };
