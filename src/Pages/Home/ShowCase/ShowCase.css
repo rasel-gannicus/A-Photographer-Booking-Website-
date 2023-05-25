@@ -68,7 +68,7 @@
     background: white;
 }
 
-/* -------------- style for Potrait Photography Pop Up display -----------------*/
+/* -------------- style for  Photography Pop Up display -----------------*/
 .show-popup-portrait, .show-popup-street , .show-popup-wedding , .show-popup-wild{
     display: none;
 }
@@ -82,8 +82,9 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 98%;
-    height: 98%;
+    width: 68%;
+    height: 90%;
+    border: 5px solid black;
 }
 .clickable-div{
     cursor: pointer;
@@ -92,8 +93,8 @@
 /* style for close icon at the top right corner for closing pop up display  */
 .close-icon{
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 10px;
+    right: 20px;
     width: 30px;
     height: 30px;
     display: flex;
@@ -111,4 +112,17 @@
         padding: 15px;
         color: white;
     }
+    .show-popup-portrait.active , .show-popup-street.active , .show-popup-wedding.active, .show-popup-wild.active{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    background: white;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -80%);
+    width: 88%;
+    height: 85%;
+}
 }

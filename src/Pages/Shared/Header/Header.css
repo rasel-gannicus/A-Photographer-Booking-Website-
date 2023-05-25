@@ -144,3 +144,96 @@ css codes for navbar/header
         font-weight: 800;
     }
 }
+
+
+/*-----------------------------------------
+ For Small screen, laptop:  
+-----------------------------------------*/
+@media only screen and (min-width:769px) and (max-width:905px) {
+
+    .app-div{
+        margin-top: 90px !important;
+    }
+    .banner-left-header{
+        flex-direction: column;
+    }
+    .banner-left-header h1{
+        font-weight: 600;
+    }
+
+
+    .menu-logo{
+        display: block;
+    }
+    .header-main-parent{
+        background: rgba(41, 41, 41, 0.519);
+        position: fixed;
+        top: 0;
+        left: 500%;
+        width: 100%;
+        height: 100%;
+        z-index: 50;
+    }
+    .header-main-parent.active{
+        left: 0;
+    }
+    .header-main{
+        position: absolute;
+        background: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        row-gap: 10px;
+        top: 0;
+        left: -200%;
+        height: 100vh;
+        width: 70%;
+        transition: all 0.2s ease;
+        z-index: 50000;
+    }
+    .header-main.active{
+        left: 0;
+        z-index: 50000;
+    }
+
+    .header-icon{
+        position: fixed;
+        background: white;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 35px 15px;
+        z-index: 50000;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    }
+    .header-icon.hidden{
+        display: none;
+    }
+    .header-icon span{
+        font-size: 30px;
+        cursor: pointer;
+        display: block;
+    }
+    .cross-icon{
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: white;
+        font-size: 20px;      
+        cursor: pointer;  
+    }
+    .cross-icon i{
+        font-weight: 800;
+    }
+}
