@@ -42,7 +42,7 @@ const Header = () => {
     const [user] = useAuthState(auth);
     const [signOut] = useSignOut(auth);
 
-    // ---
+    // --- this will make 'Profile' menu highlighted when user will visit Profile section or it's 'Sub Section' 
     const location = useLocation();
     const{pathname} = location ; 
     const isProfileActive = pathname.includes('profile'); 

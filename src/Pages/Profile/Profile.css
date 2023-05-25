@@ -22,7 +22,7 @@
 }
 
 .profile-header-left{
-    margin-bottom: -15px;
+    margin-bottom: -25px;
     /* margin-left: 5px; */
 }
 .profile-header-left a{
@@ -30,6 +30,24 @@
     text-decoration: none;
     color: #2a2a2a;
     font-weight: 600;
+    font-size: 20px;
+}
+
+.profile-header-right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.profile-header-right img{
+    width: 40px;
+    margin-left: 10px;
+    border-radius: 50%;
+}
+.profile-header-right p{
+    margin: 0;
+    font-weight: 600;
+    color: #00AF80;
     font-size: 20px;
 }
 

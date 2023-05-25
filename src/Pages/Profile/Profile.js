@@ -8,19 +8,17 @@ import './Profile.css' ;
 
 const Profile = () => {
     const [user, loading, error] = useAuthState(auth);
-    console.log(user);
-    const handleLogout = () => {
-        signOut(auth).then(() => { console.log('Sign Out Successfully') }).catch(err => { console.log(error) });
-    }
+    
+
+
     return (
         <div>
-            {/* <button onClick={handleLogout}>Logout Here</button> */}
 
             <div className="container">
                 <div className="row">
                     <div className="col">
                         <div className="profile-div">
-                            <ProfileHeader></ProfileHeader>
+                            <ProfileHeader user={user}></ProfileHeader>
                             <Outlet></Outlet>
                         </div>
                     </div>
