@@ -17,6 +17,7 @@ import Profile from '../Pages/Profile/Profile';
 import PrivateRoute from '../Utilities/PrivateRoute/PrivateRoute';
 import ProfileDetails from '../Pages/Profile/ProfileDetails/ProfileDetails';
 import EditProfile from '../Pages/Profile/EditProfile/EditProfile';
+import Cart from '../Pages/Cart/Cart';
 
 const Routes = createBrowserRouter([
     {
@@ -38,6 +39,10 @@ const Routes = createBrowserRouter([
                     {
                         path : '/profile/profileDetails',
                         element : <ProfileDetails></ProfileDetails>
+                    },
+                    {
+                        path : '/profile/cart',
+                        element : <Cart></Cart>
                     },
                     {
                         path : '/profile/editProfile',

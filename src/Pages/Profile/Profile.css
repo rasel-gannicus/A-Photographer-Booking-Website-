@@ -17,10 +17,13 @@
     align-items: center;
     margin-top: 10px;
     margin-bottom: 60px;
-    padding-bottom: 5px;
+    /* padding-bottom: 5px; */
     border-bottom: 2px solid grey;
 }
 
+.profile-header-left{
+    margin-bottom: -15px;
+}
 .profile-header-left a{
     margin-right: 15px;
     text-decoration: none;
@@ -31,4 +34,10 @@
 
 .activeHeader{
     color: red !important;
+    border-left: 2px solid grey;
+    border-right: 2px solid grey;
+    border-top: 2px solid grey;
+    background: white;
+    border-radius: 10px 10px 0px 0px;
+    padding: 5px 15px 0 15px;
 }
