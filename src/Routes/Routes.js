@@ -15,7 +15,8 @@ import ProductCart from '../Pages/ProductCart/ProductCart';
 import Error from '../Pages/Error/Error';
 import Profile from '../Pages/Profile/Profile';
 import PrivateRoute from '../Utilities/PrivateRoute/PrivateRoute';
-import PublicRoute from '../Utilities/PublicRoute/PublicRoute';
+import ProfileDetails from '../Pages/Profile/ProfileDetails/ProfileDetails';
+import EditProfile from '../Pages/Profile/EditProfile/EditProfile';
 
 const Routes = createBrowserRouter([
     {
@@ -25,6 +26,20 @@ const Routes = createBrowserRouter([
             {
                 path : '/' , 
                 element : <Home></Home>
+            },
+            {
+                path : '/profile',
+                element : <PrivateRoute><Profile></Profile></PrivateRoute>,
+                children : [
+                    {
+                        path : '/profile/profileDetails',
+                        element : <ProfileDetails></ProfileDetails>
+                    },
+                    {
+                        path : '/profile/editProfile',
+                        element : <EditProfile></EditProfile>
+                    }
+                ]
             },
             {
                 path : '/login',
@@ -65,10 +80,6 @@ const Routes = createBrowserRouter([
             {
                 path : '/about',
                 element : <About></About>
-            },
-            {
-                path : '/profile',
-                element : <PrivateRoute><Profile></Profile></PrivateRoute>
             },
             {
                 path : '*',
