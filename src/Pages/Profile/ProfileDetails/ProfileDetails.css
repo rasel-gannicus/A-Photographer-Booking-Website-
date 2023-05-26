@@ -24,3 +24,27 @@
     text-align: left;
     padding-left: 30px;
 }
+
+.profile-details input{
+    width: 100%;
+    padding: 5px 15px;
+    border-radius: 5px;
+    outline: none;
+    border: 2px solid ;
+}
+
+.profile-btn-active{
+    background: #1094F4;
+    color: white;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 5px;
+}
+.profile-btn-deactive{
+    background: rgba(16, 149, 244, 0.498);
+    color: white;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor:no-drop;
+}

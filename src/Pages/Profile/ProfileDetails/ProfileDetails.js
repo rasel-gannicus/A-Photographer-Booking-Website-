@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../Utilities/firebase.init';
 import './ProfileDetails.css' ; 
@@ -7,9 +7,18 @@ const ProfileDetails = () => {
     const [user, loading, error] = useAuthState(auth);
     const{displayName, email:userEmail, photoURL, } = user;
     
+    // --- to fill up the input field with user info
     const [username, setUsername] = useState(displayName);
     const[email, setEmail] = useState(userEmail);
     const[photo, setPhoto] = useState(photoURL);
+
+    const[isChanged, setIsChanged] = useState(false);
+    
+    useEffect(()=>{
+        if(username !== displayName || photo !== photoURL){
+            setIsChanged(true);
+        }
+    },[username, photo, photoURL, displayName])
     return (
         <div className='profile-details'>
             <img src={photo} alt="" />
@@ -20,11 +29,17 @@ const ProfileDetails = () => {
                 </tr>
                 <tr>
                     <td>Email : </td>
-                    <td><input type="email" name='email' value={email}  /></td>
+                    <td><input type="email" name='email' value={email} readOnly /></td>
                 </tr>
                 <tr>
                     <td>Photo Url : </td>
                     <td><input type="email" name='photo' value={photo} onChange={e => setPhoto(e.target.value)} /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button disabled={!isChanged} className={isChanged ? 'profile-btn-active' : 'profile-btn-deactive'}>Update</button>
+                    </td>
                 </tr>
             </table>
         </div>
