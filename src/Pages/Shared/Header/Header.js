@@ -66,8 +66,6 @@ const Header = () => {
 
                     {user ? <NavLink to="/profile/"  
                     className={isProfileActive ? 'active' : 'inactive'}
-                    // className={({ isActive }) => (isActive ? 'active' : 'inactive')}
-                    // className={({ isActive }) => (isActive ? 'active' : 'inactive')}
                     >Profile</NavLink> : <NavLink onClick={hideMenu} to="/login" className={({ isActive }) => (isActive ? 'active' : 'inactive')}>Login</NavLink>}
                 </div>
             </div>

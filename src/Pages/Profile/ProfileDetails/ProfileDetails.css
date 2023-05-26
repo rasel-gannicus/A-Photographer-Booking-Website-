@@ -48,3 +48,17 @@
     border-radius: 5px;
     cursor:no-drop;
 }
+
+
+@media only screen and (max-width:480px){
+    .profile-details table tr{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+    .profile-details table tr td:nth-child(2){
+    text-align: left;
+    padding-left: 0px;
+}
+}
