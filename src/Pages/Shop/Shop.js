@@ -3,9 +3,13 @@ import { Spinner } from 'react-bootstrap';
 import ShopProuduct from '../MyShop/ShopProuduct/ShopProuduct';
 import './Shop.css';
 import useProduct from '../../Utilities/hooks/useProduct';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Shop = (props) => {
     const [product, setProduct] = useProduct();
+
+    const productState = useSelector(state => state.products)
+    console.log(productState);
 
     //--- This function will show only 'Urban' catagory
     function showUrban() {
