@@ -59,7 +59,7 @@ css codes for navbar/header
 
 @media only screen and (max-width:767px){
     .app-div{
-        margin-top: 90px !important;
+        /* margin-top: 90px !important; */
     }
     .banner-left-header{
         flex-direction: column;

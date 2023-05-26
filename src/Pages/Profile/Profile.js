@@ -8,12 +8,8 @@ import './Profile.css' ;
 
 const Profile = () => {
     const [user, loading, error] = useAuthState(auth);
-    
-
-
     return (
         <div>
-
             <div className="container">
                 <div className="row">
                     <div className="col">
