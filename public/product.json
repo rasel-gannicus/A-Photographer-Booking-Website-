@@ -1,0 +1,272 @@
+[
+    {
+      "catagory": "wild",
+      "img": "https://i.ibb.co/QC9v3FN/wild-6.jpg",
+      "price": 35
+    },
+    {
+      "catagory": "street",
+      "img": "https://i.ibb.co/7kpLW1Y/street-11.jpg",
+      "price": 10
+    },
+    {
+      "catagory": "urban",
+      "img": "https://i.ibb.co/gv54V2B/street-29.jpg",
+      "price": 13
+    },
+    {
+      "catagory": "wild",
+      "img": "https://i.ibb.co/mSr8VgQ/wild-3.jpg",
+      "price": 35
+    },
+    {
+      "catagory": "wild",
+      "img": "https://i.ibb.co/d5nTnj8/wild-19.jpg",
+      "price": 35
+    },
+    {
+      "catagory": "wild",
+      "img": "https://i.ibb.co/M25hy52/wild-1.jpg",
+      "price": 35
+    },
+    {
+      "catagory": "wild",
+      "img": "https://i.ibb.co/MZrVL4D/wild-2.jpg",
+      "price": 35
+    },
+    {
+      "catagory": "wild",
+      "img": "https://i.ibb.co/R3vkCLg/wild-4.jpg",
+      "price": 35
+    },
+    {
+      "catagory": "wild",
+      "img": "https://i.ibb.co/rQhzNyJ/wild-7.jpg",
+      "price": 35
+    },
+    {
+      "catagory": "wild",
+      "img": "https://i.ibb.co/sHLhtzb/wild-8.jpg",
+      "price": 35
+    },
+    {
+      "catagory": "wild",
+      "img": "https://i.ibb.co/mHHx074/wild-9.jpg",
+      "price": 35
+    },
+    {
+      "catagory": "wild",
+      "img": "https://i.ibb.co/Hh7mJNy/wild-10.jpg",
+      "price": 35
+    },
+    {
+      "catagory": "wild",
+      "img": "https://i.ibb.co/nc6PxQJ/wild-11.jpg",
+      "price": 35
+    },
+    {
+      "catagory": "wild",
+      "img": "https://i.ibb.co/VSPhhNM/wild-12.jpg",
+      "price": 35
+    },
+    {
+      "catagory": "wild",
+      "img": "https://i.ibb.co/vc9vndJ/wild-13.jpg",
+      "price": 35
+    },
+    {
+      "catagory": "wild",
+      "img": "https://i.ibb.co/NSKFzBN/wild-14.jpg",
+      "price": 35
+    },
+    {
+      "catagory": "wild",
+      "img": "https://i.ibb.co/93gX1rG/wild-15.jpg",
+      "price": 35
+    },
+    {
+      "catagory": "wild",
+      "img": "https://i.ibb.co/7jsG7d0/wild-16.jpg",
+      "price": 35
+    },
+    {
+      "catagory": "wild",
+      "img": "https://i.ibb.co/ssxpNzg/wild-17.jpg",
+      "price": 35
+    },
+    {
+      "catagory": "street",
+      "img": "https://i.ibb.co/znK9D5Z/street-1.jpg",
+      "price": 10
+    },
+    {
+      "catagory": "street",
+      "img": "https://i.ibb.co/HHPYCDg/street-4.jpg",
+      "price": 10
+    },
+    {
+      "catagory": "street",
+      "img": "https://i.ibb.co/Km7PV9X/street-7.jpg",
+      "price": 10
+    },
+    {
+      "catagory": "street",
+      "img": "https://i.ibb.co/X2hqr6d/street-14.jpg",
+      "price": 10
+    },
+    {
+      "catagory": "street",
+      "img": "https://i.ibb.co/y0tgQtw/street-19.jpg",
+      "price": 10
+    },
+    {
+      "catagory": "street",
+      "img": "https://i.ibb.co/wY5LRPS/street-25.jpg",
+      "price": 10
+    },
+    {
+      "catagory": "street",
+      "img": "https://i.ibb.co/MDdyKQL/street-31.jpg",
+      "price": 10
+    },
+    {
+      "catagory": "street",
+      "img": "https://i.ibb.co/fXK97RQ/street-37.jpg",
+      "price": 10
+    },
+    {
+      "catagory": "street",
+      "img": "https://i.ibb.co/4ZsP2Sg/street-39.jpg",
+      "price": 10
+    },
+    {
+      "catagory": "urban",
+      "img": "https://i.ibb.co/cF0kJQg/street-3.jpg",
+      "price": 13
+    },
+    {
+      "catagory": "urban",
+      "img": "https://i.ibb.co/qyLDzmC/street-6.jpg",
+      "price": 13
+    },
+    {
+      "catagory": "urban",
+      "img": "https://i.ibb.co/wgBhJtN/street-8.jpg",
+      "price": 13
+    },
+    {
+      "catagory": "urban",
+      "img": "https://i.ibb.co/4JzjbF7/street-16.jpg",
+      "price": 13
+    },
+    {
+      "catagory": "urban",
+      "img": "https://i.ibb.co/dB7c9YK/street-21.jpg",
+      "price": 13
+    },
+    {
+      "catagory": "urban",
+      "img": "https://i.ibb.co/p445m5n/street-26.jpg",
+      "price": 13
+    },
+    {
+      "catagory": "urban",
+      "img": "https://i.ibb.co/L6pRVd6/street-28.jpg",
+      "price": 13
+    },
+    {
+      "catagory": "urban",
+      "img": "https://i.ibb.co/fCpw0PD/street-35.jpg",
+      "price": 13
+    },
+    {
+      "catagory": "urban",
+      "img": "https://i.ibb.co/g4Q1v4k/street-38.jpg",
+      "price": 13
+    },
+    {
+      "catagory": "citylife",
+      "img": "https://i.ibb.co/Rg3Kjxf/street-5.jpg",
+      "price": 15
+    },
+    {
+      "catagory": "citylife",
+      "img": "https://i.ibb.co/SdHDq1V/street-9.jpg",
+      "price": 15
+    },
+    {
+      "catagory": "citylife",
+      "img": "https://i.ibb.co/1zqY3VB/street-12.jpg",
+      "price": 15
+    },
+    {
+      "catagory": "citylife",
+      "img": "https://i.ibb.co/zR0xsH2/street-17.jpg",
+      "price": 15
+    },
+    {
+      "catagory": "citylife",
+      "img": "https://i.ibb.co/vJw63zr/street-18.jpg",
+      "price": 15
+    },
+    {
+      "catagory": "citylife",
+      "img": "https://i.ibb.co/tXkbKTf/street-20.jpg",
+      "price": 15
+    },
+    {
+      "catagory": "citylife",
+      "img": "https://i.ibb.co/1mW0Dy8/street-22.jpg",
+      "price": 15
+    },
+    {
+      "catagory": "citylife",
+      "img": "https://i.ibb.co/BTgKrMX/street-23.jpg",
+      "price": 15
+    },
+    {
+      "catagory": "citylife",
+      "img": "https://i.ibb.co/G35ph54/street-24.jpg",
+      "price": 15
+    },
+    {
+      "catagory": "citylife",
+      "img": "https://i.ibb.co/K0zLxbn/street-34.jpg",
+      "price": 15
+    },
+    {
+      "catagory": "others",
+      "img": "https://i.ibb.co/XssKgPb/street-2.jpg",
+      "price": 20
+    },
+    {
+      "catagory": "others",
+      "img": "https://i.ibb.co/G0FDPdG/street-13.jpg",
+      "price": 20
+    },
+    {
+      "catagory": "others",
+      "img": "https://i.ibb.co/fXgSC3Y/street-15.jpg",
+      "price": 20
+    },
+    {
+      "catagory": "others",
+      "img": "https://i.ibb.co/7rHpB1r/street-27.jpg",
+      "price": 20
+    },
+    {
+      "catagory": "others",
+      "img": "https://i.ibb.co/6WQ3CzB/street-30.jpg",
+      "price": 20
+    },
+    {
+      "catagory": "others",
+      "img": "https://i.ibb.co/3vry18n/street-32.jpg",
+      "price": 20
+    },
+    {
+      "catagory": "others",
+      "img": "https://i.ibb.co/KjFRkBB/street-36.jpg",
+      "price": 20
+    }
+  ]
