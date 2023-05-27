@@ -4,12 +4,14 @@ import ShopProuduct from '../MyShop/ShopProuduct/ShopProuduct';
 import './Shop.css';
 import useProduct from '../../Utilities/hooks/useProduct';
 import { useDispatch, useSelector } from 'react-redux';
+import { useGetAllProductQuery } from '../../Redux/Features/product/productApi';
 
 const Shop = (props) => {
     const [product, setProduct] = useProduct();
 
-    const productState = useSelector(state => state.products)
-    console.log(productState);
+    // const productState = useSelector(state => state.products);
+    const {data, isLoading, isError, error} = useGetAllProductQuery();
+    console.log('Data from mongodb : ', data);
 
     //--- This function will show only 'Urban' catagory
     function showUrban() {
