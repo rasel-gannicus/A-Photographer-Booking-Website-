@@ -4,7 +4,7 @@ import ShopProuduct from '../MyShop/ShopProuduct/ShopProuduct';
 import './Shop.css';
 import useProduct from '../../Utilities/hooks/useProduct';
 import { useDispatch, useSelector } from 'react-redux';
-import { useGetAllProductQuery } from '../../Redux/Features/product/productApi';
+import { useGetAllProductQuery, useGetProductByCatagoryQuery } from '../../Redux/Features/product/productApi';
 import { ClipLoader } from 'react-spinners';
 
 const Shop = (props) => {
@@ -14,6 +14,7 @@ const Shop = (props) => {
     const { data, isLoading, isError, error } = useGetAllProductQuery();
     console.log('Data from mongodb : ', data);
 
+    // --- deciding what to show in the webpage while fetching data from server
     let content = null;
     if (isLoading && !isError) {
         content = <div className="loader-in-middle2"><ClipLoader color="black" size={70} /></div>
@@ -32,7 +33,10 @@ const Shop = (props) => {
         </div>
     }
 
-    //--- This function will show only 'Urban' catagory
+    // --- getting product data according to catagory
+    const{data:catagoryProduct, isLoading:catagoryLoading, isError:catagoryIsError, error:catagoryError} = useGetProductByCatagoryQuery();
+
+    
     function showUrban() {
         const spinner = document.querySelector('.spinners');
         spinner.classList.remove('hideMe');
