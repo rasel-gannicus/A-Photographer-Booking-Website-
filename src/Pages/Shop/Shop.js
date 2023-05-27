@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Spinner } from 'react-bootstrap';
 import ShopProuduct from '../MyShop/ShopProuduct/ShopProuduct';
 import './Shop.css';
@@ -8,13 +8,14 @@ import { useGetAllProductQuery, useGetProductByCatagoryMutation, useGetProductBy
 import { ClipLoader } from 'react-spinners';
 
 const Shop = (props) => {
-    const [product, setProduct] = useProduct();
+    const[currentPage, setCurrentPage] = useState(0);
+    const[contentPerPage, setContentPerPage] = useState(5);
+    console.log(contentPerPage) ; 
 
-    // --- getting all products data from mongodb
+   /*  // --- getting all products data from mongodb
     const { data, isLoading, isError, error } = useGetAllProductQuery();
 
     // --- deciding what to show in the webpage while fetching data from server
-    let content = null;
     if (isLoading && !isError) {
         content = <div className="loader-in-middle2"><ClipLoader color="black" size={70} /></div>
     }
@@ -30,10 +31,11 @@ const Shop = (props) => {
                 addProduct={props.addProduct}
             ></ShopProuduct>)}
         </div>
-    }
+    } */
 
     // --- getting product data according to catagory
     const[getProductByCatagory, {data:catagoryProduct, isLoading:catagoryLoading, isError:catagoryIsError, error:catagoryError}] = useGetProductByCatagoryMutation();
+    let content = null;
 
     if (catagoryLoading && !catagoryIsError) {
         content = <div className="loader-in-middle2"><ClipLoader color="black" size={70} /></div>
@@ -42,9 +44,16 @@ const Shop = (props) => {
         console.log(catagoryError);
         content = catagoryError.error;
     }
-    if (!catagoryLoading && !catagoryIsError && catagoryProduct?.length > 0) {
+    let totalPage = 0 ;
+    if (!catagoryLoading && !catagoryIsError && catagoryProduct?.result?.length > 0) {
+        const{count, result} = catagoryProduct;
+        let productPerPage = 10 ;
+        totalPage = Math.ceil(count/productPerPage);
+        // console.log('Total Page: ',totalPage);
+        // console.log([...Array(totalPage).keys()]);
+
         content = <div className="product-show-div all-product ">
-             {catagoryProduct.map(index => <ShopProuduct
+             {result.map(index => <ShopProuduct
                 index={index}
                 key={index.img}
                 addProduct={props.addProduct}
@@ -60,7 +69,7 @@ const Shop = (props) => {
     }
 
     // --- the previous code i wrote here was more than 180+ lines. which i just made  25 lines with more efficient way. The beauty of coding ! The beauty of more learning !
-    
+
     return (
         <div>
             <div className="catagory  ">
@@ -79,63 +88,21 @@ const Shop = (props) => {
             <p className="spinners hideMe"><Spinner animation="border" variant="primary" /></p>
 
             <h2 className='my-5'>Showing <span className='product-title'>All</span> Product </h2>
-            {/* -------------- This div will show only 'All' catagory ------------ */}
-            {content}
-            {/* -------------- This div will show only 'Urban' catagory ------------ */}
-            <div className="product-show-div urban-product hideMe">
-                {
-                    product.map(index => index.catagory == 'urban' && <ShopProuduct
-                        index={index}
-                        key={index.img}
-                        addProduct={props.addProduct}
-                    ></ShopProuduct>)
-                }
+            {/* -------------- Show product by catagory ------------ */}
+            {content}          
+            <div className="pagination">
+                {[...Array(totalPage).keys()].map(index=><button 
+                key={index}
+                onClick={()=>setCurrentPage(index)}
+                className={currentPage == index && 'selectedButton'}
+                >{index}</button>)}
+                <select name="" id="" onChange={e => setContentPerPage(e.target.value)}>
+                    <option value="5">5</option>
+                    <option value="10" selected>10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                </select>
             </div>
-
-            {/* -------------- This div will show only 'Street' catagory ------------ */}
-            <div className="product-show-div street-product hideMe">
-                {
-                    product.map(index => index.catagory == 'street' && <ShopProuduct
-                        index={index}
-                        key={index.img}
-                        addProduct={props.addProduct}
-                    ></ShopProuduct>)
-                }
-            </div>
-
-            {/* -------------- This div will show only 'Wild' catagory ------------ */}
-            <div className="product-show-div wild-product hideMe">
-                {
-                    product.map(index => index.catagory == 'wild' && <ShopProuduct
-                        index={index}
-                        key={index.img}
-                        addProduct={props.addProduct}
-                    ></ShopProuduct>)
-                }
-            </div>
-
-            {/* -------------- This div will show only 'Citylife' catagory ------------ */}
-            <div className="product-show-div citylife-product hideMe">
-                {
-                    product.map(index => index.catagory == 'citylife' && <ShopProuduct
-                        index={index}
-                        key={index.img}
-                        addProduct={props.addProduct}
-                    ></ShopProuduct>)
-                }
-            </div>
-
-            {/* -------------- This div will show only 'Others' catagory ------------ */}
-            <div className="product-show-div others-product hideMe">
-                {
-                    product.map(index => index.catagory == 'others' && <ShopProuduct
-                        index={index}
-                        key={index.img}
-                        addProduct={props.addProduct}
-                    ></ShopProuduct>)
-                }
-            </div>
-
         </div>
     );
 };

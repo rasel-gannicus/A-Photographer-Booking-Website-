@@ -37,3 +37,27 @@
 .product-title{
     color: crimson;
 }
+
+
+/* --- pagination styling --- */
+.pagination{
+    /* border: 2px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 120px;
+    gap: 20px;
+}
+.pagination button{
+    outline: none;
+    border: 2px solid #2A2A2A;
+    background: white;
+    color: #2A2A2A;
+    padding: 5px 20px;
+    font-size: 23px;
+    font-weight: 600;
+}
+.pagination .selectedButton{
+    background: #045B62;
+    color: white;
+}
