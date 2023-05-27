@@ -52,8 +52,8 @@ const Shop = (props) => {
         </div>
     }
     // ---- show product by catagory
-    function showUrban() {
-        getProductByCatagory('wild');
+    function showByCategory(category) {
+        getProductByCatagory(category);
     }
 
     //--- This function will show only 'Street' catagory
@@ -217,12 +217,12 @@ const Shop = (props) => {
                     <p>Catagory : </p>
                 </div>
                 <div className="catagory-detail ">
-                    <button onClick={showUrban}>Urban</button>
-                    <button onClick={showStreet}>Street</button>
-                    <button onClick={showWild}>Wild Life</button>
-                    <button onClick={showCitylife}>City Life </button>
-                    <button onClick={otherslife}>Others </button>
-                    <button onClick={showAll}>All </button>
+                    <button onClick={()=>showByCategory('urban')}>Urban</button>
+                    <button onClick={()=>showByCategory('street')}>Street</button>
+                    <button onClick={()=>showByCategory('wild')}>Wild Life</button>
+                    <button onClick={()=>showByCategory('citylife')}>City Life </button>
+                    <button onClick={()=>showByCategory('others')}>Others </button>
+                    <button onClick={()=>showByCategory('')}>All </button>
                 </div>
             </div>
             <p className="spinners hideMe"><Spinner animation="border" variant="primary" /></p>
