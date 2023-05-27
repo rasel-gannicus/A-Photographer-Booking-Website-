@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+/* --- common css syles --- */
+.loader-in-middle{
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader-in-middle2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}

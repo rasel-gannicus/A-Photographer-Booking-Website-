@@ -5,13 +5,32 @@ import './Shop.css';
 import useProduct from '../../Utilities/hooks/useProduct';
 import { useDispatch, useSelector } from 'react-redux';
 import { useGetAllProductQuery } from '../../Redux/Features/product/productApi';
+import { ClipLoader } from 'react-spinners';
 
 const Shop = (props) => {
     const [product, setProduct] = useProduct();
 
-    // const productState = useSelector(state => state.products);
-    const {data, isLoading, isError, error} = useGetAllProductQuery();
+    // --- getting all products data from mongodb
+    const { data, isLoading, isError, error } = useGetAllProductQuery();
     console.log('Data from mongodb : ', data);
+
+    let content = null;
+    if (isLoading && !isError) {
+        content = <div className="loader-in-middle2"><ClipLoader color="black" size={70} /></div>
+    }
+    if (!isLoading && isError) {
+        console.log(error);
+        content = error.error;
+    }
+    if (!isLoading && !isError && data.length > 0) {
+        content = <div className="product-show-div all-product ">
+             {data.map(index => <ShopProuduct
+                index={index}
+                key={index.img}
+                addProduct={props.addProduct}
+            ></ShopProuduct>)}
+        </div>
+    }
 
     //--- This function will show only 'Urban' catagory
     function showUrban() {
@@ -216,15 +235,7 @@ const Shop = (props) => {
 
             <h2 className='my-5'>Showing <span className='product-title'>All</span> Product </h2>
             {/* -------------- This div will show only 'All' catagory ------------ */}
-            <div className="product-show-div all-product">
-                {
-                    product.map(index => <ShopProuduct
-                        index={index}
-                        key={index.img}
-                        addProduct={props.addProduct}
-                    ></ShopProuduct>)
-                }
-            </div>
+            {content}
             {/* -------------- This div will show only 'Urban' catagory ------------ */}
             <div className="product-show-div urban-product hideMe">
                 {
