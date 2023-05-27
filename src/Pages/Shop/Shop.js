@@ -35,7 +35,22 @@ const Shop = (props) => {
 
     // --- getting product data according to catagory
     const{data:catagoryProduct, isLoading:catagoryLoading, isError:catagoryIsError, error:catagoryError} = useGetProductByCatagoryQuery();
-
+    if (catagoryLoading && !catagoryIsError) {
+        content = <div className="loader-in-middle2"><ClipLoader color="black" size={70} /></div>
+    }
+    if (!catagoryLoading && catagoryIsError) {
+        console.log(catagoryError);
+        content = catagoryError.error;
+    }
+    if (!catagoryLoading && !catagoryIsError && catagoryProduct.length > 0) {
+        content = <div className="product-show-div all-product ">
+             {catagoryProduct.map(index => <ShopProuduct
+                index={index}
+                key={index.img}
+                addProduct={props.addProduct}
+            ></ShopProuduct>)}
+        </div>
+    }
     
     function showUrban() {
         const spinner = document.querySelector('.spinners');
