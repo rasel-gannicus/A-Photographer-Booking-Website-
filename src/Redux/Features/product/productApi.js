@@ -7,12 +7,19 @@ export const productApi = apiSlice.injectEndpoints({
         getAllProduct : builder.query({
             query : () => '/product'
         }),
-        getProductByCatagory : builder.query({
-            query : (catagory) => `/product/${catagory}`
+        getProductByCatagory : builder.mutation({
+            query : (category) => ({
+                url : `/product/category/${category}`,
+                method : 'POST',
+            }),
+            async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+                // --- optimistic update
+                console.log(arg)  ; 
+            }
         })
     })
 })
 
 
 
-export const {useGetAllProductQuery, useGetProductByCatagoryQuery} = productApi ; 
+export const {useGetAllProductQuery, useGetProductByCatagoryQuery, useGetProductByCatagoryMutation} = productApi ; 

@@ -4,7 +4,7 @@ import ShopProuduct from '../MyShop/ShopProuduct/ShopProuduct';
 import './Shop.css';
 import useProduct from '../../Utilities/hooks/useProduct';
 import { useDispatch, useSelector } from 'react-redux';
-import { useGetAllProductQuery, useGetProductByCatagoryQuery } from '../../Redux/Features/product/productApi';
+import { useGetAllProductQuery, useGetProductByCatagoryMutation, useGetProductByCatagoryQuery } from '../../Redux/Features/product/productApi';
 import { ClipLoader } from 'react-spinners';
 
 const Shop = (props) => {
@@ -12,7 +12,6 @@ const Shop = (props) => {
 
     // --- getting all products data from mongodb
     const { data, isLoading, isError, error } = useGetAllProductQuery();
-    console.log('Data from mongodb : ', data);
 
     // --- deciding what to show in the webpage while fetching data from server
     let content = null;
@@ -34,7 +33,8 @@ const Shop = (props) => {
     }
 
     // --- getting product data according to catagory
-    const{data:catagoryProduct, isLoading:catagoryLoading, isError:catagoryIsError, error:catagoryError} = useGetProductByCatagoryQuery();
+    const[getProductByCatagory, {data:catagoryProduct, isLoading:catagoryLoading, isError:catagoryIsError, error:catagoryError}] = useGetProductByCatagoryMutation();
+
     if (catagoryLoading && !catagoryIsError) {
         content = <div className="loader-in-middle2"><ClipLoader color="black" size={70} /></div>
     }
@@ -42,7 +42,7 @@ const Shop = (props) => {
         console.log(catagoryError);
         content = catagoryError.error;
     }
-    if (!catagoryLoading && !catagoryIsError && catagoryProduct.length > 0) {
+    if (!catagoryLoading && !catagoryIsError && catagoryProduct?.length > 0) {
         content = <div className="product-show-div all-product ">
              {catagoryProduct.map(index => <ShopProuduct
                 index={index}
@@ -51,34 +51,9 @@ const Shop = (props) => {
             ></ShopProuduct>)}
         </div>
     }
-    
+    // ---- show product by catagory
     function showUrban() {
-        const spinner = document.querySelector('.spinners');
-        spinner.classList.remove('hideMe');
-
-        setTimeout(() => {
-            spinner.classList.add('hideMe');
-            let productTitle = document.querySelector('.product-title');
-            productTitle.innerText = 'Urban Photography';
-
-            const allProductDiv = document.querySelector('.all-product');
-            allProductDiv.classList.add('hideMe');
-
-            const wildDiv = document.querySelector('.wild-product');
-            wildDiv.classList.add('hideMe');
-
-            const streetDiv = document.querySelector('.street-product');
-            streetDiv.classList.add('hideMe');
-
-            const citylifeDiv = document.querySelector('.citylife-product');
-            citylifeDiv.classList.add('hideMe')
-
-            const othersDiv = document.querySelector('.others-product');
-            othersDiv.classList.add('hideMe');
-
-            const urbanDiv = document.querySelector('.urban-product');
-            urbanDiv.classList.remove('hideMe');
-        }, 500);
+        getProductByCatagory('wild');
     }
 
     //--- This function will show only 'Street' catagory
