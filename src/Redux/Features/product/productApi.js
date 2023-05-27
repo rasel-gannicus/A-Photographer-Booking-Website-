@@ -14,7 +14,6 @@ export const productApi = apiSlice.injectEndpoints({
             }),
             async onQueryStarted(arg, { queryFulfilled, dispatch }) {
                 // --- optimistic update
-                console.log(arg)  ; 
             }
         })
     })

@@ -53,163 +53,14 @@ const Shop = (props) => {
     }
     // ---- show product by catagory
     function showByCategory(category) {
-        getProductByCatagory(category);
+        getProductByCatagory(category);        
+        
+        let productTitle = document.querySelector('.product-title');
+        productTitle.innerText = `${category} Photography`;
     }
 
-    //--- This function will show only 'Street' catagory
-    function showStreet() {
-        const spinner = document.querySelector('.spinners');
-        spinner.classList.remove('hideMe');
-
-        setTimeout(() => {
-            spinner.classList.add('hideMe');
-            let productTitle = document.querySelector('.product-title');
-            productTitle.innerText = 'Street Photography';
-
-
-            const allProductDiv = document.querySelector('.all-product');
-            allProductDiv.classList.add('hideMe');
-
-            const urbanDiv = document.querySelector('.urban-product');
-            urbanDiv.classList.add('hideMe');
-
-            const wildDiv = document.querySelector('.wild-product');
-            wildDiv.classList.add('hideMe');
-
-            const citylifeDiv = document.querySelector('.citylife-product');
-            citylifeDiv.classList.add('hideMe');
-
-            const othersDiv = document.querySelector('.others-product');
-            othersDiv.classList.add('hideMe');
-
-            const streetDiv = document.querySelector('.street-product');
-            streetDiv.classList.remove('hideMe');
-        }, 500);
-    }
-
-    //--- This function will show only 'Wild Div' catagory
-    function showWild() {
-        const spinner = document.querySelector('.spinners');
-        spinner.classList.remove('hideMe');
-
-        setTimeout(() => {
-            spinner.classList.add('hideMe');
-            let productTitle = document.querySelector('.product-title');
-            productTitle.innerText = 'Wild Photography';
-
-            const allProductDiv = document.querySelector('.all-product');
-            allProductDiv.classList.add('hideMe');
-
-            const urbanDiv = document.querySelector('.urban-product');
-            urbanDiv.classList.add('hideMe');
-
-            const streetDiv = document.querySelector('.street-product');
-            streetDiv.classList.add('hideMe');
-
-            const citylifeDiv = document.querySelector('.citylife-product');
-            citylifeDiv.classList.add('hideMe');
-
-            const othersDiv = document.querySelector('.others-product');
-            othersDiv.classList.add('hideMe');
-
-            const wildDiv = document.querySelector('.wild-product');
-            wildDiv.classList.remove('hideMe');
-
-        }, 500);
-    }
-
-    //--- This function will show only 'Citylife Div' catagory
-    function showCitylife() {
-        const spinner = document.querySelector('.spinners');
-        spinner.classList.remove('hideMe');
-
-        setTimeout(() => {
-            spinner.classList.add('hideMe');
-            let productTitle = document.querySelector('.product-title');
-            productTitle.innerText = 'City Life Photography';
-
-            const allProductDiv = document.querySelector('.all-product');
-            allProductDiv.classList.add('hideMe');
-
-            const urbanDiv = document.querySelector('.urban-product');
-            urbanDiv.classList.add('hideMe');
-
-            const streetDiv = document.querySelector('.street-product');
-            streetDiv.classList.add('hideMe');
-
-            const wildDiv = document.querySelector('.wild-product');
-            wildDiv.classList.add('hideMe');
-
-            const othersDiv = document.querySelector('.others-product');
-            othersDiv.classList.add('hideMe');
-
-            const citylifeDiv = document.querySelector('.citylife-product');
-            citylifeDiv.classList.remove('hideMe');
-
-        }, 500);
-    }
-
-    //--- This function will show only 'Others Div' catagory
-    function otherslife() {
-        const spinner = document.querySelector('.spinners');
-        spinner.classList.remove('hideMe');
-
-        setTimeout(() => {
-            spinner.classList.add('hideMe');
-            let productTitle = document.querySelector('.product-title');
-            productTitle.innerText = 'Others Photography';
-
-            const allProductDiv = document.querySelector('.all-product');
-            allProductDiv.classList.add('hideMe');
-
-            const urbanDiv = document.querySelector('.urban-product');
-            urbanDiv.classList.add('hideMe');
-
-            const streetDiv = document.querySelector('.street-product');
-            streetDiv.classList.add('hideMe');
-
-            const wildDiv = document.querySelector('.wild-product');
-            wildDiv.classList.add('hideMe');
-
-            const citylifeDiv = document.querySelector('.citylife-product');
-            citylifeDiv.classList.add('hideMe');
-
-            const othersDiv = document.querySelector('.others-product');
-            othersDiv.classList.remove('hideMe');
-
-        }, 500);
-    }
-    //--- This function will show only 'All' catagory
-    function showAll() {
-        const spinner = document.querySelector('.spinners');
-        spinner.classList.remove('hideMe');
-
-        setTimeout(() => {
-            spinner.classList.add('hideMe');
-            let productTitle = document.querySelector('.product-title');
-            productTitle.innerText = 'All Photography';
-
-            const allProductDiv = document.querySelector('.all-product');
-            allProductDiv.classList.remove('hideMe');
-
-            const urbanDiv = document.querySelector('.urban-product');
-            urbanDiv.classList.add('hideMe');
-
-            const streetDiv = document.querySelector('.street-product');
-            streetDiv.classList.add('hideMe');
-
-            const wildDiv = document.querySelector('.wild-product');
-            wildDiv.classList.add('hideMe');
-
-            const citylifeDiv = document.querySelector('.citylife-product');
-            citylifeDiv.classList.add('hideMe');
-
-            const othersDiv = document.querySelector('.others-product');
-            othersDiv.classList.add('hideMe');
-
-        }, 500);
-    }
-
+    // --- the previous code i wrote here was more than 180+ lines. which i just made  25 lines with more efficient way. The beauty of coding ! The beauty of more learning !
+    
     return (
         <div>
             <div className="catagory  ">
@@ -222,7 +73,7 @@ const Shop = (props) => {
                     <button onClick={()=>showByCategory('wild')}>Wild Life</button>
                     <button onClick={()=>showByCategory('citylife')}>City Life </button>
                     <button onClick={()=>showByCategory('others')}>Others </button>
-                    <button onClick={()=>showByCategory('')}>All </button>
+                    <button onClick={()=>showByCategory('all')}>All </button>
                 </div>
             </div>
             <p className="spinners hideMe"><Spinner animation="border" variant="primary" /></p>
