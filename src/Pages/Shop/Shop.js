@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Spinner } from 'react-bootstrap';
 import ShopProuduct from '../MyShop/ShopProuduct/ShopProuduct';
 import './Shop.css';
@@ -11,7 +11,7 @@ const Shop = (props) => {
     const[categories, setCategories]= useState('all');
     const[currentPage, setCurrentPage] = useState(0);
     const[contentPerPage, setContentPerPage] = useState(5);
-    console.log(contentPerPage) ; 
+    console.log(categories) ; 
 
    /*  // --- getting all products data from mongodb
     const { data, isLoading, isError, error } = useGetAllProductQuery();
@@ -62,12 +62,16 @@ const Shop = (props) => {
         </div>
     }
     // ---- show product by catagory
-    function showByCategory(category) {
+    function showByCategory(category, currentPage, contentPerPage) {
         getProductByCatagory({category, currentPage, contentPerPage});        
         
         let productTitle = document.querySelector('.product-title');
         productTitle.innerText = `${category} Photography`;
     }
+
+    useEffect(()=>{
+        showByCategory(categories, currentPage, contentPerPage);
+    },[categories, currentPage, contentPerPage])
 
     // --- the previous code i wrote here was more than 180+ lines. which i just made  25 lines with more efficient way. The beauty of coding ! The beauty of more learning !
 
@@ -78,12 +82,12 @@ const Shop = (props) => {
                     <p>Catagory : </p>
                 </div>
                 <div className="catagory-detail ">
-                    <button onClick={()=>showByCategory('urban')}>Urban</button>
-                    <button onClick={()=>showByCategory('street')}>Street</button>
-                    <button onClick={()=>showByCategory('wild')}>Wild Life</button>
-                    <button onClick={()=>showByCategory('citylife')}>City Life </button>
-                    <button onClick={()=>showByCategory('others')}>Others </button>
-                    <button onClick={()=>showByCategory('all')}>All </button>
+                    <button onClick={()=>setCategories('urban')}>Urban</button>
+                    <button onClick={()=>setCategories('street')}>Street</button>
+                    <button onClick={()=>setCategories('wild')}>Wild Life</button>
+                    <button onClick={()=>setCategories('citylife')}>City Life </button>
+                    <button onClick={()=>setCategories('others')}>Others </button>
+                    <button onClick={()=>setCategories('all')}>All </button>
                 </div>
             </div>
             <p className="spinners hideMe"><Spinner animation="border" variant="primary" /></p>
