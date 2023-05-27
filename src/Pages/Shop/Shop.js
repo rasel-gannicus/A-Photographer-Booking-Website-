@@ -2,37 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Spinner } from 'react-bootstrap';
 import ShopProuduct from '../MyShop/ShopProuduct/ShopProuduct';
 import './Shop.css';
-import useProduct from '../../Utilities/hooks/useProduct';
-import { useDispatch, useSelector } from 'react-redux';
-import { useGetAllProductQuery, useGetProductByCatagoryMutation, useGetProductByCatagoryQuery } from '../../Redux/Features/product/productApi';
+import {  useGetProductByCatagoryMutation,  } from '../../Redux/Features/product/productApi';
 import { ClipLoader } from 'react-spinners';
 
 const Shop = (props) => {
     const[categories, setCategories]= useState('all');
     const[currentPage, setCurrentPage] = useState(0);
-    const[contentPerPage, setContentPerPage] = useState(5);
-    console.log(categories) ; 
+    const[contentPerPage, setContentPerPage] = useState(10);
 
-   /*  // --- getting all products data from mongodb
-    const { data, isLoading, isError, error } = useGetAllProductQuery();
-
-    // --- deciding what to show in the webpage while fetching data from server
-    if (isLoading && !isError) {
-        content = <div className="loader-in-middle2"><ClipLoader color="black" size={70} /></div>
-    }
-    if (!isLoading && isError) {
-        console.log(error);
-        content = error.error;
-    }
-    if (!isLoading && !isError && data.length > 0) {
-        content = <div className="product-show-div all-product ">
-             {data.map(index => <ShopProuduct
-                index={index}
-                key={index.img}
-                addProduct={props.addProduct}
-            ></ShopProuduct>)}
-        </div>
-    } */
 
     // --- getting product data according to catagory
     const[getProductByCatagory, {data:catagoryProduct, isLoading:catagoryLoading, isError:catagoryIsError, error:catagoryError}] = useGetProductByCatagoryMutation();
@@ -48,10 +25,8 @@ const Shop = (props) => {
     let totalPage = 0 ;
     if (!catagoryLoading && !catagoryIsError && catagoryProduct?.result?.length > 0) {
         const{count, result} = catagoryProduct;
-        let productPerPage = 10 ;
-        totalPage = Math.ceil(count/productPerPage);
-        // console.log('Total Page: ',totalPage);
-        // console.log([...Array(totalPage).keys()]);
+        totalPage = Math.ceil(count/contentPerPage);
+        console.log('Count From DB: ',count);
 
         content = <div className="product-show-div all-product ">
              {result.map(index => <ShopProuduct
