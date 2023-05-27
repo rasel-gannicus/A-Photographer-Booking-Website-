@@ -8,8 +8,8 @@ export const productApi = apiSlice.injectEndpoints({
             query : () => '/product'
         }),
         getProductByCatagory : builder.mutation({
-            query : (category) => ({
-                url : `/product/category/${category}`,
+            query : ({category, currentPage, contentPerPage}) => ({
+                url : `/product/category/${category}?currentPage=${currentPage}&size=${contentPerPage}`,
                 method : 'POST',
             }),
             async onQueryStarted(arg, { queryFulfilled, dispatch }) {

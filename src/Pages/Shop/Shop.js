@@ -8,6 +8,7 @@ import { useGetAllProductQuery, useGetProductByCatagoryMutation, useGetProductBy
 import { ClipLoader } from 'react-spinners';
 
 const Shop = (props) => {
+    const[categories, setCategories]= useState('all');
     const[currentPage, setCurrentPage] = useState(0);
     const[contentPerPage, setContentPerPage] = useState(5);
     console.log(contentPerPage) ; 
@@ -62,7 +63,7 @@ const Shop = (props) => {
     }
     // ---- show product by catagory
     function showByCategory(category) {
-        getProductByCatagory(category);        
+        getProductByCatagory({category, currentPage, contentPerPage});        
         
         let productTitle = document.querySelector('.product-title');
         productTitle.innerText = `${category} Photography`;
