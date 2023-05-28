@@ -13,7 +13,6 @@ export const serviceApi = apiSlice.injectEndpoints({
                 // --- optimistic update
                 // console.log('Arg : ',arg)
                 const response = await queryFulfilled;
-                console.log('Response: ',response);
                 const pathResult = dispatch(apiSlice.util.updateQueryData('getServiceCart', arg.email, (draft)=>{
                     draft.push(arg);
                 }))
@@ -30,7 +29,7 @@ export const serviceApi = apiSlice.injectEndpoints({
                 method : 'DELETE'
             }),
             async onQueryStarted(arg, { queryFulfilled, dispatch }){
-                // console.log(arg);
+                //--- optimistic update
                 const pathResult = dispatch(apiSlice.util.updateQueryData('getServiceCart', arg.email, (draft)=>{
                     console.log('Entered ');
 
@@ -39,6 +38,13 @@ export const serviceApi = apiSlice.injectEndpoints({
 
                     draft.splice(deletedIndex,1);
                 }))
+
+                try{
+                    const response = await queryFulfilled ; 
+                }catch(err){
+                    console.log(err);
+                    pathResult.undo();
+                }
             }
         })
     })

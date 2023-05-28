@@ -29,6 +29,12 @@
     padding-right: 50px;
 }
 
+#date{
+    border: 2px solid #ccc;
+    border-radius: 3px;
+    padding: 2px 5px;
+}
+
 .booking-cart-card img{
     width: 80px;
     margin-right: 20px;
@@ -52,3 +58,20 @@
     color: white;
     margin-left: 15px;
 }
+
+
+
+/*--------------------------------------------------------------------------
+For mobile:  
+---------------------------------------------------------------------------*/
+@media only screen and (max-width:480px){}
+
+/*--------------------------------------------------- 
+For ipads, tablet:  
+---------------------------------------------------*/
+@media only screen and (min-width:481px) and (max-width:768px) {}
+
+/*-----------------------------------------
+ For Small screen, laptop:  
+-----------------------------------------*/
+@media only screen and (min-width:769px) and (max-width:1024px) {}

@@ -32,7 +32,6 @@ const WeddingPackages = (props) => {
 
     useEffect(() => {
         if (isLoading && !isError) {
-            console.log('Sending data');
             setButtonText('Adding...');
         }
         else if (!isLoading && isError) {

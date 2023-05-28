@@ -6,7 +6,7 @@ css codes for banner
 .banner-div{
     margin: auto;
     padding: 0 10px;
-    box-shadow: 0 0 25px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 10px rgba(0,0,0,0.5);
     background: linear-gradient(45deg, #EDF1FD, #ccc);
 }
 .banner-left{

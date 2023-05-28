@@ -10,7 +10,7 @@ import { addServiceToCart } from './Redux/Features/service/serviceSlice';
 
 function App() {
 
-  // --- getting user info from firebase
+/*   // --- getting user info from firebase
   const[user] = useAuthState(auth);
 
   // ---- getting cart details for services
@@ -25,7 +25,7 @@ function App() {
     if(data?.length > 0){
       dispatch(addServiceToCart(data));
     }
-  }
+  } */
   return (
     <div className='App'>
       <RouterProvider router={Routes}></RouterProvider>
