@@ -11,7 +11,9 @@ export const serviceApi = apiSlice.injectEndpoints({
             }),
             async onQueryStarted(arg, { queryFulfilled, dispatch }) {
                 // --- optimistic update
-                console.log(arg)
+                // console.log(arg)
+                const response = await queryFulfilled;
+                console.log(response);
             }
         }),
     })
