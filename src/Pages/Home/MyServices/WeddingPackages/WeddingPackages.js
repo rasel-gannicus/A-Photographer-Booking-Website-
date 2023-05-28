@@ -14,7 +14,7 @@ const WeddingPackages = (props) => {
     const [user] = useAuthState(auth);
 
     // --- checking if the specific service is already added or not
-    const { data: serviceCart } = useGetServiceCartQuery(user?.email, { skip: !user });
+    const { data: serviceCart, refetch } = useGetServiceCartQuery(user?.email, { skip: !user });
     
     useEffect(() => {
         if (serviceCart?.length > 0) {
@@ -25,7 +25,7 @@ const WeddingPackages = (props) => {
                 }
             }
         }
-    }, [serviceCart, user])
+    }, [serviceCart, user, id, refetch])
 
     // --- booking a service & adding it to database
     const [addService, { data, isLoading, isError, error }] = useAddServiceToDbMutation();
@@ -40,10 +40,10 @@ const WeddingPackages = (props) => {
             setButtonText('Add to Booking');
         }
         else if (data) {
-            console.log('Added Successfully !', data);
             if (data.acknowledged) {
                 setButtonText('Added');
                 setButton(true);
+                refetch();
             }
         }else{
             setButtonText('Add to Booking');
