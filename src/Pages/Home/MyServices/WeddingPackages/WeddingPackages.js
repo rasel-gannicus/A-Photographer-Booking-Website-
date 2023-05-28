@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './WeddingPackages.css';
 import { useAddServiceToDbMutation, useGetServiceCartQuery } from '../../../../Redux/Features/service/serviceApi';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -6,25 +6,32 @@ import auth from '../../../../Utilities/firebase.init';
 
 const WeddingPackages = (props) => {
     const { id, packageCatagory, packageCatagoryName, cameraMan, duration, thumbImg, price } = props.index;
+    const[button, setButton] = useState(false);
 
     // --- getting user info from firebase
     const [user] = useAuthState(auth);
 
     // --- checking if the specific service is already added or not
     const { data: serviceCart } = useGetServiceCartQuery(user?.email, { skip: !user });
-    console.log(serviceCart);
+    // let button = 
+    useEffect(()=>{
+        if(serviceCart?.length>0){
+            for(let element of serviceCart){
+                if(element.serviceId == id){
+                    setButton(true);
+                }
+            }
+        }
+    },[serviceCart, user])
 
     // --- booking a service & adding it to database
     const [addService, { data, isLoading, isError, error }] = useAddServiceToDbMutation();
 
     function bookButton(e) {
+        console.log('ok');
         if (user?.email) {
             addService({ email: user.email, serviceId: id, packageCatagory, packageCatagoryName, cameraMan, duration, thumbImg, price });
         }
-
-        e.target.style.backgroundColor = '#ccc'
-        e.target.innerText = 'Added';
-        e.target.disabled = 'true';
     }
     return (
         <div className='mx-auto'>
@@ -45,8 +52,8 @@ const WeddingPackages = (props) => {
                                 <p>Hours Shooting</p>
                             </div>
                         </div>
-                        <button onClick={bookButton} className="book-button">Add To Booking</button>
-                        <button className="book-button2">Added</button>
+                        <button onClick={bookButton} className={!button ? 'book-button' : 'book-button2'} disabled={button}>{button ? 'Added' : 'Add To Booking' }</button>
+                        {/* <button className="book-button2">Added</button> */}
                     </div>
                 </div>
                 <div className="wedding-card-icon border">

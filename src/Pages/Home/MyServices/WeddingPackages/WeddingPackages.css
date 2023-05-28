@@ -66,7 +66,7 @@
 }
 
 /* Book now button */
-.book-button{
+.book-button, .book-button2{
     width: 70%;
     margin: 10px auto;
     padding: 10px 0;
@@ -80,6 +80,11 @@
     color: #253745;
     margin-top: 25px;
     cursor: pointer;
+}
+
+.book-button2{
+    background: #ccc;
+    cursor: no-drop;
 }
 
 .book-button:hover{
