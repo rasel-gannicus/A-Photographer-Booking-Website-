@@ -17,7 +17,7 @@ function App() {
   const { data } = useGetServiceCartQuery(user?.email, { skip: !user });
 
   const serviceState = useSelector(state => state.services);
-  console.log(serviceState);
+  // console.log(serviceState);
 
   const dispatch = useDispatch();
 
