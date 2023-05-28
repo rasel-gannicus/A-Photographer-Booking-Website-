@@ -18,6 +18,7 @@ import PrivateRoute from '../Utilities/PrivateRoute/PrivateRoute';
 import ProfileDetails from '../Pages/Profile/ProfileDetails/ProfileDetails';
 import EditProfile from '../Pages/Profile/EditProfile/EditProfile';
 import Cart from '../Pages/Cart/Cart';
+import Bookings from '../Pages/Profile/Bookings/Bookings';
 
 const Routes = createBrowserRouter([
     {
@@ -47,6 +48,10 @@ const Routes = createBrowserRouter([
                     {
                         path : '/profile/editProfile',
                         element : <EditProfile></EditProfile>
+                    },
+                    {
+                        path : '/profile/bookings',
+                        element : <Bookings></Bookings>
                     }
                 ]
             },

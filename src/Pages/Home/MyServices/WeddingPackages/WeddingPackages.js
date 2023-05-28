@@ -3,6 +3,7 @@ import './WeddingPackages.css';
 import { useAddServiceToDbMutation, useGetServiceCartQuery } from '../../../../Redux/Features/service/serviceApi';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../../Utilities/firebase.init';
+import { toast } from 'react-toastify';
 
 const WeddingPackages = (props) => {
     const { id, packageCatagory, packageCatagoryName, cameraMan, duration, thumbImg, price } = props.index;
@@ -14,7 +15,7 @@ const WeddingPackages = (props) => {
 
     // --- checking if the specific service is already added or not
     const { data: serviceCart } = useGetServiceCartQuery(user?.email, { skip: !user });
-    // let button = 
+    
     useEffect(() => {
         if (serviceCart?.length > 0) {
             for (let element of serviceCart) {
@@ -52,6 +53,17 @@ const WeddingPackages = (props) => {
     function bookButton(e) {
         if (user?.email) {
             addService({ email: user.email, serviceId: id, packageCatagory, packageCatagoryName, cameraMan, duration, thumbImg, price });
+        }else{
+            toast.error('You have to login first !', {
+                position: "bottom-center",
+                autoClose: 1000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
         }
     }
     return (

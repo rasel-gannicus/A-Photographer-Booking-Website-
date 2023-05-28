@@ -19,9 +19,9 @@ const ProfileHeader = ({ user }) => {
             <div className="profile-header-left">
                 {/* <NavLink  to="/profile" className={({ isActive }) => (isActive ? 'activeHeader' : 'inactive')}></NavLink> */}
                 <NavLink to="/profile/" className={({ isActive }) => (isActive ? 'activeHeader' : 'inactive')}>Profile</NavLink>
-                <NavLink to="/profile/editProfile" className={({ isActive }) => (isActive ? 'activeHeader' : 'inactive')}>Edit Profile</NavLink>
+                <NavLink to="/profile/bookings" className={({ isActive }) => (isActive ? 'activeHeader' : 'inactive')}>Bookings</NavLink>
                 <NavLink to="/profile/cart" className={({ isActive }) => (isActive ? 'activeHeader' : 'inactive')}>Cart</NavLink>
-                <a href="" onClick={handleLogout}> Logout</a>
+                <a href="#" onClick={handleLogout}> Logout</a>
             </div>
             <div className="profile-header-right">
                 <p>{displayName}</p>

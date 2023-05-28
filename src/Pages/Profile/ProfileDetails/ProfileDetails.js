@@ -50,6 +50,7 @@ const ProfileDetails = () => {
         <div className='profile-details'>
             <img src={photo} alt="" />
             <table>
+                <tbody>
                 <tr>
                     <td>Name : </td>
                     <td><input type="name" name='name' value={username} onChange={e => setUsername(e.target.value)} /> </td>
@@ -68,6 +69,8 @@ const ProfileDetails = () => {
                         <button onClick={handleUpdateUser} disabled={!isChanged || updating} className={isChanged ? 'profile-btn-active' : 'profile-btn-deactive'}> {updating && btnLoader} Update</button>
                     </td>
                 </tr>
+                </tbody>
+                
             </table>
         </div>
     );

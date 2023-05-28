@@ -1,0 +1,18 @@
+
+
+
+.booking-cart-card{
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 60px;
+}
+.booking-div table tbody tr {
+    border: 2px solid rgba(128, 128, 128, 0.271);
+    border-radius: 15px !important;
+}
+.booking-cart-card tr th{    
+    padding: 15px 0;
+}
+.booking-cart-card tr td{    
+    padding: 15px 0;
+}
