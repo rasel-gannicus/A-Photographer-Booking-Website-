@@ -18,8 +18,14 @@ export const serviceApi = apiSlice.injectEndpoints({
         }),
         getServiceCart : builder.query({
             query : (email)=> `/cart/services/${email}`
+        }),
+        deleteService : builder.mutation({
+            query : (id) => ({
+                url : `/cart/service/delete/${id}`,
+                method : 'DELETE'
+            })
         })
     })
 })
 
-export const{useAddServiceToDbMutation, useGetServiceCartQuery} = serviceApi
+export const{useAddServiceToDbMutation, useGetServiceCartQuery, useDeleteServiceMutation} = serviceApi
