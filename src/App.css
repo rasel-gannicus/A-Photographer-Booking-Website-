@@ -52,3 +52,7 @@
   align-items: center;
   width: 100%;
 }
+
+.error-text{
+  color: red;
+}

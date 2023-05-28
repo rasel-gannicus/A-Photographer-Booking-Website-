@@ -5,7 +5,7 @@ import { apiSlice } from "../api/apiSlice";
 export const productApi = apiSlice.injectEndpoints({
     endpoints : (builder)=>({
         getAllProduct : builder.query({
-            query : () => '/product'
+            query : (count) => `/product?amount=${count}`
         }),
         getProductByCatagory : builder.mutation({
             query : ({category, currentPage, contentPerPage}) => ({

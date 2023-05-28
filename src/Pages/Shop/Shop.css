@@ -48,7 +48,7 @@
     margin-top: 120px;
     gap: 20px;
 }
-.pagination button{
+.pagination button {
     outline: none;
     border: 2px solid #2A2A2A;
     background: white;
@@ -56,6 +56,17 @@
     padding: 5px 20px;
     font-size: 23px;
     font-weight: 600;
+}
+.pagination select {
+    outline: none;
+    border: 3px solid teal;
+    background: white;
+    color: #2A2A2A;
+    padding: 5px 0;
+    font-size: 23px;
+    font-weight: 600;
+    border-radius: 5px;
+    font-style: italic;
 }
 .pagination .selectedButton{
     background: #045B62;
