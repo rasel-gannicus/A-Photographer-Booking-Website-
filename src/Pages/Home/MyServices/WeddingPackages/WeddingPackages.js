@@ -7,6 +7,7 @@ import auth from '../../../../Utilities/firebase.init';
 const WeddingPackages = (props) => {
     const { id, packageCatagory, packageCatagoryName, cameraMan, duration, thumbImg, price } = props.index;
     const [button, setButton] = useState(false);
+    const [buttonText, setButtonText] = useState('Add to Booking')
 
     // --- getting user info from firebase
     const [user] = useAuthState(auth);
@@ -19,6 +20,7 @@ const WeddingPackages = (props) => {
             for (let element of serviceCart) {
                 if (element.serviceId == id) {
                     setButton(true);
+                    setButtonText('Added');
                 }
             }
         }
@@ -26,20 +28,26 @@ const WeddingPackages = (props) => {
 
     // --- booking a service & adding it to database
     const [addService, { data, isLoading, isError, error }] = useAddServiceToDbMutation();
-    if (isLoading && !isError) {
-        console.log('Sending data');
-    }
-    if (!isLoading && isError) {
-        console.log('Error happened: ', error.error);
-    }
+
     useEffect(() => {
-        if (data) {
+        if (isLoading && !isError) {
+            console.log('Sending data');
+            setButtonText('Adding...');
+        }
+        else if (!isLoading && isError) {
+            console.log('Error happened: ', error.error);
+            setButtonText('Add to Booking');
+        }
+        else if (data) {
             console.log('Added Successfully !', data);
             if (data.acknowledged) {
+                setButtonText('Added');
                 setButton(true);
             }
+        }else{
+            setButtonText('Add to Booking');
         }
-    }, [data])
+    }, [data, isLoading, isError, error?.error])
 
     function bookButton(e) {
         if (user?.email) {
@@ -65,7 +73,7 @@ const WeddingPackages = (props) => {
                                 <p>Hours Shooting</p>
                             </div>
                         </div>
-                        <button onClick={bookButton} className={!button ? 'book-button' : 'book-button2'} disabled={button}>{button ? 'Added' : 'Add To Booking'}</button>
+                        <button onClick={bookButton} className={!button ? 'book-button' : 'book-button2'} disabled={button}>{buttonText}</button>
                         {/* <button className="book-button2">Added</button> */}
                     </div>
                 </div>
