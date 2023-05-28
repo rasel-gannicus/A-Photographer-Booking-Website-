@@ -18,7 +18,6 @@ const MyShop = (props) => {
 
     // --- when fetching-data process is in loading state
     if (isLoading && !isError) {
-        console.log('Loading');
         content = <div className="loader-in-middle2"><ClipLoader color="black" size={70} /></div>
     }
     

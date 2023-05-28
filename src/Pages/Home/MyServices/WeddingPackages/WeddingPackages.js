@@ -1,12 +1,23 @@
 import React from 'react';
 import './WeddingPackages.css';
- 
+import { useAddServiceToDbMutation } from '../../../../Redux/Features/service/serviceApi';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../../Utilities/firebase.init';
+
 const WeddingPackages = (props) => {
-    const{id, packageCatagory, packageCatagoryName, cameraMan, duration, thumbImg, price} = props.index;
-    
-    function bookButton(e){
-        // console.log(e.target.parentNode);
-        props.handleAddToBooking(id);
+    const { id, packageCatagory, packageCatagoryName, cameraMan, duration, thumbImg, price } = props.index;
+
+    const [user] = useAuthState(auth);
+
+    // --- booking a service & adding it to database
+    const [addService, { data, isLoading, isError, error }] = useAddServiceToDbMutation();
+
+    function bookButton(e) {
+
+        if (user?.email) {
+            addService({ email : user.email, serviceId: id, packageCatagory, packageCatagoryName, cameraMan, duration, thumbImg, price });
+        }
+
         e.target.style.backgroundColor = '#ccc'
         e.target.innerText = 'Added';
         e.target.disabled = 'true';
