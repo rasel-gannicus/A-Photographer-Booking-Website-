@@ -9,8 +9,17 @@ const Bookings = () => {
     // --- getting user info from firebase
     const[user] = useAuthState(auth);
     // --- checking if the specific service is already added or not
-    const { data } = useGetServiceCartQuery(user?.email, { skip: !user });
-    
+    const { data, isLoading, isError, error } = useGetServiceCartQuery(user?.email, { skip: !user });
+    let content = null ;
+    if(data?.length > 0){
+        console.log(data);
+        content = data.map(index=><tr key={index._id}>
+            <td> <img src={index.thumbImg} alt="" /> {index.packageCatagoryName}</td>
+            <td>{index.price}</td>
+            <td>{index?.status || 'Pending'}</td>
+            <td><button>Confirm</button><button>Delete</button></td>
+        </tr>)
+    }
     return (
         <div className='booking-div'>
             <h2>Total Bookings : {data?.length} </h2>
@@ -19,19 +28,17 @@ const Bookings = () => {
                     <tbody>
                         <tr>
                             <th>Booking Title</th>
+                            <th>Price</th>
                             <th>Status</th>
-                            <th>Delete</th>
+                            <th>Decision</th>
                         </tr>
-                        <tr>
+                        {content}
+                        {/* <tr>
                             <td>Jonathan Wick</td>
                             <td>Jonathan Wick</td>
                             <td>Jonathan Wick</td>
-                        </tr>
-                        <tr>
                             <td>Jonathan Wick</td>
-                            <td>Jonathan Wick</td>
-                            <td>Jonathan Wick</td>
-                        </tr>
+                        </tr> */}
                     </tbody>
                 </table>
             </div>

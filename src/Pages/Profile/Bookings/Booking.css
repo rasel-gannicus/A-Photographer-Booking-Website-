@@ -8,11 +8,47 @@
 }
 .booking-div table tbody tr {
     border: 2px solid rgba(128, 128, 128, 0.271);
-    border-radius: 15px !important;
 }
 .booking-cart-card tr th{    
     padding: 15px 0;
+    text-align: left;
 }
+.booking-cart-card tr th:first-child{    
+    padding-left: 20px;
+}
+
 .booking-cart-card tr td{    
     padding: 15px 0;
+    text-align: left;
+}
+.booking-cart-card tr td:last-child , .booking-cart-card tr th:last-child{ 
+    text-align: right;
+    padding-right: 20px;
+}
+.booking-cart-card tr th:last-child{
+    padding-right: 50px;
+}
+
+.booking-cart-card img{
+    width: 80px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.booking-cart-card button{
+    border: none;
+    outline: none;
+    padding: 10px 15px;
+    background: crimson;
+    color: white;
+    margin-left: 15px;
+    border-radius: 3px;
+}
+.booking-cart-card button:first-child{
+    border: none;
+    outline: none;
+    padding: 10px 15px;
+    background: #00AF80;
+    color: white;
+    margin-left: 15px;
 }
