@@ -13,7 +13,7 @@ export const serviceApi = apiSlice.injectEndpoints({
                 // --- optimistic update
                 // console.log(arg)
                 const response = await queryFulfilled;
-                console.log(response);
+                // console.log(response);
             }
         }),
         getServiceCart : builder.query({
