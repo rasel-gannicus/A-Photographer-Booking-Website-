@@ -1,21 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './WeddingPackages.css';
-import { useAddServiceToDbMutation } from '../../../../Redux/Features/service/serviceApi';
+import { useAddServiceToDbMutation, useGetServiceCartQuery } from '../../../../Redux/Features/service/serviceApi';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../../Utilities/firebase.init';
 
 const WeddingPackages = (props) => {
     const { id, packageCatagory, packageCatagoryName, cameraMan, duration, thumbImg, price } = props.index;
 
+    // --- getting user info from firebase
     const [user] = useAuthState(auth);
+
+    // --- checking if the specific service is already added or not
+    const { data: serviceCart } = useGetServiceCartQuery(user?.email, { skip: !user });
+    console.log(serviceCart);
 
     // --- booking a service & adding it to database
     const [addService, { data, isLoading, isError, error }] = useAddServiceToDbMutation();
 
     function bookButton(e) {
-
         if (user?.email) {
-            addService({ email : user.email, serviceId: id, packageCatagory, packageCatagoryName, cameraMan, duration, thumbImg, price });
+            addService({ email: user.email, serviceId: id, packageCatagory, packageCatagoryName, cameraMan, duration, thumbImg, price });
         }
 
         e.target.style.backgroundColor = '#ccc'
@@ -42,6 +46,7 @@ const WeddingPackages = (props) => {
                             </div>
                         </div>
                         <button onClick={bookButton} className="book-button">Add To Booking</button>
+                        <button className="book-button2">Added</button>
                     </div>
                 </div>
                 <div className="wedding-card-icon border">

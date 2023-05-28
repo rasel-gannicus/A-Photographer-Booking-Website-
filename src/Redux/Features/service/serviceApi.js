@@ -16,7 +16,10 @@ export const serviceApi = apiSlice.injectEndpoints({
                 console.log(response);
             }
         }),
+        getServiceCart : builder.query({
+            query : (email)=> `/cart/services/${email}`
+        })
     })
 })
 
-export const{useAddServiceToDbMutation} = serviceApi
+export const{useAddServiceToDbMutation, useGetServiceCartQuery} = serviceApi
