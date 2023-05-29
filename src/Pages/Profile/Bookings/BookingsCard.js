@@ -74,9 +74,7 @@ const BookingsCard = ({ index }) => {
     }
 
     // --- booking a service & adding it to database
-    const [addService, { data: updateService, isLoading: updateLoading, isError: updateIsError, error: updateError }] = useAddServiceToDbMutation();
-
-    const [confirmUpdate] = useUpdateServiceMutation();
+    const [confirmUpdate, {data:updatedData, isLoading:updateLoading, isError:updateIsError, error:updateError}] = useUpdateServiceMutation();
 
     const handleUpdate = (id) => {
         let selectedDateId = document.getElementById(`${id}`);
@@ -90,38 +88,53 @@ const BookingsCard = ({ index }) => {
             } else if (formattedDate == selectedDate) {
                 errMsg("You can't select Today !");
             } else {
-                // addService({ email: user.email, serviceId, packageCatagory, packageCatagoryName, cameraMan, duration, thumbImg, price, time, date: selectedDate, status: 'confirmed' });
                 confirmUpdate({ email: user.email, serviceId, time, date: selectedDate, status: 'confirmed' })
             }
         }
     }
 
+    // useEffect(() => {
+    //     if (updateLoading && !updateIsError) {
+    //         // setButtonText('Adding...');
+    //         console.log('Updating...')
+    //     }
+    //     else if (!updateLoading && updateIsError) {
+    //         console.log('Error happened: ', updateError);
+    //         // setButtonText('Add to Booking');
+    //     }
+    //     else if (confirmUpdate) {
+    //         if (confirmUpdate.acknowledged) {
+    //             console.log(confirmUpdate);
+    //         }
+    //     }
+    // }, [confirmUpdate, updateLoading, updateIsError, updateError?.error, updateError])
 
-    useEffect(() => {
-        if (updateLoading && !updateIsError) {
-            // setButtonText('Adding...');
-            console.log('Updating...')
+    if (updateLoading && !updateIsError) {
+        // setButtonText('Adding...');
+        console.log('Updating...')
+    }
+    else if (!updateLoading && updateIsError) {
+        console.log('Error happened: ', updateError);
+        errMsg(updateError.error);
+        // setButtonText('Add to Booking');
+    }
+    else if (updatedData) {
+        if (updatedData.acknowledged) {
+            console.log(updatedData);
         }
-        else if (!updateLoading && updateIsError) {
-            console.log('Error happened: ', updateError);
-            // setButtonText('Add to Booking');
-        }
-        else if (updateService) {
-            if (updateService.acknowledged) {
-                console.log(updateService);
-            }
-        }
-    }, [updateService, updateLoading, updateIsError, updateError?.error, updateError])
-
+    }
 
     return (
         <tr key={index._id} className='table-row' >
+            
             <td className='first-td'>
                 <img src={index.thumbImg} alt="" /> {index.packageCatagoryName}
             </td>
+
             <td className='booking-time'>
                 <input type="date" id={index._id} />
             </td>
+
             <td className='booking-time'>
                 <select name="" id="" onChange={e => setTime(e.target.value)} defaultValue={time}>
                     <option value="Morning">Monrning</option>
@@ -129,20 +142,24 @@ const BookingsCard = ({ index }) => {
                     <option value="Night">Night</option>
                 </select>
             </td>
+
             <td className='booking-price'>
                 $ {index.price}
             </td>
+
             <td className={ status=='confirmed' ? 'booking-pending confirmed-text' : 'booking-pending'}>
-                {index?.status || 'Pending'}
+                { updateLoading ? <div  className='loader-in-middle2'><ClipLoader size={30} color={'black'}></ClipLoader></div> : (index?.status || 'Pending')}
             </td>
+
             <td className='booking-decision'>
                 {isLoading ? <div className="loader-in-middle2"><ClipLoader size={30} color={'black'} /></div> 
                 : 
                 <>
-                <button  className={status=='confirmed' && 'disabled-green'} disabled={status=='confirmed'} onClick={() => handleUpdate(index._id)}>Confirm</button>
-                <button className={status=='confirmed' && 'disabled-red'}  disabled={status=='confirmed'}  onClick={() => handleDelete(index._id)}>Delete</button>
+                <button  className={status==='confirmed' ? 'disabled-green' : ''} disabled={status==='confirmed'} onClick={() => handleUpdate(index._id)}>Confirm</button>
+                <button onClick={() => handleDelete(index._id)}>Cancel</button>
                 </>}
             </td>
+
         </tr>
     );
 };
