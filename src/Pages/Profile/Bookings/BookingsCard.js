@@ -5,14 +5,16 @@ import auth from '../../../Utilities/firebase.init';
 import './Booking.css';
 import { ClipLoader } from 'react-spinners';
 import { toast } from 'react-toastify';
-import { useDeleteServiceMutation, useDeletingAServiceMutation, useGetServiceCartQuery } from '../../../Redux/Features/service/serviceApi';
+import { useAddServiceToDbMutation, useDeleteServiceMutation, useDeletingAServiceMutation, useGetServiceCartQuery, useUpdateServiceMutation } from '../../../Redux/Features/service/serviceApi';
 
 const BookingsCard = ({ index }) => {
+
+    const { serviceId, packageCatagory, packageCatagoryName, cameraMan, duration, thumbImg, price, status } = index;
 
     // --- getting user info from firebase
     const [user] = useAuthState(auth);
 
-    const[time, setTime] = useState('Afternoon')
+    const [time, setTime] = useState('Afternoon')
 
     // --- custom error message 
     let errMsg = (msg) => toast.error(msg || 'There was an error doing the operation !', {
@@ -71,7 +73,10 @@ const BookingsCard = ({ index }) => {
         console.log('Loading ... ');
     }
 
+    // --- booking a service & adding it to database
+    const [addService, { data: updateService, isLoading: updateLoading, isError: updateIsError, error: updateError }] = useAddServiceToDbMutation();
 
+    const [confirmUpdate] = useUpdateServiceMutation();
 
     const handleUpdate = (id) => {
         let selectedDateId = document.getElementById(`${id}`);
@@ -85,10 +90,29 @@ const BookingsCard = ({ index }) => {
             } else if (formattedDate == selectedDate) {
                 errMsg("You can't select Today !");
             } else {
-                console.log(time);
+                // addService({ email: user.email, serviceId, packageCatagory, packageCatagoryName, cameraMan, duration, thumbImg, price, time, date: selectedDate, status: 'confirmed' });
+                confirmUpdate({ email: user.email, serviceId, time, date: selectedDate, status: 'confirmed' })
             }
         }
     }
+
+
+    useEffect(() => {
+        if (updateLoading && !updateIsError) {
+            // setButtonText('Adding...');
+            console.log('Updating...')
+        }
+        else if (!updateLoading && updateIsError) {
+            console.log('Error happened: ', updateError);
+            // setButtonText('Add to Booking');
+        }
+        else if (updateService) {
+            if (updateService.acknowledged) {
+                console.log(updateService);
+            }
+        }
+    }, [updateService, updateLoading, updateIsError, updateError?.error, updateError])
+
 
     return (
         <tr key={index._id} className='table-row' >
