@@ -35,7 +35,7 @@ const WeddingPackages = (props) => {
             setButtonText('Adding...');
         }
         else if (!isLoading && isError) {
-            console.log('Error happened: ', error.error);
+            console.log('Error happened: ', error);
             setButtonText('Add to Booking');
         }
         else if (data) {
