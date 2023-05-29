@@ -52,7 +52,7 @@ const BookingsCard = ({ index }) => {
     const [deleteAservice, { data, isLoading, isError, error, isSuccess }] = useDeletingAServiceMutation();
 
     const handleDelete = (id) => {
-        const isConfirm = window.confirm('Delete this booking ? ');
+        const isConfirm = window.confirm('Cancel this booking ? ');
         if (isConfirm) {
             deleteAservice({ id: index._id, email: user?.email });
         }

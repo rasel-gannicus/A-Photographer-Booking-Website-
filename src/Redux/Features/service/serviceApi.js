@@ -18,6 +18,7 @@ export const serviceApi = apiSlice.injectEndpoints({
             }
         }),
 
+        // --- update a users cart when he/she confirms the bookings
         updateService: builder.mutation({
             query: (data) => ({
                 url: '/services/update',
@@ -48,6 +49,11 @@ export const serviceApi = apiSlice.injectEndpoints({
             query: (email) => `/cart/services/${email}`
         }),
 
+        // --- get all confirmed bookings to avoid multiple booking from different user
+        getAllConfirmedBookings : builder.query({
+            query : () => '/cart/confirmedOnly'
+        }),
+
         deletingAService: builder.mutation({
             query: ({ id, email }) => ({
                 url: `/cart/service/delete/${id}`,
@@ -74,4 +80,4 @@ export const serviceApi = apiSlice.injectEndpoints({
     })
 })
 
-export const { useAddServiceToDbMutation, useGetServiceCartQuery, useDeletingAServiceMutation, useUpdateServiceMutation } = serviceApi
+export const { useAddServiceToDbMutation, useGetServiceCartQuery, useDeletingAServiceMutation, useUpdateServiceMutation , useGetAllConfirmedBookingsQuery } = serviceApi
