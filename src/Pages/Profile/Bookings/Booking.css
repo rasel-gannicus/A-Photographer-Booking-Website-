@@ -1,47 +1,51 @@
-
-
-
-.booking-cart-card{
+.booking-cart-card {
     width: 100%;
     margin-top: 50px;
     margin-bottom: 60px;
 }
+
 .booking-div table tbody tr {
     border: 2px solid rgba(128, 128, 128, 0.271);
 }
-.booking-cart-card tr th{    
+
+.booking-cart-card tr th {
     padding: 15px 0;
     text-align: left;
 }
-.booking-cart-card tr th:first-child{    
+
+.booking-cart-card tr th:first-child {
     padding-left: 20px;
 }
 
-.booking-cart-card tr td{    
+.booking-cart-card tr td {
     padding: 15px 0;
     text-align: left;
 }
-.booking-cart-card tr td:last-child , .booking-cart-card tr th:last-child{ 
+
+.booking-cart-card tr td:last-child,
+.booking-cart-card tr th:last-child {
     text-align: right;
     padding-right: 20px;
 }
-.booking-cart-card tr th:last-child{
+
+.booking-cart-card tr th:last-child {
     padding-right: 50px;
 }
 
-#date{
+#date {
     border: 2px solid #ccc;
     border-radius: 3px;
     padding: 2px 5px;
+    color: #007ACC;
 }
 
-.booking-cart-card img{
+.booking-cart-card img {
     width: 80px;
     margin-right: 20px;
     margin-left: 20px;
 }
 
-.booking-cart-card button{
+.booking-cart-card button {
     border: none;
     outline: none;
     padding: 10px 15px;
@@ -50,7 +54,8 @@
     margin-left: 15px;
     border-radius: 3px;
 }
-.booking-cart-card button:first-child{
+
+.booking-cart-card button:first-child {
     border: none;
     outline: none;
     padding: 10px 15px;
@@ -64,14 +69,101 @@
 /*--------------------------------------------------------------------------
 For mobile:  
 ---------------------------------------------------------------------------*/
-@media only screen and (max-width:480px){}
+@media only screen and (max-width:480px) {
+    .first-td {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+    }
+
+    .first-td img {
+        /* margin-left: 0; */
+        width: 90%;
+        border-radius: 5px;
+        /* margin: 0; */
+    }
+
+    .booking-cart-card tr {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        border-radius: 10px;
+    }
+
+    .booking-cart-card tr td:last-child,
+    .booking-cart-card tr th:last-child {
+        text-align: center;
+        padding-right: 0;
+    }
+
+}
 
 /*--------------------------------------------------- 
 For ipads, tablet:  
 ---------------------------------------------------*/
-@media only screen and (min-width:481px) and (max-width:768px) {}
+@media only screen and (min-width:481px) and (max-width:768px) {
+
+    .booking-price,
+    .booking-pending {
+        display: none;
+    }
+
+    .booking-cart-card tr td:first-child {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .booking-cart-card tr {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .table-header {
+        justify-content: space-between !important;
+    }
+
+    .booking-cart-card tr td:last-child {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+    }
+}
 
 /*-----------------------------------------
  For Small screen, laptop:  
 -----------------------------------------*/
-@media only screen and (min-width:769px) and (max-width:1024px) {}
+@media only screen and (min-width:769px) and (max-width:1024px) {
+
+    .booking-price,
+    .booking-pending {
+        display: none;
+    }
+
+    .booking-cart-card tr td:first-child {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .booking-cart-card tr {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .table-header {
+        justify-content: space-between !important;
+    }
+
+    .booking-cart-card tr td:last-child {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+    }
+}

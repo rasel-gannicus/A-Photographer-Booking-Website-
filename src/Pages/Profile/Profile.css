@@ -120,6 +120,10 @@ For mobile:
 For ipads, tablet:  
 ---------------------------------------------------*/
 @media only screen and (min-width:481px) and (max-width:768px) {
+    .profile-div {
+        width: 100%;
+        /* padding: 0; */
+    }
     .profile-header-div {
         display: flex;
         flex-direction: column-reverse;

@@ -30,12 +30,12 @@ const Bookings = () => {
     const { data, isLoading, isError, error, refetch } = useGetServiceCartQuery(user?.email, { skip: !user });
     let content = null;
     if (data?.length > 0) {
-        content = data.map(index => <tr key={index._id}>
-            <td> <img src={index.thumbImg} alt="" /> {index.packageCatagoryName}</td>
-            <td><input type="date" id="date" value={date} onChange={e => setDate(e.target.value)} /></td>
-            <td>$ {index.price}</td>
-            <td>{index?.status || 'Pending'}</td>
-            <td><button>Confirm</button><button onClick={() => handleDelete(index._id)}>Delete</button></td>
+        content = data.map(index => <tr key={index._id} className='table-row' >
+            <td className='first-td'> <img src={index.thumbImg} alt="" /> {index.packageCatagoryName}</td>
+            <td  className='booking-time'><input type="date" id="date" value={date} onChange={e => setDate(e.target.value)} /></td>
+            <td className='booking-price'>$ {index.price}</td>
+            <td className='booking-pending'>{index?.status || 'Pending'}</td>
+            <td  className='booking-decision'><button>Confirm</button><button onClick={() => handleDelete(index._id)}>Delete</button></td>
         </tr>)
     }
     return (
@@ -44,12 +44,12 @@ const Bookings = () => {
             <div >
                 <table className="booking-cart-card">
                     <tbody>
-                        <tr>
-                            <th>Booking Title</th>
-                            <th>Date</th>
-                            <th>Price</th>
-                            <th>Status</th>
-                            <th>Decision</th>
+                        <tr className='table-header'>
+                            <th className='booking-title'>Booking Title</th>
+                            <th className='booking-time'>Date</th>
+                            <th className='booking-price'>Price</th>
+                            <th className='booking-pending'>Status</th>
+                            <th className='booking-decision'>Decision</th>
                         </tr>
                         {content}
                         {/* <tr>
