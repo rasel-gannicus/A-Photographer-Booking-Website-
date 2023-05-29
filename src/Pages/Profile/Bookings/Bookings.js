@@ -10,6 +10,8 @@ const Bookings = () => {
     // --- getting user info from firebase
     const [user] = useAuthState(auth);
 
+
+    // --- updating a bookings from 'pending' to 'confirmed' 
     const [date, setDate] = useState('');
     // --- getting current date 
     const currentDate = new Date();
@@ -17,6 +19,8 @@ const Bookings = () => {
     const month = String(currentDate.getMonth() + 1).padStart(2, '0');
     const day = String(currentDate.getDate()).padStart(2, '0');
     const formattedDate = `${year}-${month}-${day}`;
+
+
 
 
     // --- deleting a bookings from db
@@ -27,6 +31,7 @@ const Bookings = () => {
             deleteBooking({ id, email: user?.email });
         }
     }
+    // --- deciding what to show in UI while deleting the data from server
     if (isError) {
         toast.error(error.error || 'There was an error deleting the item !', {
             position: "bottom-center",
@@ -55,14 +60,34 @@ const Bookings = () => {
     // --- checking if the specific service is already added or not
     const { data } = useGetServiceCartQuery(user?.email, { skip: !user });
     let content = null;
+
     if (data?.length > 0) {
         content = data.map(index => <tr key={index._id} className='table-row' >
             <td className='first-td'> <img src={index.thumbImg} alt="" /> {index.packageCatagoryName}</td>
-            <td className='booking-time'><input type="date" id="date" value={date} onChange={e => setDate(e.target.value)} /></td>
+            <td className='booking-time'><input type="date" id={index._id} /></td>
             <td className='booking-price'>$ {index.price}</td>
             <td className='booking-pending'>{index?.status || 'Pending'}</td>
-            <td className='booking-decision'>{isLoading ? <div className="loader-in-middle2"><ClipLoader size={30} color={'black'} /></div> : <><button>Confirm</button><button onClick={() => handleDelete(index._id)}>Delete</button></>}</td>
+            <td className='booking-decision'>{isLoading ? <div className="loader-in-middle2"><ClipLoader size={30} color={'black'} /></div> : <><button onClick={()=>handleUpdate(index._id)}>Confirm</button><button onClick={() => handleDelete(index._id)}>Delete</button></>}</td>
         </tr>)
+    }
+
+    
+    const handleUpdate = (id) => {
+        let selectedDate = document.getElementById(`${id}`);
+        console.log(selectedDate.value);
+
+/*         if (formattedDate > date) {
+            toast.error("You can't select Date before Today !", {
+                position: "bottom-center",
+                autoClose: 1000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+        } */
     }
 
     return (
@@ -79,12 +104,6 @@ const Bookings = () => {
                             <th className='booking-decision'>Decision</th>
                         </tr>
                         {content}
-                        {/* <tr>
-                            <td>Jonathan Wick</td>
-                            <td>Jonathan Wick</td>
-                            <td>Jonathan Wick</td>
-                            <td>Jonathan Wick</td>
-                        </tr> */}
                     </tbody>
                 </table>
             </div>
