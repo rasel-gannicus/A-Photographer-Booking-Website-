@@ -21,6 +21,16 @@ const Bookings = () => {
         progress: undefined,
         theme: "dark",
     });
+    let successMsg = (msg) => toast.success(msg, {
+        position: "bottom-center",
+        autoClose: 1000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+    });
 
     // --- updating a bookings from 'pending' to 'confirmed' 
     const [date, setDate] = useState('');
@@ -44,28 +54,10 @@ const Bookings = () => {
     }
     // --- deciding what to show in UI while deleting the data from server
     if (isError) {
-        toast.error(error.error || 'There was an error deleting the item !', {
-            position: "bottom-center",
-            autoClose: 1000,
-            hideProgressBar: true,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark",
-        });
+        errMsg(error.error || 'There was an error deleting the item !')
     }
     if (deletedData?.deletedCount > 0) {
-        toast.success('Booking deleted successfully !', {
-            position: "bottom-center",
-            autoClose: 1000,
-            hideProgressBar: true,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-        });
+        successMsg('Deleted Successfully !')
     }
 
     // --- checking if the specific service is already added or not
