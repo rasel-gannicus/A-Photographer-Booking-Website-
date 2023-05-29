@@ -23,7 +23,7 @@ export const serviceApi = apiSlice.injectEndpoints({
             query : (email)=> `/cart/services/${email}`
         }),
 
-        deleteService : builder.mutation({
+        deletingAService : builder.mutation({
             query : ({id, email}) => ({
                 url : `/cart/service/delete/${id}`,
                 method : 'DELETE'
@@ -31,7 +31,6 @@ export const serviceApi = apiSlice.injectEndpoints({
             async onQueryStarted(arg, { queryFulfilled, dispatch }){
                 //--- optimistic update
                 const pathResult = dispatch(apiSlice.util.updateQueryData('getServiceCart', arg.email, (draft)=>{
-                    console.log('Entered ');
 
                     const deletedService = draft.find(index => index._id == arg.id);
                     const deletedIndex = draft.indexOf(deletedService);
@@ -50,4 +49,4 @@ export const serviceApi = apiSlice.injectEndpoints({
     })
 })
 
-export const{useAddServiceToDbMutation, useGetServiceCartQuery, useDeleteServiceMutation} = serviceApi
+export const{useAddServiceToDbMutation, useGetServiceCartQuery, useDeletingAServiceMutation} = serviceApi
