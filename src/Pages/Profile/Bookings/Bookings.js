@@ -14,17 +14,17 @@ const Bookings = () => {
     const year = currentDate.getFullYear();
     const month = String(currentDate.getMonth() + 1).padStart(2, '0');
     const day = String(currentDate.getDate()).padStart(2, '0');
-
     const formattedDate = `${year}-${month}-${day}`;
 
 
     // --- deleting a bookings from db
     const [deleteBooking, { data: deletedData }] = useDeleteServiceMutation();
     const handleDelete = (id) => {
-        deleteBooking({ id, email: user?.email });
+        const isConfirm = window.confirm('Delete this booking ? ');
+        if (isConfirm) {
+            deleteBooking({ id, email: user?.email });
+        }
     }
-
-
 
     // --- checking if the specific service is already added or not
     const { data, isLoading, isError, error, refetch } = useGetServiceCartQuery(user?.email, { skip: !user });
@@ -32,12 +32,13 @@ const Bookings = () => {
     if (data?.length > 0) {
         content = data.map(index => <tr key={index._id} className='table-row' >
             <td className='first-td'> <img src={index.thumbImg} alt="" /> {index.packageCatagoryName}</td>
-            <td  className='booking-time'><input type="date" id="date" value={date} onChange={e => setDate(e.target.value)} /></td>
+            <td className='booking-time'><input type="date" id="date" value={date} onChange={e => setDate(e.target.value)} /></td>
             <td className='booking-price'>$ {index.price}</td>
             <td className='booking-pending'>{index?.status || 'Pending'}</td>
-            <td  className='booking-decision'><button>Confirm</button><button onClick={() => handleDelete(index._id)}>Delete</button></td>
+            <td className='booking-decision'><button>Confirm</button><button onClick={() => handleDelete(index._id)}>Delete</button></td>
         </tr>)
     }
+
     return (
         <div className='booking-div'>
             <h2>Total Bookings : {data?.length} </h2>

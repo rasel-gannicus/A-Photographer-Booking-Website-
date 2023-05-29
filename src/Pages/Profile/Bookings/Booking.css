@@ -76,6 +76,8 @@ For mobile:
         justify-content: center;
         align-items: center;
         margin: 0;
+        font-weight: 500;
+        font-size: 22px;
     }
 
     .first-td img {
@@ -106,33 +108,38 @@ For mobile:
 For ipads, tablet:  
 ---------------------------------------------------*/
 @media only screen and (min-width:481px) and (max-width:768px) {
-
-    .booking-price,
-    .booking-pending {
-        display: none;
-    }
-
-    .booking-cart-card tr td:first-child {
+    .first-td {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
+        margin: 0;
+        font-weight: 500;
+        font-size: 22px;
+    }
+
+    .first-td img {
+        /* margin-left: 0; */
+        width: 90%;
+        border-radius: 5px;
+        /* margin: 0; */
     }
 
     .booking-cart-card tr {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
+        margin-top: 20px;
+        border-radius: 10px;
     }
 
-    .table-header {
-        justify-content: space-between !important;
+    .booking-cart-card tr td:last-child,
+    .booking-cart-card tr th:last-child {
+        text-align: center;
+        padding-right: 0;
     }
 
-    .booking-cart-card tr td:last-child {
-        display: flex;
-        justify-content: flex-end;
-        align-items: flex-start;
-    }
 }
 
 /*-----------------------------------------
