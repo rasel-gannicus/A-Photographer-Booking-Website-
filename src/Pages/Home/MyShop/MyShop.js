@@ -36,7 +36,7 @@ const MyShop = (props) => {
                 data.map(index => <ShopProuduct
                     index={index}
                     key={index.img}
-                    addProduct={props.addProduct}
+                    // addProduct={props.addProduct}
                 ></ShopProuduct>)
             }
         </div>
