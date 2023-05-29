@@ -43,6 +43,7 @@ export const serviceApi = apiSlice.injectEndpoints({
             }
         }),
 
+        // --- get how much bookings each user have in their cart
         getServiceCart: builder.query({
             query: (email) => `/cart/services/${email}`
         }),
