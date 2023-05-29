@@ -145,7 +145,7 @@ For ipads, tablet:
 /*-----------------------------------------
  For Small screen, laptop:  
 -----------------------------------------*/
-@media only screen and (min-width:769px) and (max-width:1024px) {
+@media only screen and (min-width:769px) and (max-width:1200px) {
 
     .booking-price,
     .booking-pending {
@@ -156,11 +156,14 @@ For ipads, tablet:
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
+        text-align: center;
+        margin-left: 5px;
     }
 
     .booking-cart-card tr {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
     }
 
