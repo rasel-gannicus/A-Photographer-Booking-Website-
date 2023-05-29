@@ -64,6 +64,24 @@
     margin-left: 15px;
 }
 
+.disabled-green{
+    background: rgba(0, 175, 128, 0.356) !important;
+    cursor: no-drop;
+}
+.disabled-red{
+    background: rgba(220, 20, 60, 0.325) !important;
+    cursor: no-drop;
+}
+
+.booking-pending{
+    font-weight: 600;
+    text-transform :capitalize;
+}
+.confirmed-text{
+    font-weight: 600;
+    text-transform :capitalize;
+    color:#007ACC;
+}
 
 
 /*--------------------------------------------------------------------------

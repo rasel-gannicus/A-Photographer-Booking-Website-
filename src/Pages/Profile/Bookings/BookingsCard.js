@@ -132,11 +132,16 @@ const BookingsCard = ({ index }) => {
             <td className='booking-price'>
                 $ {index.price}
             </td>
-            <td className='booking-pending'>
+            <td className={ status=='confirmed' ? 'booking-pending confirmed-text' : 'booking-pending'}>
                 {index?.status || 'Pending'}
             </td>
             <td className='booking-decision'>
-                {isLoading ? <div className="loader-in-middle2"><ClipLoader size={30} color={'black'} /></div> : <><button onClick={() => handleUpdate(index._id)}>Confirm</button><button onClick={() => handleDelete(index._id)}>Delete</button></>}
+                {isLoading ? <div className="loader-in-middle2"><ClipLoader size={30} color={'black'} /></div> 
+                : 
+                <>
+                <button  className={status=='confirmed' && 'disabled-green'} disabled={status=='confirmed'} onClick={() => handleUpdate(index._id)}>Confirm</button>
+                <button className={status=='confirmed' && 'disabled-red'}  disabled={status=='confirmed'}  onClick={() => handleDelete(index._id)}>Delete</button>
+                </>}
             </td>
         </tr>
     );
