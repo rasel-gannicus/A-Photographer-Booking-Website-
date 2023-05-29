@@ -3,6 +3,8 @@ import { useDeleteServiceMutation, useGetServiceCartQuery } from '../../../Redux
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../Utilities/firebase.init';
 import './Booking.css';
+import { ClipLoader } from 'react-spinners';
+import { toast } from 'react-toastify';
 
 const Bookings = () => {
     // --- getting user info from firebase
@@ -18,16 +20,40 @@ const Bookings = () => {
 
 
     // --- deleting a bookings from db
-    const [deleteBooking, { data: deletedData }] = useDeleteServiceMutation();
+    const [deleteBooking, { data: deletedData, isLoading, isError, error, isSuccess }] = useDeleteServiceMutation();
     const handleDelete = (id) => {
         const isConfirm = window.confirm('Delete this booking ? ');
         if (isConfirm) {
             deleteBooking({ id, email: user?.email });
         }
     }
+    if (isError) {
+        toast.error(error.error || 'There was an error deleting the item !', {
+            position: "bottom-center",
+            autoClose: 1000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+        });
+    }
+    if (deletedData?.deletedCount > 0) {
+        toast.success('Booking deleted successfully !', {
+            position: "bottom-center",
+            autoClose: 1000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+    }
 
     // --- checking if the specific service is already added or not
-    const { data, isLoading, isError, error, refetch } = useGetServiceCartQuery(user?.email, { skip: !user });
+    const { data } = useGetServiceCartQuery(user?.email, { skip: !user });
     let content = null;
     if (data?.length > 0) {
         content = data.map(index => <tr key={index._id} className='table-row' >
@@ -35,7 +61,7 @@ const Bookings = () => {
             <td className='booking-time'><input type="date" id="date" value={date} onChange={e => setDate(e.target.value)} /></td>
             <td className='booking-price'>$ {index.price}</td>
             <td className='booking-pending'>{index?.status || 'Pending'}</td>
-            <td className='booking-decision'><button>Confirm</button><button onClick={() => handleDelete(index._id)}>Delete</button></td>
+            <td className='booking-decision'>{isLoading ? <div className="loader-in-middle2"><ClipLoader size={30} color={'black'} /></div> : <><button>Confirm</button><button onClick={() => handleDelete(index._id)}>Delete</button></>}</td>
         </tr>)
     }
 
