@@ -49,7 +49,6 @@ const BookingsCard = ({ index }) => {
 
 
     // --- deleting a bookings from db
-    // const [deleteService] = useDeleteServiceMutation();
     const [deleteAservice, { data, isLoading, isError, error, isSuccess }] = useDeletingAServiceMutation();
 
     const handleDelete = (id) => {
@@ -60,7 +59,6 @@ const BookingsCard = ({ index }) => {
     }
 
     // --- deciding what to show in UI while deleting the data from server
-
     if (isError) {
         console.log('Error happened !');
         errMsg(error.error || 'There was an error deleting the item !')
@@ -93,50 +91,34 @@ const BookingsCard = ({ index }) => {
         }
     }
 
-    // useEffect(() => {
-    //     if (updateLoading && !updateIsError) {
-    //         // setButtonText('Adding...');
-    //         console.log('Updating...')
-    //     }
-    //     else if (!updateLoading && updateIsError) {
-    //         console.log('Error happened: ', updateError);
-    //         // setButtonText('Add to Booking');
-    //     }
-    //     else if (confirmUpdate) {
-    //         if (confirmUpdate.acknowledged) {
-    //             console.log(confirmUpdate);
-    //         }
-    //     }
-    // }, [confirmUpdate, updateLoading, updateIsError, updateError?.error, updateError])
-
+    // --- deciding what to show in UI while updating data
     if (updateLoading && !updateIsError) {
-        // setButtonText('Adding...');
         console.log('Updating...')
     }
     else if (!updateLoading && updateIsError) {
         console.log('Error happened: ', updateError);
         errMsg(updateError.error);
-        // setButtonText('Add to Booking');
     }
     else if (updatedData) {
         if (updatedData.acknowledged) {
             console.log(updatedData);
+            successMsg('Your Booking Hasbeen Confirmed !');
         }
     }
 
     return (
-        <tr key={index._id} className='table-row' >
+        <tr key={index._id} className={`table-row ${status==='confirmed' && 'green-row'}`} >
             
             <td className='first-td'>
                 <img src={index.thumbImg} alt="" /> {index.packageCatagoryName}
             </td>
 
             <td className='booking-time'>
-                <input type="date" id={index._id} />
+                <input type="date" id={index._id} defaultValue={index?.date} readOnly={index?.date} />
             </td>
 
             <td className='booking-time'>
-                <select name="" id="" onChange={e => setTime(e.target.value)} defaultValue={time}>
+                <select name="" id="" onChange={e => setTime(e.target.value)} defaultValue={index?.time} disabled={index?.time}>
                     <option value="Morning">Monrning</option>
                     <option value="Afternoon">Afternoon</option>
                     <option value="Night">Night</option>
