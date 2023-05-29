@@ -51,19 +51,6 @@ const BookingsCard = ({ index }) => {
 
 
     // --- deciding what to show in UI while deleting the data from server
-    useEffect(() => {
-        if (isError) {
-            console.log('Error happened !');
-            errMsg(error.error || 'There was an error deleting the item !')
-        }
-        if (data?.deletedCount > 0) {
-            console.log('Deleted');
-            successMsg('Deleted Successfully !')
-        }
-        if (isLoading) {
-            console.log('Loading ... ');
-        }
-    }, [isLoading, isError, data?.deletedCount, error?.error])
 
     if (isError) {
         console.log('Error happened !');

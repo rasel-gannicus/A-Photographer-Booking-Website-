@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Spinner } from 'react-bootstrap';
-import ShopProuduct from '../MyShop/ShopProuduct/ShopProuduct';
+import ShopProuduct from '../Home/MyShop/ShopProuduct/ShopProuduct';
 import './Shop.css';
 import {  useGetProductByCatagoryMutation,  } from '../../Redux/Features/product/productApi';
 import { ClipLoader } from 'react-spinners';
