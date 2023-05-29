@@ -32,6 +32,7 @@ const Bookings = () => {
                         <tr className='table-header'>
                             <th className='booking-title'>Booking Title</th>
                             <th className='booking-time'>Date</th>
+                            <th className='booking-time'>Time</th>
                             <th className='booking-price'>Price</th>
                             <th className='booking-pending'>Status</th>
                             <th className='booking-decision'>Decision</th>

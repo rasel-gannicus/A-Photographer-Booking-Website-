@@ -12,10 +12,12 @@ const BookingsCard = ({ index }) => {
     // --- getting user info from firebase
     const [user] = useAuthState(auth);
 
+    const[time, setTime] = useState('Afternoon')
+
     // --- custom error message 
     let errMsg = (msg) => toast.error(msg || 'There was an error doing the operation !', {
         position: "bottom-center",
-        autoClose: 1000,
+        autoClose: 3000,
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
@@ -48,7 +50,12 @@ const BookingsCard = ({ index }) => {
     // const [deleteService] = useDeleteServiceMutation();
     const [deleteAservice, { data, isLoading, isError, error, isSuccess }] = useDeletingAServiceMutation();
 
-
+    const handleDelete = (id) => {
+        const isConfirm = window.confirm('Delete this booking ? ');
+        if (isConfirm) {
+            deleteAservice({ id: index._id, email: user?.email });
+        }
+    }
 
     // --- deciding what to show in UI while deleting the data from server
 
@@ -65,16 +72,6 @@ const BookingsCard = ({ index }) => {
     }
 
 
-    const handleDelete = (id) => {
-        const isConfirm = window.confirm('Delete this booking ? ');
-        if (isConfirm) {
-            deleteAservice({ id: index._id, email: user?.email });
-        }
-    }
-
-    // --- checking if the specific service is already added or not
-    // const { data } = useGetServiceCartQuery(user?.email, { skip: !user });
-    // let content = null;
 
     const handleUpdate = (id) => {
         let selectedDateId = document.getElementById(`${id}`);
@@ -88,7 +85,7 @@ const BookingsCard = ({ index }) => {
             } else if (formattedDate == selectedDate) {
                 errMsg("You can't select Today !");
             } else {
-
+                console.log(time);
             }
         }
     }
@@ -100,6 +97,13 @@ const BookingsCard = ({ index }) => {
             </td>
             <td className='booking-time'>
                 <input type="date" id={index._id} />
+            </td>
+            <td className='booking-time'>
+                <select name="" id="" onChange={e => setTime(e.target.value)} defaultValue={time}>
+                    <option value="Morning">Monrning</option>
+                    <option value="Afternoon">Afternoon</option>
+                    <option value="Night">Night</option>
+                </select>
             </td>
             <td className='booking-price'>
                 $ {index.price}
