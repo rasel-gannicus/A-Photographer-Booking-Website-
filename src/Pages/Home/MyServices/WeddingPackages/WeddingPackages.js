@@ -51,7 +51,7 @@ const WeddingPackages = (props) => {
 
     function bookButton(e) {
         if (user?.email) {
-            addService({ email: user.email, serviceId: id, packageCatagory, packageCatagoryName, cameraMan, duration, thumbImg, price });
+            addService({ email: user.email, serviceId: id, packageCatagory, packageCatagoryName, cameraMan, duration, thumbImg, price, status :'pending' });
         }else{
             toast.error('You have to login first !', {
                 position: "bottom-center",

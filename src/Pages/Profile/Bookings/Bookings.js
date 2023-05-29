@@ -86,6 +86,8 @@ const Bookings = () => {
                 errMsg("You can't select Date before Today !");
             }else if (formattedDate == selectedDate) {
                 errMsg("You can't select Today !");
+            }else{
+                
             }
         }
     }
