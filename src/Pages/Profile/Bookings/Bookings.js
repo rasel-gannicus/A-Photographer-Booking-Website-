@@ -22,7 +22,6 @@ const Bookings = () => {
     }
 
 
-
     return (
         <div className='booking-div'>
             <h2>Total Bookings : {data?.length} </h2>

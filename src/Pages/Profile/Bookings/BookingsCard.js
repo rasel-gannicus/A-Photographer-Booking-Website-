@@ -5,7 +5,7 @@ import auth from '../../../Utilities/firebase.init';
 import './Booking.css';
 import { ClipLoader } from 'react-spinners';
 import { toast } from 'react-toastify';
-import { useAddServiceToDbMutation, useDeleteServiceMutation, useDeletingAServiceMutation, useGetServiceCartQuery, useUpdateServiceMutation } from '../../../Redux/Features/service/serviceApi';
+import { useAddServiceToDbMutation, useDeleteServiceMutation, useDeletingAServiceMutation, useGetAllConfirmedBookingsQuery, useGetServiceCartQuery, useUpdateServiceMutation } from '../../../Redux/Features/service/serviceApi';
 
 const BookingsCard = ({ index }) => {
 
@@ -14,7 +14,8 @@ const BookingsCard = ({ index }) => {
     // --- getting user info from firebase
     const [user] = useAuthState(auth);
 
-    const [time, setTime] = useState('Afternoon')
+    const [time, setTime] = useState('Afternoon');
+    
 
     // --- custom error message 
     let errMsg = (msg) => toast.error(msg || 'There was an error doing the operation !', {
@@ -39,7 +40,7 @@ const BookingsCard = ({ index }) => {
     });
 
     // --- updating a bookings from 'pending' to 'confirmed' 
-    const [date, setDate] = useState('');
+
     // --- getting current date 
     const currentDate = new Date();
     const year = currentDate.getFullYear();
@@ -72,7 +73,7 @@ const BookingsCard = ({ index }) => {
     }
 
     // --- booking a service & adding it to database
-    const [confirmUpdate, {data:updatedData, isLoading:updateLoading, isError:updateIsError, error:updateError}] = useUpdateServiceMutation();
+    const [confirmUpdate, { data: updatedData, isLoading: updateLoading, isError: updateIsError, error: updateError }] = useUpdateServiceMutation();
 
     const handleUpdate = (id) => {
         let selectedDateId = document.getElementById(`${id}`);
@@ -106,15 +107,31 @@ const BookingsCard = ({ index }) => {
         }
     }
 
+    // --- get all confirmed bookings informations to avoid multiple booking from different user   
+    const [date, setDate] = useState('');
+    const { data: alreadyBooked , refetch } = useGetAllConfirmedBookingsQuery(date); 
+
+    if (alreadyBooked?.length > 0) {
+        const { time: bookedTime, date: bookedDate, } = alreadyBooked;
+        for(let element of alreadyBooked){
+            console.log(element.date);
+        }
+    }
+
+    useEffect(()=>{
+        refetch(); 
+        // console.log(date);  
+    },[date])
+
     return (
-        <tr key={index._id} className={`table-row ${status==='confirmed' && 'green-row'}`} >
-            
+        <tr key={index._id} className={`table-row ${status === 'confirmed' && 'green-row'}`} >
+
             <td className='first-td'>
                 <img src={index.thumbImg} alt="" /> {index.packageCatagoryName}
             </td>
 
             <td className='booking-time'>
-                <input type="date" id={index._id} defaultValue={index?.date} readOnly={index?.date} />
+                <input type="date" id={index._id} defaultValue={index?.date} readOnly={index?.date} onChange={e=>setDate(e.target.value)} />
             </td>
 
             <td className='booking-time'>
@@ -129,17 +146,17 @@ const BookingsCard = ({ index }) => {
                 $ {index.price}
             </td>
 
-            <td className={ status=='confirmed' ? 'booking-pending confirmed-text' : 'booking-pending'}>
-                { updateLoading ? <div  className='loader-in-middle2'><ClipLoader size={30} color={'black'}></ClipLoader></div> : (index?.status || 'Pending')}
+            <td className={status == 'confirmed' ? 'booking-pending confirmed-text' : 'booking-pending'}>
+                {updateLoading ? <div className='loader-in-middle2'><ClipLoader size={30} color={'black'}></ClipLoader></div> : (index?.status || 'Pending')}
             </td>
 
             <td className='booking-decision'>
-                {isLoading ? <div className="loader-in-middle2"><ClipLoader size={30} color={'black'} /></div> 
-                : 
-                <>
-                <button  className={status==='confirmed' ? 'disabled-green' : ''} disabled={status==='confirmed'} onClick={() => handleUpdate(index._id)}>Confirm</button>
-                <button onClick={() => handleDelete(index._id)}>Cancel</button>
-                </>}
+                {isLoading ? <div className="loader-in-middle2"><ClipLoader size={30} color={'black'} /></div>
+                    :
+                    <>
+                        <button className={status === 'confirmed' ? 'disabled-green' : ''} disabled={status === 'confirmed'} onClick={() => handleUpdate(index._id)}>Confirm</button>
+                        <button onClick={() => handleDelete(index._id)}>Cancel</button>
+                    </>}
             </td>
 
         </tr>

@@ -51,7 +51,7 @@ export const serviceApi = apiSlice.injectEndpoints({
 
         // --- get all confirmed bookings to avoid multiple booking from different user
         getAllConfirmedBookings : builder.query({
-            query : () => '/cart/confirmedOnly'
+            query : (date) => `/cart/confirmedOnly/${date}`
         }),
 
         deletingAService: builder.mutation({
