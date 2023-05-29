@@ -10,6 +10,17 @@ const Bookings = () => {
     // --- getting user info from firebase
     const [user] = useAuthState(auth);
 
+    // --- custom error message 
+    let errMsg = (msg) => toast.error(msg || 'There was an error doing the operation !', {
+        position: "bottom-center",
+        autoClose: 1000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+    });
 
     // --- updating a bookings from 'pending' to 'confirmed' 
     const [date, setDate] = useState('');
@@ -73,21 +84,18 @@ const Bookings = () => {
 
     
     const handleUpdate = (id) => {
-        let selectedDate = document.getElementById(`${id}`);
-        console.log(selectedDate.value);
+        let selectedDateId = document.getElementById(`${id}`);
+        let selectedDate = selectedDateId.value;
 
-/*         if (formattedDate > date) {
-            toast.error("You can't select Date before Today !", {
-                position: "bottom-center",
-                autoClose: 1000,
-                hideProgressBar: true,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            });
-        } */
+        if(!selectedDate){
+            errMsg('Please Select Date First !')
+        }else{
+            if (formattedDate > selectedDate) {
+                errMsg("You can't select Date before Today !");
+            }else if (formattedDate == selectedDate) {
+                errMsg("You can't select Today !");
+            }
+        }
     }
 
     return (
