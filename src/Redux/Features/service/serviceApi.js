@@ -11,7 +11,6 @@ export const serviceApi = apiSlice.injectEndpoints({
             }),
             async onQueryStarted(arg, { queryFulfilled, dispatch }) {
                 // --- optimistic update
-                console.log('Arg : ', arg)
                 const response = await queryFulfilled;
                 const pathResult = dispatch(apiSlice.util.updateQueryData('getServiceCart', arg.email, (draft) => {
                     draft.push(arg);
@@ -26,8 +25,21 @@ export const serviceApi = apiSlice.injectEndpoints({
                 body: data
             }),
             async onQueryStarted(arg, { queryFulfilled, dispatch }) {
-                // --- optimistic update
-                // console.log('Arg : ', arg)
+                // --- pessimistic update
+                console.log(arg)
+                try{
+                    const res = await queryFulfilled;
+                    if(res?.data?.modifiedCount>0){
+                        const pathResult = await dispatch(apiSlice.util.updateQueryData('getServiceCart', arg.email, (draft)=>{
+                            let modifiedItem = draft.find(index => index.serviceId == arg.serviceId);
+                            modifiedItem.status = arg.status;
+                            modifiedItem.time = arg.time;
+                            modifiedItem.date = arg.date ;
+                        }))
+                    }
+                }catch(err){
+                    console.log(err);
+                }
             }
         }),
 
