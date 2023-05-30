@@ -51,7 +51,8 @@ const MyShop = (props) => {
     }
     return (
         <div className='my-5 home-my-shop'>
-            <h2 className='my-5'>Some Of My Product <br />You Can Buy To Decorate Your Home/Office Wall</h2>
+            <h2 className=''>Some Of My Product <br />You Can Buy To Decorate Your Home/Office Wall</h2>
+            <span  className='small-text'><small>(Hover on the Pic to see 'Add to Cart' & 'Wishlist' Button)</small></span>
             {content}
             {/* <p className='loading-text mt-5'><Spinner animation="border" variant="primary" /></p> */}
             <button className='loadMoreButton' onClick={loadMoreProduct}>Load More</button>

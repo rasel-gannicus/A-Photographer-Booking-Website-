@@ -1,13 +1,13 @@
 
 
-.home-my-shop{
-}
+
 .product-show-div{
     display: grid;
     grid-template-columns: repeat(3,1fr);
     gap: 30px;
     width: 90%;
     margin: auto;
+    margin-top: 50px;
 }
 
 .loadMoreButton{
