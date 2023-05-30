@@ -11,15 +11,18 @@ const BookingsCard = ({ index }) => {
 
     const { serviceId, packageCatagory, packageCatagoryName, cameraMan, duration, thumbImg, price, status } = index;
 
-    const [date, setDate] = useState('');
-    const [time, setTime] = useState('Afternoon');
-
-    // --- get all confirmed booking data from server
-    const { data: alreadyBooked, refetch } = useGetAllConfirmedBookingsQuery();
-
     // --- getting user info from firebase
     const [user] = useAuthState(auth);
 
+    // --- for checking duplicate booking from anoter user
+    const [date, setDate] = useState('');
+    const [time, setTime] = useState('');    
+    const [morning, setMorning] = useState(false);
+    const [afternoon, setAfternoon] = useState(false);
+    const [night, setNight] = useState(false);
+
+    // --- get all confirmed booking data from server
+    const { data: alreadyBooked, refetch } = useGetAllConfirmedBookingsQuery();
 
     // --- custom error & success message 
     let errMsg = (msg) => toast.error(msg || 'There was an error doing the operation !', {
@@ -43,7 +46,6 @@ const BookingsCard = ({ index }) => {
         theme: "light",
     });
 
-    // --- updating a bookings from 'pending' to 'confirmed' 
 
     // --- getting current date 
     const currentDate = new Date();
@@ -81,14 +83,18 @@ const BookingsCard = ({ index }) => {
     }, [isError, data, isLoading, error?.error, refetch])
 
     // --- booking a service & adding it to database
+    // --- updating a bookings from 'pending' to 'confirmed' 
     const [confirmUpdate, { data: updatedData, isLoading: updateLoading, isError: updateIsError, error: updateError }] = useUpdateServiceMutation();
 
+    console.log(time);
     const handleUpdate = (id) => {
         let selectedDateId = document.getElementById(`${id}`);
         let selectedDate = selectedDateId.value;
-
+        console.log(time);
         if (!selectedDate) {
             errMsg('Please Select Date First !')
+        }else if(!time){
+            errMsg('You have to select time')
         } else {
             if (formattedDate > selectedDate) {
                 errMsg("You can't select Date before Today !");
@@ -102,19 +108,13 @@ const BookingsCard = ({ index }) => {
 
     // --- deciding what to show in UI while updating data
     if (updateLoading && !updateIsError) {
-        console.log('Updating...');
+        // console.log('Updating...');
     }
     else if (!updateLoading && updateIsError) {
         console.log('Error happened: ', updateError);
         errMsg(updateError.error);
     }
-
-    // --- get all confirmed bookings informations to avoid multiple booking in same day same hour from different user  
     useEffect(() => {
-        if (alreadyBooked?.length > 0) {
-            // console.log(alreadyBooked);
-        }
-
         if (updatedData) {
             if (updatedData.acknowledged) {
                 successMsg('Your Booking Has been Confirmed !');
@@ -122,16 +122,14 @@ const BookingsCard = ({ index }) => {
             }
         }
     }, [updatedData, refetch, alreadyBooked, deleteAservice, data]);
-    const[morning, setMorning] = useState(false);
-    const[afternoon, setAfternoon] = useState(false);
-    const[night, setNight] = useState(false);
+
+    // --- checking out if there is already booking in the same day by another user. If another user already confirmed a 'booking' at a certain time, the current user cannot make a new booking at that time. 
     useEffect(() => {
         if (date !== '') {
             // console.log(date);
             const matchedDate = alreadyBooked?.filter(index => index.date === date);
             if (matchedDate.length > 0) {
                 for (let i = 0; i < matchedDate.length; i++) {
-                    console.log(matchedDate[i].time);
                     if (matchedDate[i].time === 'Afternoon') {
                         setAfternoon(true);
                     }
@@ -142,10 +140,10 @@ const BookingsCard = ({ index }) => {
                         setNight(true);
                     }
                 }
-                console.log(matchedDate);
+                // console.log(matchedDate);
             }
         }
-    }, [date, afternoon, morning, night, alreadyBooked])
+    }, [date, afternoon, morning, night, alreadyBooked, refetch, updatedData, deleteAservice, data])
     
     
 
@@ -162,7 +160,7 @@ const BookingsCard = ({ index }) => {
 
             <td className='booking-time'>
                 <select name="" id="" onChange={e => setTime(e.target.value)} defaultValue={index?.time} disabled={index?.time}>
-                    <option  selected disabled>Select Menu</option>
+                    <option  selected disabled>Select Time</option>
                     <option disabled={morning} value="Morning">Monrning</option>
                     <option disabled={afternoon} value="Afternoon">Afternoon</option>
                     <option disabled={night} value="Night">Night</option>
