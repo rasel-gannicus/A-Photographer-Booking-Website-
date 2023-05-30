@@ -11,11 +11,14 @@ const BookingsCard = ({ index }) => {
 
     const { serviceId, packageCatagory, packageCatagoryName, cameraMan, duration, thumbImg, price, status } = index;
 
+    const [date, setDate] = useState('');
+    const { data: alreadyBooked, refetch } = useGetAllConfirmedBookingsQuery();
+
     // --- getting user info from firebase
     const [user] = useAuthState(auth);
 
     const [time, setTime] = useState('Afternoon');
-    
+
 
     // --- custom error message 
     let errMsg = (msg) => toast.error(msg || 'There was an error doing the operation !', {
@@ -55,7 +58,7 @@ const BookingsCard = ({ index }) => {
     const handleDelete = (id) => {
         const isConfirm = window.confirm('Cancel this booking ? ');
         if (isConfirm) {
-            deleteAservice({ id: index._id, email: user?.email });
+            deleteAservice({ id: index._id});
         }
     }
 
@@ -69,7 +72,7 @@ const BookingsCard = ({ index }) => {
         successMsg('Deleted Successfully !')
     }
     if (isLoading) {
-        console.log('Loading ... ');
+        // console.log('Loading ... ');
     }
 
     // --- booking a service & adding it to database
@@ -100,28 +103,25 @@ const BookingsCard = ({ index }) => {
         console.log('Error happened: ', updateError);
         errMsg(updateError.error);
     }
-    else if (updatedData) {
-        if (updatedData.acknowledged) {
-            console.log(updatedData);
-            successMsg('Your Booking Hasbeen Confirmed !');
+
+    
+    useEffect(() => {
+        if (alreadyBooked?.length > 0) {
+            console.log(alreadyBooked);
         }
-    }
 
-    // --- get all confirmed bookings informations to avoid multiple booking from different user   
-    const [date, setDate] = useState('');
-    const { data: alreadyBooked , refetch } = useGetAllConfirmedBookingsQuery(date); 
-
-    if (alreadyBooked?.length > 0) {
-        const { time: bookedTime, date: bookedDate, } = alreadyBooked;
-        for(let element of alreadyBooked){
-            console.log(element.date);
+        if (updatedData) {
+            if (updatedData.acknowledged) {
+                successMsg('Your Booking Hasbeen Confirmed !');
+                refetch();
+            }
         }
-    }
+    }, [updatedData, refetch, alreadyBooked, deleteAservice, data])
 
-    useEffect(()=>{
-        refetch(); 
-        // console.log(date);  
-    },[date])
+
+    // --- get all confirmed bookings informations to avoid multiple booking from different user    
+
+
 
     return (
         <tr key={index._id} className={`table-row ${status === 'confirmed' && 'green-row'}`} >
@@ -131,7 +131,7 @@ const BookingsCard = ({ index }) => {
             </td>
 
             <td className='booking-time'>
-                <input type="date" id={index._id} defaultValue={index?.date} readOnly={index?.date} onChange={e=>setDate(e.target.value)} />
+                <input type="date" id={index._id} defaultValue={index?.date} readOnly={index?.date} onChange={e => setDate(e.target.value)} />
             </td>
 
             <td className='booking-time'>

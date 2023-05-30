@@ -51,11 +51,11 @@ export const serviceApi = apiSlice.injectEndpoints({
 
         // --- get all confirmed bookings to avoid multiple booking from different user
         getAllConfirmedBookings : builder.query({
-            query : (date) => `/cart/confirmedOnly/${date}`
+            query : () => `/cart/confirmedOnly`
         }),
 
         deletingAService: builder.mutation({
-            query: ({ id, email }) => ({
+            query: ({id}) => ({
                 url: `/cart/service/delete/${id}`,
                 method: 'DELETE'
             }),
