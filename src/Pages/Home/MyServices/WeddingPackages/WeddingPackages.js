@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 
 const WeddingPackages = (props) => {
     const { id, packageCatagory, packageCatagoryName, cameraMan, duration, thumbImg, price } = props.index;
+
     const [button, setButton] = useState(false);
     const [buttonText, setButtonText] = useState('Add to Booking')
 
@@ -84,7 +85,7 @@ const WeddingPackages = (props) => {
                                 <p>Hours Shooting</p>
                             </div>
                         </div>
-                        <button onClick={bookButton} className={!button ? 'book-button' : 'book-button2'} disabled={button}>{buttonText}</button>
+                        <button onClick={bookButton} className={!button ? 'book-button' : 'book-button2'} disabled={button}>{button ? 'Added' : 'Add to Booking'}</button>
                         {/* <button className="book-button2">Added</button> */}
                     </div>
                 </div>
