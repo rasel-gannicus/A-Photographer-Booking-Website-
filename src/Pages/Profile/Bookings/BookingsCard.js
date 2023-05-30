@@ -16,10 +16,18 @@ const BookingsCard = ({ index }) => {
 
     // --- for checking duplicate booking from anoter user
     const [date, setDate] = useState('');
-    const [time, setTime] = useState('');    
+    const [time, setTime] = useState('');
     const [morning, setMorning] = useState(false);
     const [afternoon, setAfternoon] = useState(false);
     const [night, setNight] = useState(false);
+
+    const changeTimeMenu = (e) => {
+        setDate(e.target.value);
+        setMorning(false);
+        setAfternoon(false);
+        setNight(false);
+        setTime('');
+    }
 
     // --- get all confirmed booking data from server
     const { data: alreadyBooked, refetch } = useGetAllConfirmedBookingsQuery();
@@ -55,7 +63,10 @@ const BookingsCard = ({ index }) => {
     const formattedDate = `${year}-${month}-${day}`;
 
 
-    // --- deleting a bookings from db
+    /*  ----------------------------------- 
+        Deleting a bookings from db 
+    --------------------------------------*/
+
     const [deleteAservice, { data, isLoading, isError, error, isSuccess }] = useDeletingAServiceMutation();
 
     const handleDelete = (id) => {
@@ -63,9 +74,9 @@ const BookingsCard = ({ index }) => {
         if (isConfirm) {
             let sendingData = { id: index._id, email: user?.email }
             deleteAservice(sendingData);
+            refetch();
         }
     }
-
     // --- deciding what to show in UI while deleting the data from server
     useEffect(() => {
         if (isError) {
@@ -82,18 +93,20 @@ const BookingsCard = ({ index }) => {
         }
     }, [isError, data, isLoading, error?.error, refetch])
 
-    // --- booking a service & adding it to database
-    // --- updating a bookings from 'pending' to 'confirmed' 
+
+    /* ------------------------------------------------------- 
+        Booking or updating a service & adding it to database 
+    ---------------------------------------------------------*/
+
     const [confirmUpdate, { data: updatedData, isLoading: updateLoading, isError: updateIsError, error: updateError }] = useUpdateServiceMutation();
 
-    console.log(time);
     const handleUpdate = (id) => {
         let selectedDateId = document.getElementById(`${id}`);
         let selectedDate = selectedDateId.value;
         console.log(time);
         if (!selectedDate) {
             errMsg('Please Select Date First !')
-        }else if(!time){
+        } else if (!time) {
             errMsg('You have to select time')
         } else {
             if (formattedDate > selectedDate) {
@@ -123,29 +136,31 @@ const BookingsCard = ({ index }) => {
         }
     }, [updatedData, refetch, alreadyBooked, deleteAservice, data]);
 
+
     // --- checking out if there is already booking in the same day by another user. If another user already confirmed a 'booking' at a certain time, the current user cannot make a new booking at that time. 
     useEffect(() => {
         if (date !== '') {
             // console.log(date);
             const matchedDate = alreadyBooked?.filter(index => index.date === date);
-            if (matchedDate.length > 0) {
+            console.log(matchedDate);
+            if (matchedDate) {
                 for (let i = 0; i < matchedDate.length; i++) {
                     if (matchedDate[i].time === 'Afternoon') {
                         setAfternoon(true);
                     }
-                    if(matchedDate[i].time === 'Morning'){
+                    if (matchedDate[i].time === 'Morning') {
                         setMorning(true);
                     }
-                    if(matchedDate[i].time === 'Night'){
+                    if (matchedDate[i].time === 'Night') {
                         setNight(true);
                     }
                 }
+                return;
                 // console.log(matchedDate);
             }
         }
-    }, [date, afternoon, morning, night, alreadyBooked, refetch, updatedData, deleteAservice, data])
-    
-    
+    }, [date, afternoon, morning, night, alreadyBooked, refetch, updatedData, deleteAservice, data, isLoading, isSuccess])
+
 
     return (
         <tr key={index._id} className={`table-row ${status === 'confirmed' && 'green-row'}`} >
@@ -155,12 +170,12 @@ const BookingsCard = ({ index }) => {
             </td>
 
             <td className='booking-time'>
-                <input type="date" id={index._id} defaultValue={index?.date} readOnly={index?.date} onChange={e => setDate(e.target.value)} />
+                <input type="date" id={index._id} defaultValue={index?.date} readOnly={index?.date} onChange={e => changeTimeMenu(e)} />
             </td>
 
             <td className='booking-time'>
-                <select name="" id="" onChange={e => setTime(e.target.value)} defaultValue={index?.time} disabled={index?.time}>
-                    <option  selected disabled>Select Time</option>
+                <select name="" id="" onChange={e => setTime(e.target.value)} defaultValue={index?.time} disabled={index?.time} value={time} >
+                    <option disabled value='' >Select Time</option>
                     <option disabled={morning} value="Morning">Monrning</option>
                     <option disabled={afternoon} value="Afternoon">Afternoon</option>
                     <option disabled={night} value="Night">Night</option>
