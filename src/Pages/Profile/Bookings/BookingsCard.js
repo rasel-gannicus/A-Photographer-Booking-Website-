@@ -109,10 +109,10 @@ const BookingsCard = ({ index }) => {
         errMsg(updateError.error);
     }
 
-
+    // --- get all confirmed bookings informations to avoid multiple booking in same day same hour from different user  
     useEffect(() => {
         if (alreadyBooked?.length > 0) {
-            console.log(alreadyBooked);
+            // console.log(alreadyBooked);
         }
 
         if (updatedData) {
@@ -121,12 +121,17 @@ const BookingsCard = ({ index }) => {
                 refetch();
             }
         }
-    }, [updatedData, refetch, alreadyBooked, deleteAservice, data])
+    }, [updatedData, refetch, alreadyBooked, deleteAservice, data]);
 
-
-    // --- get all confirmed bookings informations to avoid multiple booking from different user    
-
-
+    useEffect(() => {
+        if (date !== '') {
+            // console.log(date);
+            const matchedDate = alreadyBooked?.filter(index => index.date === date);
+            if(matchedDate.length>0){
+                console.log(matchedDate);
+            }
+        }
+    }, [date])
 
     return (
         <tr key={index._id} className={`table-row ${status === 'confirmed' && 'green-row'}`} >
