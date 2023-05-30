@@ -28,17 +28,17 @@ export const serviceApi = apiSlice.injectEndpoints({
             async onQueryStarted(arg, { queryFulfilled, dispatch }) {
                 // --- pessimistic update
                 console.log(arg)
-                try{
+                try {
                     const res = await queryFulfilled;
-                    if(res?.data?.modifiedCount>0){
-                        const pathResult = await dispatch(apiSlice.util.updateQueryData('getServiceCart', arg.email, (draft)=>{
+                    if (res?.data?.modifiedCount > 0) {
+                        const pathResult = await dispatch(apiSlice.util.updateQueryData('getServiceCart', arg.email, (draft) => {
                             let modifiedItem = draft.find(index => index.serviceId == arg.serviceId);
                             modifiedItem.status = arg.status;
                             modifiedItem.time = arg.time;
-                            modifiedItem.date = arg.date ;
+                            modifiedItem.date = arg.date;
                         }))
                     }
-                }catch(err){
+                } catch (err) {
                     console.log(err);
                 }
             }
@@ -50,34 +50,37 @@ export const serviceApi = apiSlice.injectEndpoints({
         }),
 
         // --- get all confirmed bookings to avoid multiple booking from different user
-        getAllConfirmedBookings : builder.query({
-            query : () => `/cart/confirmedOnly`
+        getAllConfirmedBookings: builder.query({
+            query: () => `/cart/confirmedOnly`
         }),
 
         deletingAService: builder.mutation({
-            query: ({id}) => ({
-                url: `/cart/service/delete/${id}`,
-                method: 'DELETE'
+            query: (data) => ({
+                url: `/cart/service/delete`,
+                method: 'DELETE',
+                body: data
             }),
             async onQueryStarted(arg, { queryFulfilled, dispatch }) {
-                //--- optimistic update
-                const pathResult = dispatch(apiSlice.util.updateQueryData('getServiceCart', arg.email, (draft) => {
 
-                    const deletedService = draft.find(index => index._id == arg.id);
-                    const deletedIndex = draft.indexOf(deletedService);
-
-                    draft.splice(deletedIndex, 1);
-                }))
-
+                //--- pessimistic update                                
                 try {
                     const response = await queryFulfilled;
+                    console.log(response);
+                    if (response.data.deletedCount > 0) {
+                        const pathResult = dispatch(apiSlice.util.updateQueryData('getServiceCart', arg.email, (draft) => {
+
+                            const deletedService = draft.find(index => index._id == arg.id);
+                            const deletedIndex = draft.indexOf(deletedService);
+
+                            draft.splice(deletedIndex, 1);
+                        }))
+                    }
                 } catch (err) {
                     console.log(err);
-                    pathResult.undo();
                 }
             }
         })
     })
 })
 
-export const { useAddServiceToDbMutation, useGetServiceCartQuery, useDeletingAServiceMutation, useUpdateServiceMutation , useGetAllConfirmedBookingsQuery } = serviceApi
+export const { useAddServiceToDbMutation, useGetServiceCartQuery, useDeletingAServiceMutation, useUpdateServiceMutation, useGetAllConfirmedBookingsQuery } = serviceApi

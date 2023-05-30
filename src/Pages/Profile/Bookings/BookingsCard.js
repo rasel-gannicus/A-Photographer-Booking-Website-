@@ -12,15 +12,16 @@ const BookingsCard = ({ index }) => {
     const { serviceId, packageCatagory, packageCatagoryName, cameraMan, duration, thumbImg, price, status } = index;
 
     const [date, setDate] = useState('');
+    const [time, setTime] = useState('Afternoon');
+
+    // --- get all confirmed booking data from server
     const { data: alreadyBooked, refetch } = useGetAllConfirmedBookingsQuery();
 
     // --- getting user info from firebase
     const [user] = useAuthState(auth);
 
-    const [time, setTime] = useState('Afternoon');
 
-
-    // --- custom error message 
+    // --- custom error & success message 
     let errMsg = (msg) => toast.error(msg || 'There was an error doing the operation !', {
         position: "bottom-center",
         autoClose: 3000,
@@ -58,22 +59,25 @@ const BookingsCard = ({ index }) => {
     const handleDelete = (id) => {
         const isConfirm = window.confirm('Cancel this booking ? ');
         if (isConfirm) {
-            deleteAservice({ id: index._id});
+            let sendingData = {id: index._id, email  : user?.email}
+            deleteAservice(sendingData);
         }
     }
 
     // --- deciding what to show in UI while deleting the data from server
-    if (isError) {
-        console.log('Error happened !');
-        errMsg(error.error || 'There was an error deleting the item !')
-    }
-    if (data?.deletedCount > 0) {
-        console.log('Deleted');
-        successMsg('Deleted Successfully !')
-    }
-    if (isLoading) {
-        // console.log('Loading ... ');
-    }
+    useEffect(() => {
+        if (isError) {
+            console.log('Error happened !');
+            errMsg(error.error || 'There was an error deleting the item !')
+        }
+        if (data?.deletedCount > 0) {
+            console.log('Deleted');
+            successMsg('Deleted Successfully !')
+        }
+        if (isLoading) {
+            console.log('Loading ... ');
+        }
+    }, [isError, data, isLoading, error?.error])
 
     // --- booking a service & adding it to database
     const [confirmUpdate, { data: updatedData, isLoading: updateLoading, isError: updateIsError, error: updateError }] = useUpdateServiceMutation();
@@ -104,15 +108,15 @@ const BookingsCard = ({ index }) => {
         errMsg(updateError.error);
     }
 
-    
+
     useEffect(() => {
         if (alreadyBooked?.length > 0) {
-            console.log(alreadyBooked);
+            // console.log(alreadyBooked);
         }
 
         if (updatedData) {
             if (updatedData.acknowledged) {
-                successMsg('Your Booking Hasbeen Confirmed !');
+                successMsg('Your Booking Has been Confirmed !');
                 refetch();
             }
         }
