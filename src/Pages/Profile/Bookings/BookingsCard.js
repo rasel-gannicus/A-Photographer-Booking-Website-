@@ -122,16 +122,26 @@ const BookingsCard = ({ index }) => {
             }
         }
     }, [updatedData, refetch, alreadyBooked, deleteAservice, data]);
-
+    const[afternoon, setAfternoon] = useState(false);
     useEffect(() => {
         if (date !== '') {
             // console.log(date);
             const matchedDate = alreadyBooked?.filter(index => index.date === date);
-            if(matchedDate.length>0){
-                console.log(matchedDate);
+            if (matchedDate.length > 0) {
+                for (let i = 0; i < matchedDate.length; i++) {
+                    console.log(matchedDate[i].time);
+                    if (matchedDate[i].time === 'Afternoon') {
+                        setAfternoon(true);
+                    }
+                }
+                console.log(afternoon);
+                // console.log(matchedDate);
+                // console.log('Existed Time: ',existed);
             }
         }
-    }, [date])
+    }, [date, afternoon])
+    
+    
 
     return (
         <tr key={index._id} className={`table-row ${status === 'confirmed' && 'green-row'}`} >
@@ -147,7 +157,7 @@ const BookingsCard = ({ index }) => {
             <td className='booking-time'>
                 <select name="" id="" onChange={e => setTime(e.target.value)} defaultValue={index?.time} disabled={index?.time}>
                     <option value="Morning">Monrning</option>
-                    <option value="Afternoon">Afternoon</option>
+                    <option disabled={afternoon} value="Afternoon">Afternoon</option>
                     <option value="Night">Night</option>
                 </select>
             </td>
