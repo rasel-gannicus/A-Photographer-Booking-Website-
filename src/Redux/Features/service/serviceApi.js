@@ -65,7 +65,7 @@ export const serviceApi = apiSlice.injectEndpoints({
                 //--- pessimistic update                                
                 try {
                     const response = await queryFulfilled;
-                    console.log(response);
+                    
                     if (response.data.deletedCount > 0) {
                         const pathResult = dispatch(apiSlice.util.updateQueryData('getServiceCart', arg.email, (draft) => {
 

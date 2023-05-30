@@ -59,7 +59,7 @@ const BookingsCard = ({ index }) => {
     const handleDelete = (id) => {
         const isConfirm = window.confirm('Cancel this booking ? ');
         if (isConfirm) {
-            let sendingData = {id: index._id, email  : user?.email}
+            let sendingData = { id: index._id, email: user?.email }
             deleteAservice(sendingData);
         }
     }
@@ -72,12 +72,13 @@ const BookingsCard = ({ index }) => {
         }
         if (data?.deletedCount > 0) {
             console.log('Deleted');
-            successMsg('Deleted Successfully !')
+            successMsg('Deleted Successfully !');
+            refetch();
         }
         if (isLoading) {
             console.log('Loading ... ');
         }
-    }, [isError, data, isLoading, error?.error])
+    }, [isError, data, isLoading, error?.error, refetch])
 
     // --- booking a service & adding it to database
     const [confirmUpdate, { data: updatedData, isLoading: updateLoading, isError: updateIsError, error: updateError }] = useUpdateServiceMutation();
@@ -101,7 +102,7 @@ const BookingsCard = ({ index }) => {
 
     // --- deciding what to show in UI while updating data
     if (updateLoading && !updateIsError) {
-        console.log('Updating...')
+        console.log('Updating...');
     }
     else if (!updateLoading && updateIsError) {
         console.log('Error happened: ', updateError);
@@ -111,7 +112,7 @@ const BookingsCard = ({ index }) => {
 
     useEffect(() => {
         if (alreadyBooked?.length > 0) {
-            // console.log(alreadyBooked);
+            console.log(alreadyBooked);
         }
 
         if (updatedData) {
