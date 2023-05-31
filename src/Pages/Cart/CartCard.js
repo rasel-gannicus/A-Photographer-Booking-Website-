@@ -2,10 +2,18 @@ import React from 'react';
 import './Cart.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
+import { useDeleteProductOfUserMutation } from '../../Redux/Features/product/productApi';
 
 const CartCard = ({index}) => {
     const{email, quantity, _id, product} = index  ;
-    const{_id:productOriginalId, catagory, price, img} = product
+    const{_id:productOriginalId, catagory, price, img} = product;
+
+    // --- delete a product
+    const[deleteProduct, {data, isLoading, isError, isSuccess}] = useDeleteProductOfUserMutation();
+
+    const handleDelete = () => {
+        deleteProduct({email, id:_id});
+    }
     return (
         <div className="cart-cards">
         <div className="first-half">
@@ -30,7 +38,7 @@ const CartCard = ({index}) => {
             </div>
         </div>
         <div className="third-half">
-            <button>Remove Item</button>
+            <button onClick={handleDelete}>Remove Item</button>
         </div>
     </div>
     );

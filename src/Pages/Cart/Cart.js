@@ -12,8 +12,8 @@ const Cart = () => {
     const [user] = useAuthState(auth);
 
     // --- Getting all the cart product for individual user
-    const { data, isLoading, isError, error } = useGetUserAllProductQuery(user?.email, { skip: !user.email });
-    console.log(data);
+    const { data, isLoading, isError, error } = useGetUserAllProductQuery(user?.email);
+    // console.log(data);
 
     // --- deciding what to show in UI while fetching data from server
     let content = null;
