@@ -148,3 +148,13 @@
     margin-top: 0;
     width: 100%;
 }
+
+.checkout-btn{
+    width: 100%;
+    margin: 20px 0;
+    border: none;
+    padding: 5px 0;
+    /* color: white; */
+    background: #F1C40F;
+    font-weight: 600;
+}

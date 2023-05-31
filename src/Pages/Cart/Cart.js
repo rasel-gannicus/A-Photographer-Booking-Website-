@@ -60,7 +60,7 @@ const Cart = () => {
                 </div>
                 <div className="shipping-method">
                     <p>Coupon Code: </p>
-                    <input type="text" name="coupon" placeholder='Got any Discount Code ?' />
+                    <input type="text" name="coupon" placeholder='Discount Code' className='text-center' />
                 </div>
                 <hr />
                 <div className="subtotal">
@@ -78,6 +78,7 @@ const Cart = () => {
                         <p>$ 10 </p>
                     </div>
                 </div>
+                <button className='checkout-btn'>Checkout</button>
             </div>
         </div>
     );
