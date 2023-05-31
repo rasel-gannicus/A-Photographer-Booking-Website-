@@ -5,7 +5,7 @@ import { useGetServiceCartQuery } from '../../Redux/Features/service/serviceApi'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../firebase.init';
 import { useNavigate } from 'react-router-dom';
-import { useGetAllProductCartQuery } from '../../Redux/Features/product/productApi';
+import { useGetAllProductCartQuery, useGetUserAllProductQuery } from '../../Redux/Features/product/productApi';
 
 const CartPopup = () => {
     // --- taking user to corresponding cart details page
@@ -20,7 +20,7 @@ const CartPopup = () => {
     const { data } = useGetServiceCartQuery(user?.email);
     
     // --- getting user's product cart info
-    const{data:products} = useGetAllProductCartQuery();
+    const{data:products} = useGetUserAllProductQuery(user?.email);
     // console.log(products);
     return (
         <div className='mini-popup'>
