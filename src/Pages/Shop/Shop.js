@@ -16,7 +16,7 @@ const Shop = (props) => {
     let content = null;
 
     if (catagoryLoading && !catagoryIsError) {
-        content = <div className="loader-in-middle2"><ClipLoader color="black" size={70} /></div>
+        content = <div className="loader-in-middle2  mt-5"><ClipLoader color="black" size={70} /></div>
     }
     if (!catagoryLoading && catagoryIsError) {
         console.log(catagoryError);
@@ -26,7 +26,6 @@ const Shop = (props) => {
     if (!catagoryLoading && !catagoryIsError && catagoryProduct?.result?.length > 0) {
         const{count, result} = catagoryProduct;
         totalPage = Math.ceil(count/contentPerPage);
-        console.log('Count From DB: ',count);
 
         content = <div className="product-show-div all-product ">
              {result.map(index => <ShopProuduct
@@ -65,20 +64,22 @@ const Shop = (props) => {
                     <button onClick={()=>setCategories('all')}>All </button>
                 </div>
             </div>
-            <p className="spinners hideMe"><Spinner animation="border" variant="primary" /></p>
+            {/* <p className="spinners hideMe"><Spinner animation="border" variant="primary" /></p> */}
 
-            <h2 className='my-5'>Showing <span className='product-title'>All</span> Product </h2>
+            <h2 className='mt-5'>Showing <span className='product-title'>All</span> Product </h2>
+            <span  className='small-text'><small>(Hover on the Pic to see 'Cart' & 'Wishlist' Button)</small></span>
+
             {/* -------------- Show product by catagory ------------ */}
             {content}          
             <div className="pagination">
                 {[...Array(totalPage).keys()].map(index=><button 
                 key={index}
                 onClick={()=>setCurrentPage(index)}
-                className={currentPage == index && 'selectedButton'}
+                className={(currentPage === index) ? 'selectedButton' : ''}
                 >{index}</button>)}
-                <select name="" id="" onChange={e => setContentPerPage(e.target.value)}>
+                <select name="" id="" onChange={e => setContentPerPage(e.target.value)}defaultValue={contentPerPage}>
                     <option value="5">5</option>
-                    <option value="10" selected>10</option>
+                    <option value="10">10</option>
                     <option value="15">15</option>
                     <option value="20">20</option>
                 </select>

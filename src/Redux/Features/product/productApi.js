@@ -13,7 +13,22 @@ export const productApi = apiSlice.injectEndpoints({
                 method : 'POST',
             }),
             async onQueryStarted(arg, { queryFulfilled, dispatch }) {
-                // --- optimistic update
+                
+            }
+        }),
+
+        /* ---------------------------------------------
+            Product Cart Related
+        ------------------------------------------------ */
+
+        addProductToCart : builder.mutation({
+            query : (data) => ({
+                url : '/cart/addProduct',
+                method : 'POST',
+                body : {data}
+            }),
+            async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+                
             }
         })
     })
@@ -21,4 +36,4 @@ export const productApi = apiSlice.injectEndpoints({
 
 
 
-export const {useGetAllProductQuery, useGetProductByCatagoryQuery, useGetProductByCatagoryMutation} = productApi ; 
+export const {useGetAllProductQuery, useGetProductByCatagoryQuery, useGetProductByCatagoryMutation, useAddProductToCartMutation} = productApi ; 

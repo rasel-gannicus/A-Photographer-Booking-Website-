@@ -36,6 +36,7 @@
 
 .product-title{
     color: crimson;
+    text-transform: capitalize;
 }
 
 
@@ -58,6 +59,7 @@
     padding: 5px 20px;
     font-size: 23px;
     font-weight: 600;
+    border-radius: 2px;
 }
 .pagination select {
     outline: none;
