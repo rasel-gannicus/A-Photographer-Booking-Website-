@@ -1,37 +1,47 @@
 import React from 'react';
-import './Cart.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
+import './Cart.css'
+import CartCard from './CartCard';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../Utilities/firebase.init';
+import { ClipLoader } from 'react-spinners';
+import { useGetUserAllProductQuery } from '../../Redux/Features/product/productApi';
 
 const Cart = () => {
+
+    // --- getting user Information from Firebase
+    const [user] = useAuthState(auth);
+
+    // --- Getting all the cart product for individual user
+    const { data, isLoading, isError, error } = useGetUserAllProductQuery(user?.email, { skip: !user.email });
+    console.log(data);
+
+    // --- deciding what to show in UI while fetching data from server
+    let content = null;
+
+    // --- when fetching-data process is in loading state
+    if (isLoading && !isError) {
+        content = <div className="loader-in-middle2"><ClipLoader color="black" size={70} /></div>
+    }
+
+    // --- when there is a error happened while fetching-data 
+    if (!isLoading && isError) {
+        console.log(error);
+        content = <div className="error-text">
+            {error.error}
+        </div>;
+    }
+
+    // --- when we finally get the data
+    if (!isLoading && !isError && data.length > 0) {
+        content = data.map(index => <CartCard
+            index={index}
+            key={index._id}
+        ></CartCard>)
+
+    }
     return (
         <div className='cart-div'>
-            <div className="cart-cards">
-                <div className="first-half">
-                    <div className="first-half-img">
-                        <img src="https://i.ibb.co/7kpLW1Y/street-11.jpg" alt="" />
-                    </div>
-                    {/* <div className="first-half-details">
-                        <h2>Product Title</h2>
-                        <p>Catagory : Wild</p>
-                    </div> */}
-                </div>
-                <div className="second-half">
-                    <div className="amount-div">
-                        <div className="amount-icon">
-                            <span><FontAwesomeIcon icon={faMinus} /></span>
-                            <p>5</p>
-                            <span><FontAwesomeIcon icon={faPlus} /></span>
-                        </div>
-                    </div>
-                    <div className="total-price-div">
-                        <p>Total : $ 2500</p>
-                    </div>
-                </div>
-                {/* <div className="third-half">
-                    <button>Confirm Order</button>
-                </div> */}
-            </div>
+            {content}
         </div>
     );
 };

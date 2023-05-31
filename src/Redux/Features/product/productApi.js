@@ -51,6 +51,11 @@ export const productApi = apiSlice.injectEndpoints({
 
         gettingSingleProductFromCart: builder.query({
             query: ({ email, id }) => `/cart/singleProduct?email=${email}&id=${id}`
+        }),
+        
+        // --- Getting all the cart product for individual user
+        getUserAllProduct : builder.query({
+            query : (email) => `/cart/user/${email}`
         })
 
 
@@ -59,4 +64,4 @@ export const productApi = apiSlice.injectEndpoints({
 
 
 
-export const { useGetAllProductQuery, useGetProductByCatagoryQuery, useGetProductByCatagoryMutation, useAddProductToCartMutation, useGetAllProductCartQuery, useGettingSingleProductFromCartQuery } = productApi; 
+export const { useGetAllProductQuery, useGetProductByCatagoryQuery, useGetProductByCatagoryMutation, useAddProductToCartMutation, useGetAllProductCartQuery, useGettingSingleProductFromCartQuery, useGetUserAllProductQuery } = productApi; 

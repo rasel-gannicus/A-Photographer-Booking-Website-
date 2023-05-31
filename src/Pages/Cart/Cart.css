@@ -4,6 +4,7 @@
 .cart-div{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
 }
 
 .cart-cards{
@@ -14,7 +15,7 @@
     /* border: 3px solid #2a2a2a; */
     border-radius: 5px;
     padding: 8px;
-    background: rgba(221, 221, 221, 0.394);
+    background: rgba(35, 167, 223, 0.145);
     max-width: 300px;
 }
 .cart-cards p{
@@ -45,7 +46,7 @@
     display: flex;
     margin: 30px 0;
     min-width: 150px;
-    background: teal;
+    background: #5761ED;
     height: 40px;
     color: white;
     justify-content: space-around;
