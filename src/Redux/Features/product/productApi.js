@@ -33,6 +33,10 @@ export const productApi = apiSlice.injectEndpoints({
         }),
         getAllProductCart : builder.query({
             query : () => '/cart/getAllProduct'
+    }),
+
+    gettingSingleProductFromCart : builder.query({
+        query : ({email, id}) => `/cart/singleProduct?email=${email}&id=${id}`
     })
 
 
@@ -41,4 +45,4 @@ export const productApi = apiSlice.injectEndpoints({
 
 
 
-export const {useGetAllProductQuery, useGetProductByCatagoryQuery, useGetProductByCatagoryMutation, useAddProductToCartMutation, useGetAllProductCartQuery} = productApi ; 
+export const {useGetAllProductQuery, useGetProductByCatagoryQuery, useGetProductByCatagoryMutation, useAddProductToCartMutation, useGetAllProductCartQuery, useGettingSingleProductFromCartQuery} = productApi ; 

@@ -1,31 +1,46 @@
 import React, { useEffect } from 'react';
 import './ShopProuduct.css';
-import { useAddProductToCartMutation, useGetAllProductCartQuery } from '../../../../Redux/Features/product/productApi';
+import { useAddProductToCartMutation, useGetAllProductCartQuery, useGettingSingleProductFromCartQuery } from '../../../../Redux/Features/product/productApi';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../../Utilities/firebase.init';
 import { errorMessage, successMessage } from '../../../../Utilities/popupMsg';
 
 const ShopProuduct = (props) => {    
-    const{img, catagory, price} = props.index;
+    const{img, catagory, price, _id} = props.index;
     // console.log(props.index);
 
     // --- getting user Information from Firebase
     const[user] = useAuthState(auth);
 
+    // --- getting info about every single product from cart from database    
+    const{data:singleProductFromCart, isLoading:singleProductIsLoading} = useGettingSingleProductFromCartQuery({email : user?.email, id:_id}, {skip:!user?.email}); //--- this query will not be triggered until user is logged in
+
+    if(singleProductIsLoading){
+        // console.log('Loading...');
+    }
+    if(singleProductFromCart){
+        // console.log(singleProductFromCart.product._id);        
+    }
+
     // --- getting cart info from database to avoid adding the same product again
-    const{data, isLoading, isError, error } = useGetAllProductCartQuery();
+    const{data, isLoading, isError, error, isSuccess } = useGetAllProductCartQuery();
     // console.log(data);
+    
 
     // --- adding product to users cart and database
     const[addToCart, {data : addedData , isLoading:addingLoading, isError:addingIsError, error:addingError}] = useAddProductToCartMutation();
 
     function addProduct(){
         if(user?.email){
-            addToCart({
-                product : props.index,
-                email : user.email,
-                quantity : 1
-            })
+            if(isSuccess){
+                addToCart({
+                    product : props.index,
+                    email : user.email,
+                    quantity : 1
+                })
+            }else{
+                errorMessage('There was an error when searching for duplicate products! ', 4000)
+            }
         }else{
             errorMessage('Log in first to add to cart');
         }
@@ -33,7 +48,7 @@ const ShopProuduct = (props) => {
 
     // --- deciding what to show while adding data to database
     if(addingLoading && !addingIsError){
-        console.log('Loading...')
+        // console.log('Loading...')
     }
     if(!addingLoading && addingIsError){
         console.log(addingError.error);
@@ -52,7 +67,7 @@ const ShopProuduct = (props) => {
                 <img src={img} alt="" />
             </div>
             <div className="product-first-div">
-                <button onClick={()=> addProduct()}>Add to Cart</button>
+                <button onClick={()=> addProduct()} disabled={singleProductFromCart?.product?._id===_id}>{(singleProductFromCart?.product?._id===_id) ? 'Added' : 'Add to Cart'}</button>
             </div>
             <div className="product-second-div">
                 <button>Add to Wishlist</button>
