@@ -42,6 +42,43 @@ const Cart = () => {
     return (
         <div className='cart-div'>
             {content}
+            <div className="sideCart-div">
+                <div className="order-summary">
+                    <h2>Order Summary</h2>
+                    <div className="">
+                        <span>9 items</span>
+                        <p>$ 500.98</p>
+                    </div>
+                    <hr />
+                </div>
+                <div className="shipping-method">
+                    <p>Shipping Mehod : </p>
+                    <select name="" id="">
+                        <option value="">Express Delivery $50</option>
+                        <option value="">Reglar Delivery $10</option>
+                    </select>
+                </div>
+                <div className="shipping-method">
+                    <p>Coupon Code: </p>
+                    <input type="text" name="coupon" placeholder='Got any Discount Code ?' />
+                </div>
+                <hr />
+                <div className="subtotal">
+                    <div className="">
+                        <p>Shipping : </p>
+                        <p>$ 45 </p>
+                    </div>
+                    <div className="">
+                        <p>Discount : </p>
+                        <p>$ 10 </p>
+                    </div>
+                    <hr className='hr' />
+                    <div className="total-div">
+                        <p>Total : </p>
+                        <p>$ 10 </p>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

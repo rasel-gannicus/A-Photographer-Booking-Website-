@@ -1,13 +1,10 @@
-
-
-
-.cart-div{
+.cart-div {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
 }
 
-.cart-cards{
+.cart-cards {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -18,31 +15,35 @@
     background: rgba(35, 167, 223, 0.145);
     max-width: 300px;
 }
-.cart-cards p{
+
+.cart-cards p {
     margin: 0;
 }
-.first-half{
+
+.first-half {
     display: flex;
     gap: 20px;
     justify-content: center;
     align-items: center;
     text-align: left;
 }
-.first-half h2{
+
+.first-half h2 {
     font-size: 22px;
 }
 
-.first-half-img{
-    border: 4px solid #253745 ;
+.first-half-img {
+    border: 4px solid #253745;
     padding: 7px;
     background: white;
 }
-.first-half-img img{
+
+.first-half-img img {
     width: 100%;
 }
 
 
-.amount-icon{
+.amount-icon {
     display: flex;
     margin: 30px 0;
     min-width: 150px;
@@ -53,24 +54,97 @@
     align-items: center;
     font-size: 20px;
 }
-.amount-icon span{
+
+.amount-icon span {
     cursor: pointer;
 }
-.amount-icon p{
+
+.amount-icon p {
     font-weight: 500;
 }
 
-.total-price-div{
+.total-price-div {
     margin: 20px 0;
     font-weight: 600;
     font-size: 22px;
 }
 
-.third-half button{
+.third-half button {
     padding: 5px 15px;
     border: none;
     background: darkred;
     color: white;
     font-weight: 500;
     margin-bottom: 20px;
+}
+
+/* ------------------------
+    side cart css
+--------------------------*/
+
+.sideCart-div {
+    position: fixed;
+    right: 1%;
+    top: 60%;
+    transform: translateY(-60%);
+    background: #383735;
+    min-width: 300px;
+    min-height: 400px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    padding: 10px 25px;
+    color: white;
+    z-index: 50;
+}
+
+.sideCart-div p {
+    margin-bottom: 10px;
+}
+
+.order-summary h2 {
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+.order-summary div {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+    color: #F1C40F ;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.shipping-method {
+    text-align: left;
+    margin: 25px 0;
+}
+
+.shipping-method select,
+.shipping-method input {
+    width: 100%;
+    padding: 5px 10px;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+}
+
+.subtotal div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.total-div {
+    font-size: 20px;
+    font-weight: 600;
+    color: #F1C40F ;
+}
+
+.hr {
+    border: none;
+    border-top: 3px solid white;
+    margin-bottom: 10px;
+    margin-top: 0;
+    width: 100%;
 }
