@@ -28,19 +28,19 @@ export const productApi = apiSlice.injectEndpoints({
                 body: { data }
             }),
             async onQueryStarted(arg, { queryFulfilled, dispatch }) {
-                
-                const pathResult = await dispatch(apiSlice.util.updateQueryData('getUserAllProduct', arg.email, (draft)=>{                    
-                    draft.push(arg);
-                } ))
-                const pathResult2 = await dispatch(apiSlice.util.updateQueryData('getAllProductCart', undefined, (draft)=>{
-                    draft.push(arg);
-                }))
 
-                try{
+
+
+                try {
                     const response = await queryFulfilled;
-                }catch(err){
+                    const pathResult = await dispatch(apiSlice.util.updateQueryData('getUserAllProduct', arg.email, (draft) => {
+                        const newData = {...arg, _id:response.data.insertedId}
+                        draft.push(newData);
+                    }))
+                    // console.log(response);
+                } catch (err) {
                     console.log(err);
-                    pathResult2.undo();
+
                 }
             }
         }),
@@ -52,31 +52,31 @@ export const productApi = apiSlice.injectEndpoints({
         gettingSingleProductFromCart: builder.query({
             query: ({ email, id }) => `/cart/singleProduct?email=${email}&id=${id}`
         }),
-        
+
         // --- Getting all the cart product for individual user
-        getUserAllProduct : builder.query({
-            query : (email) => `/cart/user/${email}`
+        getUserAllProduct: builder.query({
+            query: (email) => `/cart/user/${email}`
         }),
 
         // --- delete a product for a user
-        deleteProductOfUser : builder.mutation({
-            query : ({email, id}) => ({
-                url : `/cart/user/delete?email=${email}&id=${id}`,
-                method : 'DELETE'
+        deleteProductOfUser: builder.mutation({
+            query: ({ email, id }) => ({
+                url: `/cart/user/delete?email=${email}&id=${id}`,
+                method: 'DELETE'
             }),
             async onQueryStarted(arg, { queryFulfilled, dispatch }) {
-                
-                const pathResult = await dispatch(apiSlice.util.updateQueryData('getUserAllProduct', arg.email, (draft)=>{                    
+
+                const pathResult = await dispatch(apiSlice.util.updateQueryData('getUserAllProduct', arg.email, (draft) => {
                     // selectedProduct
-                    const deletedProduct = draft.find(index=>index._id === arg.id);
+                    const deletedProduct = draft.find(index => index._id === arg.id);
                     const deletedIndex = draft.indexOf(deletedProduct);
 
                     draft.splice(deletedIndex, 1);
-                } ))
+                }))
 
-                try{
+                try {
                     const response = await queryFulfilled;
-                }catch(err){
+                } catch (err) {
                     console.log(err);
                     pathResult.undo();
                 }
