@@ -29,10 +29,9 @@ export const productApi = apiSlice.injectEndpoints({
             }),
             async onQueryStarted(arg, { queryFulfilled, dispatch }) {
                 
-                // const pathResult = await dispatch(apiSlice.util.updateQueryData('gettingSingleProductFromCart', ({email:arg.email, id:arg.product._id}), (draft)=>{                    
-                //     // selectedProduct
-                //     draft._id = arg;
-                // } ))
+                const pathResult = await dispatch(apiSlice.util.updateQueryData('getUserAllProduct', arg.email, (draft)=>{                    
+                    draft.push(arg);
+                } ))
                 const pathResult2 = await dispatch(apiSlice.util.updateQueryData('getAllProductCart', undefined, (draft)=>{
                     draft.push(arg);
                 }))
