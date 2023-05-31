@@ -22,11 +22,6 @@ const ShopProuduct = (props) => {
         // console.log('From Query: ',singleProductFromCart);        
     }
 
-    // --- getting cart info from database to avoid adding the same product again
-    // const{data, isLoading, isError, error, isSuccess } = useGetAllProductCartQuery();
-    // // console.log(data);
-
-
     // --- adding product to users cart and database
     const [addToCart, { data: addedData, isLoading: addingLoading, isError: addingIsError, error: addingError }] = useAddProductToCartMutation();
 
@@ -69,7 +64,7 @@ const ShopProuduct = (props) => {
                 <img src={img} alt="" />
             </div>
             <div className="product-first-div">
-                <button onClick={() => addProduct()} disabled={singleProductFromCart?.product?._id === _id} className={(singleProductFromCart?.product?._id === _id) ? 'added-button' : ''}>{(singleProductFromCart?.product?._id === _id) ? 'Added' : 'Add to Cart'}</button>
+                <button onClick={() => addProduct()} disabled={(singleProductFromCart?.product?._id === _id) || addingLoading} className={(singleProductFromCart?.product?._id === _id) ? 'added-button' : ''}>{(singleProductFromCart?.product?._id === _id) ? 'Added' : 'Add to Cart'}</button>
             </div>
             <div className="product-second-div">
                 <button>Add to Wishlist</button>
