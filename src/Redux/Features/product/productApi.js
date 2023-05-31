@@ -30,10 +30,15 @@ export const productApi = apiSlice.injectEndpoints({
             async onQueryStarted(arg, { queryFulfilled, dispatch }) {
                 
             }
-        })
+        }),
+        getAllProductCart : builder.query({
+            query : () => '/cart/getAllProduct'
+    })
+
+
     })
 })
 
 
 
-export const {useGetAllProductQuery, useGetProductByCatagoryQuery, useGetProductByCatagoryMutation, useAddProductToCartMutation} = productApi ; 
+export const {useGetAllProductQuery, useGetProductByCatagoryQuery, useGetProductByCatagoryMutation, useAddProductToCartMutation, useGetAllProductCartQuery} = productApi ; 
