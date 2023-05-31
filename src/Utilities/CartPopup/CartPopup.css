@@ -2,27 +2,31 @@
 .mini-popup{
     position: fixed;
     bottom: 10%;
-    right: 4%;
+    right: 3%;
     z-index: 30;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.booking-cart{
+.booking-cart, .products-cart{
     /* width: 60px; */
     cursor: pointer;
 }
 .booking-cart-child{
-    width: 50px;
+    width: 40px;
     position: relative;
 }
 .booking-cart-child span{
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 600;
     position: absolute;
-    top: -15px;
+    top: -10px;
     right: -10px;
     background: crimson;
-    width: 35px;
-    height: 35px;
+    width: 27px;
+    height: 27px;
     color: white;
     margin: 0;
     border-radius: 50%;
@@ -30,9 +34,16 @@
     justify-content: center;
     align-items: center;
 }
+
+
 .booking-cart-child span p{
     margin: 0;
 }
-.booking-cart img{
+.booking-cart img, .products-cart img{
     width: 100%;
+}
+
+.products-cart{
+    margin-top: 20px;
+    margin-right: 7px;
 }
