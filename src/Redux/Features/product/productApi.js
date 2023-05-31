@@ -27,9 +27,13 @@ export const productApi = apiSlice.injectEndpoints({
                 method : 'POST',
                 body : {data}
             }),
-            async onQueryStarted(arg, { queryFulfilled, dispatch }) {
-                
-            }
+            // async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+            //     console.log('From Arg: ',arg);
+            //     const pathResult = await dispatch(apiSlice.util.updateQueryData('gettingSingleProductFromCart', ({email:arg.email, id:arg.product._id}), (draft)=>{                    
+            //         // selectedProduct
+            //         draft._id = arg;
+            //     } ))
+            // }
         }),
         getAllProductCart : builder.query({
             query : () => '/cart/getAllProduct'

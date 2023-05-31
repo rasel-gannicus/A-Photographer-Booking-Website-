@@ -96,3 +96,9 @@
 .product-img-parent:hover .price{
     opacity: 0;
 }
+
+.added-button{
+    background: #ccc !important;
+    color: white !important;
+    cursor: no-drop !important;
+}
