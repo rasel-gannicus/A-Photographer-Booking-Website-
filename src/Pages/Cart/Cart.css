@@ -65,3 +65,12 @@
     font-weight: 600;
     font-size: 22px;
 }
+
+.third-half button{
+    padding: 5px 15px;
+    border: none;
+    background: darkred;
+    color: white;
+    font-weight: 500;
+    margin-bottom: 20px;
+}

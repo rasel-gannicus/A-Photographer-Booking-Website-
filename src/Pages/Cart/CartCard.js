@@ -3,12 +3,14 @@ import './Cart.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 
-const CartCard = () => {
+const CartCard = ({index}) => {
+    const{email, quantity, _id, product} = index  ;
+    const{_id:productOriginalId, catagory, price, img} = product
     return (
         <div className="cart-cards">
         <div className="first-half">
             <div className="first-half-img">
-                <img src="https://i.ibb.co/7kpLW1Y/street-11.jpg" alt="" />
+                <img src={img} alt="" />
             </div>
             {/* <div className="first-half-details">
                 <h2>Product Title</h2>
@@ -19,7 +21,7 @@ const CartCard = () => {
             <div className="amount-div">
                 <div className="amount-icon">
                     <span draggable><FontAwesomeIcon icon={faMinus} /></span>
-                    <p>5</p>
+                    <p>{quantity}</p>
                     <span draggable><FontAwesomeIcon icon={faPlus} /></span>
                 </div>
             </div>
@@ -27,9 +29,9 @@ const CartCard = () => {
                 <p>Total : $ 2500</p>
             </div>
         </div>
-        {/* <div className="third-half">
-            <button>Confirm Order</button>
-        </div> */}
+        <div className="third-half">
+            <button>Remove Item</button>
+        </div>
     </div>
     );
 };
