@@ -1,19 +1,31 @@
+
+
+.cart-div-parent{
+    display: flex;
+}
+
 .cart-div {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    /* border: 2px solid red; */
+    width: 90%;
+
 }
 
 .cart-cards {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     justify-content: space-between;
     align-items: center;
     /* border: 3px solid #2a2a2a; */
     border-radius: 5px;
-    padding: 8px;
+    padding: 8px 8px;
     background: rgba(35, 167, 223, 0.145);
-    max-width: 300px;
+    width: 500px;
+    /* margin-top: 30px; */
 }
 
 .cart-cards p {
@@ -22,7 +34,7 @@
 
 .first-half {
     display: flex;
-    gap: 20px;
+    /* gap: 20px; */
     justify-content: center;
     align-items: center;
     text-align: left;
@@ -36,19 +48,26 @@
     border: 4px solid #253745;
     padding: 7px;
     background: white;
+    max-width: 100px;
 }
 
 .first-half-img img {
     width: 100%;
 }
 
-
+.second-half{
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center !important;
+    align-items: center ;
+    gap: 20px ;
+}
 .amount-icon {
     display: flex;
-    margin: 30px 0;
+    /* width: 100%; */
     min-width: 150px;
-    background: #5761ED;
-    height: 40px;
+    /* background: #5761ED ; */
     color: white;
     justify-content: space-around;
     align-items: center;
@@ -57,16 +76,29 @@
 
 .amount-icon span {
     cursor: pointer;
+    background: #ccc;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+.amount-icon span:hover{
+    background: #253745;
 }
 
 .amount-icon p {
     font-weight: 500;
+    color: #253745;
+    font-weight: 600;
 }
 
 .total-price-div {
-    margin: 20px 0;
+    /* margin: 20px 0; */
     font-weight: 600;
-    font-size: 22px;
+    font-size: 18px;
 }
 
 .third-half button {
@@ -83,10 +115,13 @@
 --------------------------*/
 
 .sideCart-div {
-    position: fixed;
+    /* position: fixed;
     right: 1%;
     top: 60%;
-    transform: translateY(-60%);
+    transform: translateY(-60%); */
+    position: absolute;
+    right: 30px;
+
     background: #383735;
     min-width: 300px;
     min-height: 400px;
@@ -157,4 +192,22 @@
     /* color: white; */
     background: #F1C40F;
     font-weight: 600;
+    transition: all 0.2s;
+}
+.checkout-btn:hover{
+    background: white;
+}
+
+.third-half{
+    margin-right: 20px;
+    font-size: 25px;
+    color: #ccc;
+}
+
+.third-half:hover{
+    color: #383735;
+    cursor: pointer;
+}
+.third-half p{
+    font-size: 14px;
 }

@@ -40,8 +40,10 @@ const Cart = () => {
 
     }
     return (
-        <div className='cart-div'>
-            {content}
+        <div className="cart-div-parent">
+            <div className='cart-div'>
+                {content}
+            </div>
             <div className="sideCart-div">
                 <div className="order-summary">
                     <h2>Order Summary</h2>
