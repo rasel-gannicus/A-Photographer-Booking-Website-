@@ -8,22 +8,18 @@
     gap: 20px;
     justify-content: center;
     align-items: center;
-    /* border: 2px solid red; */
     width: 90%;
 
 }
 
 .cart-cards {
     display: flex;
-    /* flex-direction: column; */
     justify-content: space-between;
     align-items: center;
-    /* border: 3px solid #2a2a2a; */
     border-radius: 5px;
     padding: 8px 8px;
     background: rgba(35, 167, 223, 0.145);
     width: 500px;
-    /* margin-top: 30px; */
 }
 
 .cart-cards p {
@@ -64,9 +60,7 @@
 
 .amount-icon {
     display: flex;
-    /* width: 100%; */
     min-width: 150px;
-    /* background: #5761ED ; */
     color: white;
     justify-content: space-around;
     align-items: center;
@@ -96,7 +90,6 @@
 }
 
 .total-price-div {
-    /* margin: 20px 0; */
     font-weight: 600;
     font-size: 18px;
 }
@@ -110,18 +103,28 @@
     margin-bottom: 20px;
 }
 
+.third-half {
+    margin-right: 20px;
+    font-size: 25px;
+    color: #ccc;
+}
+
+.third-half:hover {
+    color: #383735;
+    cursor: pointer;
+}
+
+.third-half p {
+    font-size: 14px;
+}
+
 /* ------------------------
     side cart css
 --------------------------*/
 
 .sideCart-div {
-    /* position: fixed;
-    right: 1%;
-    top: 60%;
-    transform: translateY(-60%); */
     position: absolute;
     right: 30px;
-
     background: #383735;
     min-width: 300px;
     min-height: 400px;
@@ -138,7 +141,6 @@
     top: 50%;
     transform: translateY(-50%);
     right: 30px;
-
 }
 
 .sideCart-div p {
@@ -208,17 +210,238 @@
     background: white;
 }
 
-.third-half {
-    margin-right: 20px;
-    font-size: 25px;
-    color: #ccc;
+
+
+/*--------------------------------------------------------------------------
+For mobile:  
+---------------------------------------------------------------------------*/
+@media only screen and (max-width:480px) {
+    .cart-div-parent {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cart-div {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+    }
+
+    .cart-cards {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        padding: 8px 8px;
+        background: rgba(35, 167, 223, 0.145);
+        width: 100%;
+        row-gap: 30px;
+    }
+
+    .first-half-img {
+        border: 4px solid #253745;
+        padding: 7px;
+        background: white;
+        max-width: 100%;
+    }
+
+    .third-half {
+        margin-right: unset;
+        font-size: 35px;
+        color: #ccc;
+    }
+
+    .third-half:hover {
+        color: #383735;
+        cursor: pointer;
+    }
+
+    .third-half p {
+        font-size: 14px;
+    }
+
+    /* ------------------------
+    side cart css
+    --------------------------*/
+    .sideCart-div {
+        position: relative;
+        right: unset;
+        background: #383735;
+        min-width: 100%;
+        min-height: 400px;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+        padding: 10px 25px;
+        color: white;
+        z-index: 50;
+        margin: 30px 0;
+    }
+    .sideCart-div.sticky {
+        position: relative;
+        /* right: 1%; */
+        top:unset;
+        transform: unset;
+        right: unset;
+    }
 }
 
-.third-half:hover {
-    color: #383735;
-    cursor: pointer;
+/*--------------------------------------------------- 
+For ipads, tablet:  
+---------------------------------------------------*/
+@media only screen and (min-width:481px) and (max-width:768px) {
+    .cart-div-parent {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cart-div {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        width: 100%;    
+    }
+
+    .cart-cards {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 5px;
+        padding: 8px 8px;
+        background: rgba(35, 167, 223, 0.145);
+        width: 100%;
+    }
+
+    .first-half-img {
+        border: 4px solid #253745;
+        padding: 7px;
+        background: white;
+        max-width: 120px;
+    }
+
+    .third-half {
+        margin-right: unset;
+        font-size: 35px;
+        color: #ccc;
+    }
+
+    .third-half:hover {
+        color: #383735;
+        cursor: pointer;
+    }
+
+    .third-half p {
+        font-size: 14px;
+    }
+
+    /* ------------------------
+    side cart css
+    --------------------------*/
+    .sideCart-div {
+        position: relative;
+        right: unset;
+        background: #383735;
+        min-width: 100%;
+        min-height: 400px;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+        padding: 10px 25px;
+        color: white;
+        z-index: 50;
+        margin: 30px 0;
+    }
+    .sideCart-div.sticky {
+        position: relative;
+        /* right: 1%; */
+        top:unset;
+        transform: unset;
+        right: unset;
+    }
 }
 
-.third-half p {
-    font-size: 14px;
+/*-----------------------------------------
+ For Small screen, laptop:  
+-----------------------------------------*/
+@media only screen and (min-width:769px) and (max-width:1024px) {
+    .cart-div-parent {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cart-div {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        width: 100%;    
+    }
+
+    .cart-cards {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 5px;
+        padding: 8px 8px;
+        background: rgba(35, 167, 223, 0.145);
+        width: 100%;
+    }
+
+    .first-half-img {
+        border: 4px solid #253745;
+        padding: 7px;
+        background: white;
+        max-width: 120px;
+    }
+
+    .third-half {
+        margin-right: unset;
+        font-size: 35px;
+        color: #ccc;
+    }
+
+    .third-half:hover {
+        color: #383735;
+        cursor: pointer;
+    }
+
+    .third-half p {
+        font-size: 14px;
+    }
+
+    /* ------------------------
+    side cart css
+    --------------------------*/
+    .sideCart-div {
+        position: relative;
+        right: unset;
+        background: #383735;
+        width: 80%;
+        min-height: 400px;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+        padding: 10px 25px;
+        color: white;
+        z-index: 50;
+        margin: 30px 0;
+    }
+    .sideCart-div.sticky {
+        position: relative;
+        /* right: 1%; */
+        top:unset;
+        transform: unset;
+        right: unset;
+    }
 }
