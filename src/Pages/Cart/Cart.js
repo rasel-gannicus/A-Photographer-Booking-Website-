@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Cart.css'
 import CartCard from './CartCard';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -39,12 +39,43 @@ const Cart = () => {
         ></CartCard>)
 
     }
+
+    // --- sticky side cart menu
+    const [isSticky, setIsSticky] = useState(false);
+    function handleResize() {
+        if (window.innerWidth <= 481) {
+            setIsSticky(false);
+        }
+    }
+    function handleScroll() {
+        const divToStart = document.querySelector('.third-half');
+        // console.log(window.scrollY);
+        if (window.innerWidth > 481) {
+            if (window.scrollY > 220) {
+                // console.log('Triggered');
+                setIsSticky(true);
+            } else {
+                setIsSticky(false);
+            }
+        } else {
+            setIsSticky(false);
+        }
+    }
+    useEffect(() => {
+        handleResize();
+        handleScroll();
+
+        return () => {
+            window.addEventListener('resize', handleResize);
+            window.addEventListener('scroll', handleScroll);
+        }
+    }, [])
     return (
         <div className="cart-div-parent">
             <div className='cart-div'>
                 {content}
             </div>
-            <div className="sideCart-div">
+            <div className={`sideCart-div ${isSticky ? 'sticky' : ''}`}>
                 <div className="order-summary">
                     <h2>Order Summary</h2>
                     <div className="">

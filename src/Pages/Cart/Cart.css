@@ -1,6 +1,4 @@
-
-
-.cart-div-parent{
+.cart-div-parent {
     display: flex;
 }
 
@@ -55,14 +53,15 @@
     width: 100%;
 }
 
-.second-half{
+.second-half {
     /* border: 2px solid red; */
     display: flex;
     flex-direction: column;
     justify-content: center !important;
-    align-items: center ;
-    gap: 20px ;
+    align-items: center;
+    gap: 20px;
 }
+
 .amount-icon {
     display: flex;
     /* width: 100%; */
@@ -85,7 +84,8 @@
     border-radius: 50%;
     transition: all 0.2s;
 }
-.amount-icon span:hover{
+
+.amount-icon span:hover {
     background: #253745;
 }
 
@@ -132,6 +132,15 @@
     z-index: 50;
 }
 
+.sideCart-div.sticky {
+    position: fixed;
+    /* right: 1%; */
+    top: 50%;
+    transform: translateY(-50%);
+    right: 30px;
+
+}
+
 .sideCart-div p {
     margin-bottom: 10px;
 }
@@ -145,7 +154,7 @@
     display: flex;
     justify-content: space-between;
     margin-top: 25px;
-    color: #F1C40F ;
+    color: #F1C40F;
     font-size: 18px;
     font-weight: 500;
 }
@@ -173,7 +182,7 @@
 .total-div {
     font-size: 20px;
     font-weight: 600;
-    color: #F1C40F ;
+    color: #F1C40F;
 }
 
 .hr {
@@ -184,7 +193,7 @@
     width: 100%;
 }
 
-.checkout-btn{
+.checkout-btn {
     width: 100%;
     margin: 20px 0;
     border: none;
@@ -194,20 +203,22 @@
     font-weight: 600;
     transition: all 0.2s;
 }
-.checkout-btn:hover{
+
+.checkout-btn:hover {
     background: white;
 }
 
-.third-half{
+.third-half {
     margin-right: 20px;
     font-size: 25px;
     color: #ccc;
 }
 
-.third-half:hover{
+.third-half:hover {
     color: #383735;
     cursor: pointer;
 }
-.third-half p{
+
+.third-half p {
     font-size: 14px;
 }

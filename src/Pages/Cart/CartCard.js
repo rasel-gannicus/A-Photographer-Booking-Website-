@@ -3,6 +3,7 @@ import './Cart.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus, faDeleteLeft , faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useDeleteProductOfUserMutation } from '../../Redux/Features/product/productApi';
+import './CartCard.css';
 
 const CartCard = ({ index }) => {
     const { email, quantity, _id, product } = index;
