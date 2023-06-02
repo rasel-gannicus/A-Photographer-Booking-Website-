@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Cart.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus, faDeleteLeft , faTrash } from '@fortawesome/free-solid-svg-icons';
-import { useDeleteProductOfUserMutation } from '../../Redux/Features/product/productApi';
+import { useDeleteProductOfUserMutation, useUpdateCartMutation } from '../../Redux/Features/product/productApi';
 import './CartCard.css';
 
 const CartCard = ({ index }) => {
@@ -19,6 +19,7 @@ const CartCard = ({ index }) => {
     /* --------------------------------------------
         Calculation Part
     ---------------------------------------------*/
+    const[updateCart] = useUpdateCartMutation();
     const[quantity, setQuantity] = useState(1);
     const[totalPrice, setTotalPrice] = useState(price);
 
@@ -34,7 +35,11 @@ const CartCard = ({ index }) => {
         // console.log('Before: ',quantity);
         setQuantity(quantity + 1);
         calculateTotalPrice(quantity + 1);
-        // setTotalPrice( prevPrice => prevPrice + (quantity * prevPrice));
+        updateCart({
+            quantity : quantity + 1,
+            pricePerUnit : price,
+            email : email
+        })
     }
 
 

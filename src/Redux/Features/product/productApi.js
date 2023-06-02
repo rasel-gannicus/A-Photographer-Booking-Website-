@@ -28,32 +28,28 @@ export const productApi = apiSlice.injectEndpoints({
                 body: { data }
             }),
             async onQueryStarted(arg, { queryFulfilled, dispatch }) {
-
-
-
                 try {
                     const response = await queryFulfilled;
                     const pathResult = await dispatch(apiSlice.util.updateQueryData('getUserAllProduct', arg.email, (draft) => {
                         const newData = {...arg, _id:response.data.insertedId}
                         draft.push(newData);
                     }))
-                    // console.log(response);
                 } catch (err) {
                     console.log(err);
 
                 }
             }
         }),
-        getAllProductCart: builder.query({
-            query: () => '/cart/getAllProduct'
-        }),
+        // getAllProductCart: builder.query({
+        //     query: () => '/cart/getAllProduct'
+        // }),
 
         /* // --- this query is for avoiding adding multiple product at 'Shop' page. It will check if the product that has been selected by user is already in his cart */
         gettingSingleProductFromCart: builder.query({
             query: ({ email, id }) => `/cart/singleProduct?email=${email}&id=${id}`
         }),
 
-        // --- Getting all the cart product for individual user
+        // --- Getting all the cart product for Every user
         getUserAllProduct: builder.query({
             query: (email) => `/cart/user/${email}`
         }),
@@ -81,12 +77,20 @@ export const productApi = apiSlice.injectEndpoints({
                     pathResult.undo();
                 }
             }
-        })
+        }),
 
+        // --- update a product cart
+        updateCart : builder.mutation({
+            query : (data)=>({
+                url : '/cart/update',
+                method : 'PATCH',
+                body : data
+            })
+        })
 
     })
 })
 
 
 
-export const { useGetAllProductQuery, useGetProductByCatagoryQuery, useGetProductByCatagoryMutation, useAddProductToCartMutation, useGetAllProductCartQuery, useGettingSingleProductFromCartQuery, useGetUserAllProductQuery, useDeleteProductOfUserMutation } = productApi; 
+export const { useGetAllProductQuery, useGetProductByCatagoryQuery, useGetProductByCatagoryMutation, useAddProductToCartMutation, useGetAllProductCartQuery, useGettingSingleProductFromCartQuery, useGetUserAllProductQuery, useDeleteProductOfUserMutation, useUpdateCartMutation } = productApi; 
