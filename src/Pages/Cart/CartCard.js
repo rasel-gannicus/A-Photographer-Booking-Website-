@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Cart.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus, faDeleteLeft , faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -6,8 +6,8 @@ import { useDeleteProductOfUserMutation } from '../../Redux/Features/product/pro
 import './CartCard.css';
 
 const CartCard = ({ index }) => {
-    const { email, quantity, _id, product } = index;
-    const { _id: productOriginalId, catagory, price, img } = product;
+    const { email, _id, product , quantity:qty } = index;
+    const { _id: productOriginalId, catagory, price, img} = product;
 
     // --- delete a product
     const [deleteProduct, { data, isLoading, isError, isSuccess }] = useDeleteProductOfUserMutation();
@@ -15,6 +15,37 @@ const CartCard = ({ index }) => {
     const handleDelete = () => {
         deleteProduct({ email, id: _id });
     }
+
+    /* --------------------------------------------
+        Calculation Part
+    ---------------------------------------------*/
+    const[quantity, setQuantity] = useState(1);
+    const[totalPrice, setTotalPrice] = useState(price);
+
+
+    const calculateTotalPrice = (quantity) => {
+        const subTotal = quantity * price ; 
+        const total = subTotal ; 
+        setTotalPrice(subTotal);
+        console.log('Total : ', total);
+    }
+
+    const handleIncrease = () => {
+        // console.log('Before: ',quantity);
+        setQuantity(quantity + 1);
+        calculateTotalPrice(quantity + 1);
+        // setTotalPrice( prevPrice => prevPrice + (quantity * prevPrice));
+    }
+
+
+
+    const handleDecrease = () => {
+        if(quantity > 1){
+            setQuantity(quantity - 1);
+            calculateTotalPrice(quantity - 1);
+        }
+    }
+    
     return (
         <div className="cart-cards">
             <div className="first-half">
@@ -25,16 +56,16 @@ const CartCard = ({ index }) => {
             <div className="second-half">
                 <div className="amount-div">
                     <div className="amount-icon">
-                        <span draggable><FontAwesomeIcon icon={faMinus} /></span>
+                        <span onClick={handleDecrease} draggable><FontAwesomeIcon icon={faMinus} /></span>
                         <p>{quantity}</p>
-                        <span draggable><FontAwesomeIcon icon={faPlus} /></span>
+                        <span onClick={handleIncrease} draggable><FontAwesomeIcon icon={faPlus} /></span>
                     </div>
                 </div>
                 <div className="total-price-div">
-                    <p>Total : $ 2500</p>
+                    <p>Total : $ {totalPrice}</p>
                 </div>
             </div>
-            <div className="third-half">
+            <div className="third-half" draggable  onClick={handleDelete}>
                 {/* <button onClick={handleDelete}>Remove Item</button> */}
                 <FontAwesomeIcon icon={faTrash} />
                 <p>Delete</p>

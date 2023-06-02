@@ -1,12 +1,13 @@
 .cart-div-parent {
     display: flex;
+    min-height: 100vh;
 }
 
 .cart-div {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     width: 90%;
 
