@@ -86,11 +86,15 @@ export const productApi = apiSlice.injectEndpoints({
                 method : 'PATCH',
                 body : data
             }),
-            async onQueryStarted(arg, { queryFulfilled, dispatch }) {                
 
+            async onQueryStarted(arg, { queryFulfilled, dispatch }) {    
+                console.log(arg);            
+                const pathResult = await dispatch(apiSlice.util.updateQueryData('getUserAllProduct', arg.email, (draft)=>{
+                    const selectedProduct = draft.find(index => index._id === arg.id);
+                    selectedProduct.quantity = arg.quantity;
+                }))
                 try {
                     const response = await queryFulfilled;
-                    console.log('Response : ', response);
                 } catch (err) {
                     console.log(err);
                     // pathResult.undo();

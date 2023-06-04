@@ -1,7 +1,28 @@
 import React, { useEffect, useState } from 'react';
+import { useGetUserAllProductQuery } from '../../Redux/Features/product/productApi';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../Utilities/firebase.init';
 
 const OrderSummaryCard = () => {
 
+    // --- getting user Information from Firebase
+    const [user] = useAuthState(auth);
+
+    // --- Getting all the cart product for individual user
+    const { data, isLoading, isError, error } = useGetUserAllProductQuery(user?.email);
+    // console.log(data);
+
+    // ---- calculation for cart
+    let totalItems = 0 ;
+    let totalPrice = 0 ;
+    let allTotalPrice = 0;
+    if(data?.length > 0){
+        for(let element of data){
+            totalItems = totalItems + element.quantity ;
+            totalPrice = element.quantity * element.product.price;
+            allTotalPrice = allTotalPrice + totalPrice ; 
+        }
+    }
 
     // --- sticky side cart menu
     const [isSticky, setIsSticky] = useState(false);
@@ -38,8 +59,8 @@ const OrderSummaryCard = () => {
             <div className="order-summary">
                 <h2>Order Summary</h2>
                 <div className="">
-                    <span>9 items</span>
-                    <p>$ 500.98</p>
+                    <span>{totalItems} items</span>
+                    <p>$ {allTotalPrice}</p>
                 </div>
                 <hr />
             </div>

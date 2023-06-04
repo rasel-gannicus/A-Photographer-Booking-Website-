@@ -20,7 +20,7 @@ const CartCard = ({ index }) => {
     /* --------------------------------------------
         Calculation Part
     ---------------------------------------------*/
-    const[updateCart] = useUpdateCartMutation();
+    // const[updateCart] = useUpdateCartMutation();
     const[quantity, setQuantity] = useState(qty);
     const[totalPrice, setTotalPrice] = useState( index.subTotal || price);
 
@@ -36,12 +36,12 @@ const CartCard = ({ index }) => {
         // console.log('Before: ',quantity);
         setQuantity(quantity + 1);
         calculateTotalPrice(quantity + 1);
-        updateCart({
-            quantity : quantity + 1,
-            pricePerUnit : price,
-            email : email,
-            id : _id
-        })
+        // updateCart({
+        //     quantity : quantity + 1,
+        //     pricePerUnit : price,
+        //     email : email,
+        //     id : _id
+        // })
     }
 
 
