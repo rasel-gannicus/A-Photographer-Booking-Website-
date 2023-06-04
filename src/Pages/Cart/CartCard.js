@@ -8,6 +8,7 @@ import './CartCard.css';
 const CartCard = ({ index }) => {
     const { email, _id, product , quantity:qty } = index;
     const { _id: productOriginalId, catagory, price, img} = product;
+    // console.log(index);
 
     // --- delete a product
     const [deleteProduct, { data, isLoading, isError, isSuccess }] = useDeleteProductOfUserMutation();
@@ -20,15 +21,15 @@ const CartCard = ({ index }) => {
         Calculation Part
     ---------------------------------------------*/
     const[updateCart] = useUpdateCartMutation();
-    const[quantity, setQuantity] = useState(1);
-    const[totalPrice, setTotalPrice] = useState(price);
+    const[quantity, setQuantity] = useState(qty);
+    const[totalPrice, setTotalPrice] = useState( index.subTotal || price);
 
 
     const calculateTotalPrice = (quantity) => {
         const subTotal = quantity * price ; 
         const total = subTotal ; 
         setTotalPrice(subTotal);
-        console.log('Total : ', total);
+        // console.log('Total : ', total);
     }
 
     const handleIncrease = () => {
@@ -38,7 +39,8 @@ const CartCard = ({ index }) => {
         updateCart({
             quantity : quantity + 1,
             pricePerUnit : price,
-            email : email
+            email : email,
+            id : _id
         })
     }
 

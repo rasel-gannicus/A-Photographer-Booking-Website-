@@ -85,7 +85,18 @@ export const productApi = apiSlice.injectEndpoints({
                 url : '/cart/update',
                 method : 'PATCH',
                 body : data
-            })
+            }),
+            async onQueryStarted(arg, { queryFulfilled, dispatch }) {                
+
+                try {
+                    const response = await queryFulfilled;
+                    console.log('Response : ', response);
+                } catch (err) {
+                    console.log(err);
+                    // pathResult.undo();
+                }
+            }
+
         })
 
     })
