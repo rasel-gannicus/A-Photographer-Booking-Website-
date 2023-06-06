@@ -97,7 +97,7 @@ export const productApi = apiSlice.injectEndpoints({
                     const response = await queryFulfilled;
                 } catch (err) {
                     console.log(err);
-                    // pathResult.undo();
+                    pathResult.undo();
                 }
             }
 
