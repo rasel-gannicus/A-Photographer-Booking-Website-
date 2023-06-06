@@ -25,6 +25,9 @@ export const productApi = apiSlice.injectEndpoints({
             query: (data) => ({
                 url: '/cart/addProduct',
                 method: 'POST',
+                headers : {
+                    authorization : `Bearer ${localStorage.getItem('token')}`
+                },
                 body: { data }
             }),
             async onQueryStarted(arg, { queryFulfilled, dispatch }) {
@@ -40,9 +43,6 @@ export const productApi = apiSlice.injectEndpoints({
                 }
             }
         }),
-        // getAllProductCart: builder.query({
-        //     query: () => '/cart/getAllProduct'
-        // }),
 
         /* // --- this query is for avoiding adding multiple product at 'Shop' page. It will check if the product that has been selected by user is already in his cart */
         gettingSingleProductFromCart: builder.query({
@@ -51,13 +51,21 @@ export const productApi = apiSlice.injectEndpoints({
 
         // --- Getting all the cart product for Every user
         getUserAllProduct: builder.query({
-            query: (email) => `/cart/user/${email}`
+            query: (email) => ({
+                url :`/cart/user/${email}`,
+                headers : {
+                    authorization : `Bearer ${localStorage.getItem('token')}`
+                },
+            })
         }),
 
         // --- delete a product for a user
         deleteProductOfUser: builder.mutation({
             query: ({ email, id }) => ({
                 url: `/cart/user/delete?email=${email}&id=${id}`,
+                headers : {
+                    authorization : `Bearer ${localStorage.getItem('token')}`
+                },
                 method: 'DELETE'
             }),
             async onQueryStarted(arg, { queryFulfilled, dispatch }) {

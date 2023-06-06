@@ -4,6 +4,7 @@ import { useAddServiceToDbMutation, useGetServiceCartQuery } from '../../../../R
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../../Utilities/firebase.init';
 import { toast } from 'react-toastify';
+import { errorMessage } from '../../../../Utilities/popupMsg';
 
 const WeddingPackages = (props) => {
     const { id, packageCatagory, packageCatagoryName, cameraMan, duration, thumbImg, price } = props.index;
@@ -37,6 +38,7 @@ const WeddingPackages = (props) => {
         }
         else if (!isLoading && isError) {
             console.log('Error happened: ', error);
+            errorMessage(error?.data?.message)
             setButtonText('Add to Booking');
         }
         else if (data) {

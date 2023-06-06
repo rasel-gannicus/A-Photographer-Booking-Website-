@@ -7,6 +7,9 @@ export const serviceApi = apiSlice.injectEndpoints({
             query: (data) => ({
                 url: '/services/add',
                 method: 'PUT',
+                headers : {
+                    authorization : `Bearer ${localStorage.getItem('token')}`
+                },
                 body: data
             }),
             async onQueryStarted(arg, { queryFulfilled, dispatch }) {
@@ -23,6 +26,9 @@ export const serviceApi = apiSlice.injectEndpoints({
             query: (data) => ({
                 url: '/services/update',
                 method: 'PATCH',
+                headers : {
+                    authorization : `Bearer ${localStorage.getItem('token')}`
+                },
                 body: data
             }),
             async onQueryStarted(arg, { queryFulfilled, dispatch }) {
@@ -46,7 +52,12 @@ export const serviceApi = apiSlice.injectEndpoints({
 
         // --- get how much bookings each user have in their cart
         getServiceCart: builder.query({
-            query: (email) => `/cart/services/${email}`
+            query: (email) => ({
+                url : `/cart/services/${email}`,
+                headers : {
+                    authorization : `Bearer ${localStorage.getItem('token')}`
+                },
+            })
         }),
 
         // --- get all confirmed bookings to avoid multiple booking from different user
@@ -58,6 +69,9 @@ export const serviceApi = apiSlice.injectEndpoints({
             query: (data) => ({
                 url: `/cart/service/delete`,
                 method: 'DELETE',
+                headers : {
+                    authorization : `Bearer ${localStorage.getItem('token')}`
+                },
                 body: data
             }),
             async onQueryStarted(arg, { queryFulfilled, dispatch }) {
