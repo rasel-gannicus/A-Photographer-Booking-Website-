@@ -14,7 +14,7 @@ function App() {
   useEffect(() => {
     if (user) {
       const currentUser = {email : user.email};
-      fetch('http://localhost:2300/jwt',{
+      fetch(`${process.env.REACT_APP_API_URL}/jwt`,{
         method : 'POST',
         headers : {
           'content-type' : 'application/json'
