@@ -103,7 +103,6 @@ const BookingsCard = ({ index }) => {
     const handleUpdate = (id) => {
         let selectedDateId = document.getElementById(`${id}`);
         let selectedDate = selectedDateId.value;
-        console.log(time);
         if (!selectedDate) {
             errMsg('Please Select Date First !')
         } else if (!time) {
@@ -121,28 +120,26 @@ const BookingsCard = ({ index }) => {
 
     // --- deciding what to show in UI while updating data
     if (updateLoading && !updateIsError) {
-        // console.log('Updating...');
     }
     else if (!updateLoading && updateIsError) {
-        console.log('Error happened: ', updateError);
         errMsg(updateError.error);
     }
     useEffect(() => {
         if (updatedData) {
+            console.log(updatedData);
             if (updatedData.acknowledged) {
                 successMsg('Your Booking Has been Confirmed !');
                 refetch();
             }
         }
-    }, [updatedData, refetch, alreadyBooked, deleteAservice, data]);
+    }, [updatedData, refetch]);
 
 
     // --- checking out if there is already booking in the same day by another user. If another user already confirmed a 'booking' at a certain time, the current user cannot make a new booking at that time. 
     useEffect(() => {
         if (date !== '') {
-            // console.log(date);
             const matchedDate = alreadyBooked?.filter(index => index.date === date);
-            console.log(matchedDate);
+            
             if (matchedDate) {
                 for (let i = 0; i < matchedDate.length; i++) {
                     if (matchedDate[i].time === 'Afternoon') {
@@ -156,7 +153,6 @@ const BookingsCard = ({ index }) => {
                     }
                 }
                 return;
-                // console.log(matchedDate);
             }
         }
     }, [date, afternoon, morning, night, alreadyBooked, refetch, updatedData, deleteAservice, data, isLoading, isSuccess])

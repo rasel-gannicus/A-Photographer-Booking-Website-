@@ -33,7 +33,6 @@ export const serviceApi = apiSlice.injectEndpoints({
             }),
             async onQueryStarted(arg, { queryFulfilled, dispatch }) {
                 // --- pessimistic update
-                console.log(arg)
                 try {
                     const res = await queryFulfilled;
                     if (res?.data?.modifiedCount > 0) {
