@@ -44,8 +44,6 @@ const CartCard = ({ index }) => {
         })
     }
 
-
-
     const handleDecrease = () => {
         if(quantity > 1){
             setQuantity(quantity - 1);

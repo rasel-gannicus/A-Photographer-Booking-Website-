@@ -164,7 +164,7 @@
 
 .shipping-method {
     text-align: left;
-    margin: 25px 0;
+    margin: 25px 0 0 0;
 }
 
 .shipping-method select,
@@ -445,4 +445,12 @@ For ipads, tablet:
         transform: unset;
         right: unset;
     }
+}
+
+.coupon-text{
+    text-align: center;
+    margin-bottom: 0;
+    margin-top: 15px;
+    color: #00C279;
+    font-weight: 600;
 }

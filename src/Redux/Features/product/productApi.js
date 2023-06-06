@@ -87,8 +87,7 @@ export const productApi = apiSlice.injectEndpoints({
                 body : data
             }),
 
-            async onQueryStarted(arg, { queryFulfilled, dispatch }) {    
-                console.log(arg);            
+            async onQueryStarted(arg, { queryFulfilled, dispatch }) {                
                 const pathResult = await dispatch(apiSlice.util.updateQueryData('getUserAllProduct', arg.email, (draft)=>{
                     const selectedProduct = draft.find(index => index._id === arg.id);
                     selectedProduct.quantity = arg.quantity;
