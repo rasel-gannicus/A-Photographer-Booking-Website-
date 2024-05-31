@@ -10,6 +10,7 @@ import { Modal } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { hideModal } from './Redux/Features/modal/modalSlice';
 import Modals from './Utilities/Modal/Modal';
+import Modals2 from './Utilities/Modal/Modals2';
 function App() {
   // --- getting user info from firebase auth
   const [user] = useAuthState(auth);
@@ -41,8 +42,9 @@ function App() {
       <RouterProvider router={Routes} ></RouterProvider>
       <ToastContainer />
       {/* <Modal show={modalStatus} onHide={()=>dispatch(hideModal())} /> */}
-      <Modals />
+      {/* <Modals /> */}
 
+      <Modals2 />
       {/* <Modal show={modalStatus} onHide={()=>dispatch(hideModal())} >
         <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>

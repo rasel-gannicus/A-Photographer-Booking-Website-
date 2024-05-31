@@ -19,8 +19,8 @@ const ShopProuduct = (props) => {
   // console.log(modalStatus);
   const dispatch = useDispatch();
 
-  const openModal = () => {
-    dispatch(activeModal());
+  const openModal = (productId) => {
+    dispatch(activeModal({productId}));
   };
 
   // --- getting user Information from Firebase
@@ -87,7 +87,7 @@ const ShopProuduct = (props) => {
   }, [refetch, addedData]);
 
   return (
-    <div className="">
+    <div className="" >
       <div className="product-img-parent">
         <div className="product-img">
           <img src={img} alt="" />
@@ -108,7 +108,7 @@ const ShopProuduct = (props) => {
           </button>
         </div>
         <div className="product-second-div">
-          <button onClick={openModal}>View Details</button>
+          <button onClick={() => openModal(_id)}>View Details</button>
         </div>
         <div className="price">
           <p>$ {price} </p>
