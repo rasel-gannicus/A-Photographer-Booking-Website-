@@ -11,17 +11,17 @@ const StreetShowcase = () => {
             </div>
             <div className="col-6">
                 <div className="">
-                    <img src="https://i.ibb.co/jDcRDXD/kieran-sheehan-Jyky-UNl-Apw8-unsplash-1.jpg" alt="" />
+                    <img src="https://i.ibb.co/PYxP8hz/project-5.jpg" alt="" />
                 </div>
             </div>
             <div className="col-6">
                 <div className="">
-                    <img src="https://i.ibb.co/zZ3Z90N/devon-beard-9-O7154vyf-ME-unsplash-1.jpg" alt="" />
+                    <img src="https://i.ibb.co/Lk9bTrv/nathan-dumlao-1qsbpl-LDUa8-unsplash-1.jpg" alt="" />
                 </div>
             </div>
             <div className="col-6">
                 <div className="">
-                    <img src="https://i.ibb.co/JBsJ8LY/rafael-santiago-AEFYLtx-Uon-M-unsplash-1.jpg" alt="" />
+                    <img src="https://i.ibb.co/J7SwHZd/kevin-martin-jose-CRKe-Bz7-M73s-unsplash-1.jpg" alt="" />
                 </div>
             </div>
         </div>

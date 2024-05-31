@@ -2,10 +2,11 @@
 .wedding-card{
     background: white;
     width: 300px;
-    height: 480px;
+    min-height: 480px;
     border-radius: 5px;
     position: relative;
     overflow: hidden;
+    padding-bottom: 40px;
 }
 .wedding-card-upper{
     height: 40%;
@@ -18,7 +19,7 @@
     height: 60%;
 }
 .wedding-card-desc{
-    margin-top: 75px;
+    margin-top: 85px;
 }
 
 .wedding-card-icon{
@@ -50,12 +51,14 @@
 .wedding-card-desc h4{
     font-weight: 700;
     margin: 0;
+    font-size: 1.3em;
 }
 .package-main-feature{
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 15px;
+    margin-bottom: 30px;
     column-gap: 25px;
 }
 .package-main-feature p:first-child{
@@ -64,9 +67,15 @@
     font-weight: 700;
     font-size: 22px;
 }
+.package-main-feature p:last-child{
+    margin: 0;
+    font-weight: 500;
+    font-size: 16px;
+}
+
 
 /* Book now button */
-.book-button, .book-button2{
+.book-button{
     width: 70%;
     margin: 10px auto;
     padding: 10px 0;
@@ -80,11 +89,6 @@
     color: #253745;
     margin-top: 25px;
     cursor: pointer;
-}
-
-.book-button2{
-    background: #ccc;
-    cursor: no-drop;
 }
 
 .book-button:hover{

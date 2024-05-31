@@ -6,22 +6,22 @@ const WildlifeShowcase = () => {
         <div className='row g-4 protrait-showCase  mx-auto h-100'>
             <div className="col-6">
                 <div className="">
-                    <img src="https://i.ibb.co/6gJkch7/alexander-andrews-m-Ed-Ku-PYJe1-I-unsplash-1.jpg" alt="" />
+                    <img src="https://i.ibb.co/0BWG3Ff/joey-h-Pwdajn-K3-M4-unsplash.jpg" alt="" />
                 </div>
             </div>
             <div className="col-6">
                 <div className="">
-                    <img src="https://i.ibb.co/Z8PV2W9/matthew-spiteri-Wf-Z4-WCu-Ntlg-unsplash-1.jpg" alt="" />
+                    <img src="https://i.ibb.co/kh0SSQL/daniel-lincoln-IE2-Z11z-Ksso-unsplash-1.jpg" alt="" />
                 </div>
             </div>
             <div className="col-6">
                 <div className="">
-                    <img src="https://i.ibb.co/cwqVQ9S/tim-umphreys-Uop-R2-NUBYek-unsplash-1.jpg" alt="" />
+                    <img src="https://i.ibb.co/N38TjgJ/marta-rastovac-jn-PZc-Zk9-x-U-unsplash-1.jpg" alt="" />
                 </div>
             </div>
             <div className="col-6">
                 <div className="">
-                    <img src="https://i.ibb.co/ZVCfDMM/geran-de-klerk-N9s3-Fjzsst-M-unsplash-1.jpg" alt="" />
+                    <img src="https://i.ibb.co/kq9kC8C/artem-beliaikin-8-As-Kha7a-Ivk-unsplash-1.jpg" alt="" />
                 </div>
             </div>
         </div>
