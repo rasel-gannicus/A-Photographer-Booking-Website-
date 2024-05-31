@@ -102,3 +102,26 @@
     color: white !important;
     cursor: no-drop !important;
 }
+
+.product-footer-div{
+    display: flex;
+    width: 300px;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 20px;
+    border: 3px solid #253745 ;
+    padding: 15px 0;
+    margin-left: auto;
+    margin-right: auto;
+    background: white;
+    border-radius: 5px;
+}
+
+.product-footer-div button{
+    border: none;
+    padding: 5px 10px;
+    font-size: 16px;
+    font-weight: 500;
+    background: #253745;
+    color: white;
+}
