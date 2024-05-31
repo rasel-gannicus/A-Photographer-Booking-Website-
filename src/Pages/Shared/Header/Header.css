@@ -6,6 +6,7 @@ css codes for navbar/header
 .header-div{
     padding: 20px 10px;
     position: relative;
+    background: #EDF1FD !important; 
 }
 .header-div a{
     text-decoration: none;

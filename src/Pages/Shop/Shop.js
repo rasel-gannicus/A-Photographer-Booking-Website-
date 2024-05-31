@@ -47,7 +47,7 @@ const Shop = (props) => {
         showByCategory(categories, currentPage, contentPerPage);
     },[categories, currentPage, contentPerPage])
 
-    // --- the previous code i wrote here was more than 180+ lines. which i just made  25 lines with more efficient way. The beauty of coding ! The beauty of more learning !
+    // --- the previous code i wrote here was more than 180+ lines. which i just made  25 lines with more efficient way. 
 
     return (
         <div>
@@ -67,7 +67,7 @@ const Shop = (props) => {
             {/* <p className="spinners hideMe"><Spinner animation="border" variant="primary" /></p> */}
 
             <h2 className='mt-5'>Showing <span className='product-title'>All</span> Product </h2>
-            <span  className='small-text'><small>(Hover on the Pic to see 'Cart' & 'Wishlist' Button)</small></span>
+            <span  className='small-text'><small>(Hover on the Pic to see 'Cart' & 'Details' Button)</small></span>
 
             {/* -------------- Show product by catagory ------------ */}
             {content}          

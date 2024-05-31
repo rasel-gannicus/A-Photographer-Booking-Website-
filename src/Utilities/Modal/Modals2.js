@@ -30,14 +30,14 @@ const Modals2 = () => {
   if (isLoading && !isError) {
     content = (
       <div className="loader-in-middle2  mt-5">
-        <ClipLoader color="black" size={70} />
+        <ClipLoader color="black" size={40} />
       </div>
     );
   }
 
   // --- when there is a error happened while fetching-data
   if (!isLoading && isError) {
-    console.log(error);
+    // console.log(error);
     content = <div className="error-text">{error?.error}</div>;
   }
 
