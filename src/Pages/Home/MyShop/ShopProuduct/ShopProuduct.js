@@ -8,10 +8,20 @@ import {
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../../Utilities/firebase.init";
 import { errorMessage, successMessage } from "../../../../Utilities/popupMsg";
+import { useDispatch, useSelector } from "react-redux";
+import { activeModal } from "../../../../Redux/Features/modal/modalSlice";
 
 const ShopProuduct = (props) => {
   const { img, catagory, price, _id } = props.index;
 
+  // --- activating modal with redux
+  const modalStatus = useSelector((state) => state.modal.modalShow);
+  // console.log(modalStatus);
+  const dispatch = useDispatch();
+
+  const openModal = () => {
+    dispatch(activeModal());
+  };
 
   // --- getting user Information from Firebase
   const [user] = useAuthState(auth);
@@ -28,8 +38,6 @@ const ShopProuduct = (props) => {
     { email: user?.email, id: _id },
     { skip: !user?.email }
   ); //--- this query will not be triggered until user is logged in
-
-
 
   // --- adding product to users cart and database
   const [
@@ -100,7 +108,7 @@ const ShopProuduct = (props) => {
           </button>
         </div>
         <div className="product-second-div">
-          <button>View Details</button>
+          <button onClick={openModal}>View Details</button>
         </div>
         <div className="price">
           <p>$ {price} </p>

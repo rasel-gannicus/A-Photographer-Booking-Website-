@@ -6,9 +6,18 @@ import CartPopup from './Utilities/CartPopup/CartPopup';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from './Utilities/firebase.init';
 import { useEffect } from 'react';
+import { Modal } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { hideModal } from './Redux/Features/modal/modalSlice';
+import Modals from './Utilities/Modal/Modal';
 function App() {
   // --- getting user info from firebase auth
   const [user] = useAuthState(auth);
+
+  const modalStatus = useSelector(state => state.modal.modalShow);
+  // console.log(modalStatus);
+
+  const dispatch = useDispatch();
 
   // --- verifying with jwt token
   useEffect(() => {
@@ -29,8 +38,25 @@ function App() {
   }, [user])
   return (
     <div className='App'>
-      <RouterProvider router={Routes}></RouterProvider>
+      <RouterProvider router={Routes} ></RouterProvider>
       <ToastContainer />
+      {/* <Modal show={modalStatus} onHide={()=>dispatch(hideModal())} /> */}
+      <Modals />
+
+      {/* <Modal show={modalStatus} onHide={()=>dispatch(hideModal())} >
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+        <Modal.Footer>
+          <button variant="secondary" onClick={()=>dispatch(hideModal())}>
+            Close
+          </button>
+          <button variant="primary" onClick={()=>dispatch(hideModal())}>
+            Save Changes
+          </button>
+        </Modal.Footer>
+      </Modal> */}
     </div>
   );
 }
