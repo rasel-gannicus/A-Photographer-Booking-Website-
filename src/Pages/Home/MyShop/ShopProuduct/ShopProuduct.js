@@ -46,8 +46,8 @@ const ShopProuduct = (props) => {
         // console.log('Loading...')
     }
     if (!addingLoading && addingIsError) {
-        console.log(addingError.error);
-        errorMessage(addingError.error);
+        console.log(addingError);
+        errorMessage(addingError.data.message);
     }
     useEffect(() => {
         if (addedData) {
