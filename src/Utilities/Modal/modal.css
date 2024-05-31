@@ -1,125 +1,150 @@
-
-.modals-2{
-    display: none;
-    z-index: 99999;
+.modals-2 {
+  display: none;
+  z-index: 99999;
 }
-.modals-2 button{
-    transition: all 0.4s ease;
+.modals-2 button {
+  transition: all 0.4s ease;
 }
-.modals-2.active{
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.582);
-    /* z-index: 99999; */
-}
-
-.modals-2-body{
-    background: white;
-    min-width: 300px;
-    max-width: 90%;
-    min-height: 300px;
-    border-radius: 10px;
-    z-index: 99999;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.modals-2.active {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.582);
+  /* z-index: 99999; */
 }
 
-.modals-2-title{
-    position: relative;
-    border-bottom: 2px solid gainsboro;
-    padding: 35px 50px 10px 50px ;
-}
-.modals-2-title button{
-    position: absolute;
-    top:   -12px;
-    right: -12px;
-    border-radius: 50%;
-    width:  40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 700;
-    background: #292929;
-    border: 2px solid #292929;
-    color: white;
-}
-.modals-2-title button:hover{
-    background: white;
-    color: black;
+.modals-2-body {
+  background: white;
+  min-width: 300px;
+  max-width: 90%;
+  min-height: 300px;
+  border-radius: 10px;
+  z-index: 99999;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow-y: scroll auto;
 }
 
+.modals-2-title {
+  position: relative;
+  border-bottom: 2px solid gainsboro;
+  padding: 35px 50px 10px 50px;
+}
+.modals-2-title button {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  background: #292929;
+  border: 2px solid #292929;
+  color: white;
+}
+.modals-2-title button:hover {
+  background: white;
+  color: black;
+}
 
-
-.modals-2-innerBody{
-    display: flex;
-    padding: 25px 25px 20px 25px;
-    column-gap: 20px;
-    border-bottom: 2px solid gainsboro;
-    margin-bottom: 50px;
+.modals-2-innerBody {
+  display: flex;
+  padding: 25px 25px 20px 25px;
+  column-gap: 20px;
+  border-bottom: 2px solid gainsboro;
+  margin-bottom: 50px;
 }
 .modals-2-innerBody img {
-    max-width: 300px;
+  max-width: 300px;
 }
 
-.modal-right-side div{
+.modal-right-side div {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  flex-direction: column;
+  row-gap: 0;
+}
+.modal-right-side div p:first-child {
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: gray;
+}
+.modal-right-side div p:last-child {
+  font-weight: 700;
+  font-size: 18px;
+  text-transform: capitalize;
+}
+
+.modal-button-section {
+  display: flex !important;
+  flex-direction: row !important;
+  column-gap: 10px;
+}
+
+.modal-button-section button:first-child {
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 15px;
+  border: 2px solid #292929;
+  background: #292929;
+  color: white;
+}
+.modal-button-section button:last-child {
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 15px;
+  border: 2px solid crimson;
+  background: crimson;
+  color: white;
+}
+
+.modal-button-section button:first-child:hover {
+  background: white;
+  color: black;
+  border: 2px solid black;
+}
+
+.modal-button-section button:last-child:hover {
+  background: white;
+  color: crimson;
+}
+
+/*--------------------------------------------------------------------------
+For mobile:  
+---------------------------------------------------------------------------*/
+@media only screen and (max-width: 820px) {
+    .product-img-parent{
+        width: 265px;
+        height: 300px;
+        margin: auto;
+    }
+  .modals-2-innerBody {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    padding: 25px 25px 20px 25px;
+    column-gap: 0px;
+    row-gap: 30px;
+    border-bottom: 2px solid gainsboro;
+    margin-bottom: 50px;
+  }
+
+  .modal-right-side div{
+    display: flex;
+    justify-content: space-evenly;
     align-items: start;
     flex-direction: column;
     row-gap: 0;
 }
-.modal-right-side div p:first-child{
-    font-weight: 500;
-    font-size: 16px;
-    margin-bottom: 10px;
-    color : gray
-}
-.modal-right-side div p:last-child{
-    font-weight: 700;
-    font-size: 18px;
-    text-transform: capitalize;
-}
-
-.modal-button-section{
-    display: flex !important;
-    flex-direction: row !important;
-    column-gap: 10px;
-}
-
-
-.modal-button-section button:first-child {
-    border: none;
-    font-size: 16px;
-    font-weight: 500;
-    padding: 15px;
-    border: 2px solid #292929;
-    background: #292929;
-    color: white;
-}
-.modal-button-section button:last-child {
-    border: none;
-    font-size: 16px;
-    font-weight: 500;
-    padding: 15px;
-    border: 2px solid crimson;
-    background: crimson;
-    color: white;
-}
-
-.modal-button-section button:first-child:hover {
-    background: white;
-    color: black;
-    border: 2px solid black;
-}
-
-.modal-button-section button:last-child:hover {
-    background: white;
-    color: crimson;
 }
