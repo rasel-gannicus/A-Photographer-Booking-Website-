@@ -15,8 +15,13 @@ css codes for banner
     justify-content: center;
     align-items: center;
 }
+.banner-left p:first-child{
+    font-size: 14px;
+}
+
 .banner-left h1{
-    
+    font-size: 46px;
+    font-weight: 600;
 }
 .special-color{
     color: #2D3F4D;

@@ -90,6 +90,21 @@
     margin-top: 25px;
     cursor: pointer;
 }
+.book-button2{
+    width: 70%;
+    margin: 10px auto;
+    padding: 10px 0;
+    border-radius: 5px;
+    background: rgba(128, 128, 128, 0.389);
+    cursor: pointer;
+    margin: 0;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    color: #253745;
+    margin-top: 25px;
+    cursor: not-allowed;
+}
 
 .book-button:hover{
     color: black;
