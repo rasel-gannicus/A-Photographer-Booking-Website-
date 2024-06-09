@@ -1,39 +1,35 @@
 # 86 Canvas, A Photographer Portfolio Website
 
-This is a Photographer Booking Website where a photographer can be booked with various options, also photographer's portfolio is displayed alongside with e-commerce functionality. 
+A full-stack, mobile-responsive website enabling users to book photographers for various occasions based on available schedule slots. Additionally, users can purchase popular canvases from the photographers.
 
-## Created With
+## Technologies Used
 
+- **Frontend:** React, Redux, HTML, CSS, Javascript, React Spinner, Toastify, Swiper, Font Awesome, 
+- **Backend:** Node.js, Express, MongoDB, Firebase
+- **Authentication:** JWT Token
+- **State Management:** RTK Query, Redux
 
+## Features
 
+### Advanced Booking System
 
-  ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) 
-  ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-  ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
-  ![Firebase](https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase)
-  ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
-  ![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
- ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
- ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+- **Complex Booking Functionality:** Allows users to book photographers for specific time slots.
+- **Booking Management:** Users can cancel, confirm, or check their booking status via the user dashboard.
 
-  ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
-  ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+### Dynamic Scheduling
 
-  ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+- **Three Daily Schedules:** Morning, afternoon, and night slots available every day.
+- **Slot Reservation:** Once a user books a photographer for a specific period, that slot is reserved and unavailable to others until the user cancels the booking, ensuring no double bookings. This is managed globally through the MongoDB database.
 
+### User Dashboard
 
+- **Mobile-Friendly Design:** Users can edit profiles, check booking statuses, and manage their carts.
+- **Interactive Interface:** Designed for ease of use on both mobile and desktop devices.
 
+### State Management
 
-
-
-### Features and functionality
-* User can book Photographer with 2 Catagory Packages each of them including 3 sub packages
-* Once user add any package to cart, a book icon will pop up at the bottom right corner. When user will click that icon, the site will take him/her to 'Package Cart' page. In this page user can book the photographer for different page. A user can book a photographer for maximum 4 days. If he try to increase the days count, a pop up message will be shown at the bottom of the page. 
-* The photographer has various photo canvas to sell. User can buy them. Once user hover on the product, 'add to cart' button will be displayed. After Clicking 'add to cart' button, a cart icon will be popped up like the book icon at right bottom corner of the screen. 
-* There is also a part where user can see Photographers works.
-* If user want to go to wishlist page or try to checkout, He/She must be logged in first. For this i have used firebase require authentication system
-* Fully Mobile responsive site.
-
+- **Data Fetching and Storage:** Utilized RTK Query for efficient data fetching and storage in MongoDB.
+- **Action Management:** Redux is used for managing actions such as opening modals and displaying cart/booking icons.
 
 ### Live Site
 
@@ -41,9 +37,17 @@ Explore the live site [here](https://photographer-portfolio-website-advance.verc
 
 ### Repository
 
-Access the Frontend GitHub repository for the project [here](https://github.com/rasel-gannicus/A-Photographer-s-Website-with-E-commerce-and-Portfolio).
+Github Client Repository : [here](https://github.com/rasel-gannicus/A-Photographer-s-Website-with-E-commerce-and-Portfolio).
 
-Access the Backend GitHub repository for the project [here](https://github.com/rasel-gannicus/server-for-Photographer-portfolio-website).
+Github Server Repository : [here](https://github.com/rasel-gannicus/server-for-Photographer-portfolio-website).
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js
+- MongoDB
+- Firebase account for authentication
 
 ## Setting Up Locally
 
@@ -52,54 +56,74 @@ Access the Backend GitHub repository for the project [here](https://github.com/r
 To set up the frontend locally, follow these steps:
 
 1. Clone the repository:
-    ```bash
-    git clone 
-    ```
+
+   ```bash
+      git clone https://github.com/rasel-gannicus/A-Photographer-Booking-Website-.git
+
+   ```
 
 2. Navigate to the project directory:
-    ```bash
-    cd 'folder directory name'
-    ```
+
+   ```bash
+      cd photographer-booking-website
+   ```
 
 3. Install dependencies:
-    ```bash
-    npm install
-    ```
 
-4. Start the development server:
-    ```bash
-    npm run dev
-    ```
+   ```bash
+   npm install
+   ```
 
-5. Access the application at `http://localhost:3000` in your web browser.
+4. Set up environment variables:
+   Create a .env file in the root directory and add the necessary environment variables (e.g., MongoDB URI, Firebase credentials, JWT secret).
+
+5. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+6. Access the application at `http://localhost:3000` in your web browser.
 
 ### Backend
 
 To set up the backend locally, follow these steps:
 
 1. Clone the repository:
-    ```bash
-    git clone 
-    ```
+
+   ```bash
+   git clone
+   ```
 
 2. Navigate to the project directory:
-    ```bash
-    cd 'folder directory name'
-    
+
+   ```bash
+   cd 'folder directory name'
+
+
+   ```
 
 3. Install dependencies:
-    ```bash
-    npm install
-    ```
+
+   ```bash
+   npm install
+   ```
 
 4. Configure the `.env` file with your personal settings.
 
 5. Start the server:
-    ```bash
-    node index.js
-    ```
+
+   ```bash
+   node index.js
+   ```
 
 6. The backend server will start running at the specified `http://localhost:5002`.
+
+### Usage
+
+- **Booking a Photographer:** Navigate to the booking section, select a time slot, and confirm the booking.
+- **Managing Bookings:** Access the user dashboard to view, confirm, or cancel bookings.
+- **Purchasing Canvases:** Browse and purchase canvases from the photographer's collection.
 
 ## Contributing
 
@@ -108,4 +132,3 @@ We welcome contributions to improve the project. Please fork the repository and 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
