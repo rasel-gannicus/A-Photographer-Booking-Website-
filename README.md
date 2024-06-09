@@ -1,4 +1,4 @@
-# 86 Canvas, A Photographer Portfolio Website
+# 86 Canvas
 
 A full-stack, mobile-responsive website enabling users to book photographers for various occasions based on available schedule slots. Additionally, users can purchase popular canvases from the photographers.
 
