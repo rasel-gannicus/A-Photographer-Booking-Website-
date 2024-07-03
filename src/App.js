@@ -2,14 +2,10 @@ import './App.css';
 import { RouterProvider } from 'react-router-dom';
 import Routes from './Routes/Routes';
 import { ToastContainer } from 'react-toastify';
-import CartPopup from './Utilities/CartPopup/CartPopup';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from './Utilities/firebase.init';
 import { useEffect } from 'react';
-import { Modal } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { hideModal } from './Redux/Features/modal/modalSlice';
-import Modals from './Utilities/Modal/Modal';
 import Modals2 from './Utilities/Modal/Modals2';
 function App() {
   // --- getting user info from firebase auth
@@ -41,24 +37,7 @@ function App() {
     <div className='App'>
       <RouterProvider router={Routes} ></RouterProvider>
       <ToastContainer />
-      {/* <Modal show={modalStatus} onHide={()=>dispatch(hideModal())} /> */}
-      {/* <Modals /> */}
-
       <Modals2 />
-      {/* <Modal show={modalStatus} onHide={()=>dispatch(hideModal())} >
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
-          <button variant="secondary" onClick={()=>dispatch(hideModal())}>
-            Close
-          </button>
-          <button variant="primary" onClick={()=>dispatch(hideModal())}>
-            Save Changes
-          </button>
-        </Modal.Footer>
-      </Modal> */}
     </div>
   );
 }

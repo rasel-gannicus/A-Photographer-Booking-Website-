@@ -6,7 +6,6 @@ import reportWebVitals from './reportWebVitals';
 import 'react-toastify/dist/ReactToastify.css'
 
 /* --- bootstrap ---- */
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Provider } from 'react-redux';
 import { store } from './Redux/App/store';
 
