@@ -33,3 +33,8 @@ code {
     /* padding-top: 4rem; */
   }
 }
+
+.horizontal {
+  border: none;
+  border-top: 10px solid #9CA3AF;
+}

@@ -7,6 +7,7 @@ import MyServices from "./MyServices/MyServices";
 import MyShop from "./MyShop/MyShop";
 import Contact from "./Contact/Contact";
 import Banner from "../../components/Banner/Banner";
+import Testimonials from "./Testimonials/Testimonials";
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
       <ShowCase></ShowCase>
       <MyServices></MyServices>
       <MyShop></MyShop>
+      <Testimonials></Testimonials>
       <Contact></Contact>
     </div>
   );
