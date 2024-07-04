@@ -82,7 +82,7 @@ const Login = () => {
     <div className="container">
       <section className="bg-gray-100">
         <div className="lg:grid lg:min-h-screen lg:grid-cols-12">
-          <section className="relative flex h-32 items-end bg-gray-900 lg:col-span-5 lg:h-full xl:col-span-6">
+          <section className="relative flex h-32 items-end bg-gray-900 lg:col-span-5 lg:h-full xl:col-span-6 text-left">
             <img
               alt=""
               src={cameraman}
@@ -105,8 +105,8 @@ const Login = () => {
                 </svg>
               </a>
 
-              <h2 className="mt-6 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
-                Welcome to My Photography World 🦑
+              <h2 className="mt-6 text-2xl font-bold text-white sm:text-3xl md:text-3xl">
+                Welcome to My Photography World 
               </h2>
 
               <p className="mt-4 leading-relaxed text-white/90">
