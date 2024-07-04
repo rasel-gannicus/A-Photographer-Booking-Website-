@@ -38,3 +38,7 @@ code {
   border: none;
   border-top: 10px solid #9CA3AF;
 }
+
+.Toastify__toast-container{
+  width: fit-content !important;
+}
