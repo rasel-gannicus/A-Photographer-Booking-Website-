@@ -3,8 +3,8 @@ import './Contact.css';
 
 const Contact = () => {
     return (
-        <div className='my-5'>
-            <div className="contact-parent container py-5">
+        <div className='my-5  container'>
+            <div className="contact-parent rounded py-5">
                 <div className="row g-4">
                     <div className="col-lg-6">
                         <div className="h-100">

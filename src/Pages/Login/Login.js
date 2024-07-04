@@ -106,7 +106,7 @@ const Login = () => {
               </a>
 
               <h2 className="mt-6 text-2xl font-bold text-white sm:text-3xl md:text-3xl">
-                Welcome to My Photography World 
+                Welcome to My Photography World
               </h2>
 
               <p className="mt-4 leading-relaxed text-white/90">
@@ -148,9 +148,13 @@ const Login = () => {
                 <div className="input-fields mx-auto login-div ">
                   <h4 className="text-4xl font-bold">Login</h4>
                   <hr width="70%" className="mx-auto mt-4 mb-6" />
-                  <h2 className="text-lg  font-semibold text-gray-500">
-                    Login now to get the full access{" "}
+                  <h2 className="  font-semibold text-gray-500">
+                    Dummy User
                   </h2>
+                  <div className="text-sm font-bold text-green-500" >
+                    <p> <span className="text-gray-400">email :</span>  rasel@gmail.com</p>
+                    <p><span className="text-gray-400">password :</span> aaaaaa</p>
+                  </div>
                   <form action="" onSubmit={handleSubmit}>
                     <div className="input-field ">
                       <input

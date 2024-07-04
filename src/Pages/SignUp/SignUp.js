@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./SignUp.css";
-import cameraman from "../../assets/img/banner-bg.png";
+import cameraman from "../../assets/img/bg.png";
 import googleLogo from "../../assets/img/Icons/google.svg";
 import facebookLogo from "../../assets/img/Icons/facebook (1).svg";
 import githubLogo from "../../assets/img/Icons/github.svg";
@@ -228,7 +228,7 @@ const SignUp = () => {
                   </div>
                 </form>
                 <p>
-                  Already have an account ?{" "}
+                  Already have an account ? <br />
                   <span onClick={navigation} draggable className="red-text">
                     Login Here
                   </span>{" "}
