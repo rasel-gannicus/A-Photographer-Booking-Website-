@@ -1,14 +1,37 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from '../../../assets/img/Icons/photographer.png'
 import navbarLogo from '../../../assets/img/navbar logo.png'
 import { Link } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../Utilities/firebase.init';
+import userLogo from '../../../assets/img/Icons/user(1).png'
+import { signOut } from 'firebase/auth';
 
 const Navbar = () => {
+    const [userEmail, setUserEmail] = useState('') ; 
+    const [userDisplayName, setUserDisplayName] = useState('')
+    // --- using react-firebase-hook to sign out and to get user data  
+    const [user] = useAuthState(auth);
+    // console.log(user);
+    useEffect(()=>{
+        if(user?.email){
+            setUserEmail(user.email)
+            setUserDisplayName(user.displayName)
+        }
+    },[user])
+    
+        // --- logging out user
+        const handleLogout = (e) => {
+            e.preventDefault();
+            let confirmation = window.confirm('Are You sure you want to log out ?');
+            if(confirmation){
+                signOut(auth).then(() => { console.log('Sign Out Successfully') }).catch(err => { console.log(err) });
+            }
+        }
     return (
 <header class="antialiased container">
   <nav class="bg-white border-gray-200 lg:px-6 py-2.5 dark:bg-gray-800">
       <div class="flex  justify-between items-center ">
-
           <div class="flex justify-start items-center">
               {/* <button id="toggleSidebar" aria-expanded="true" aria-controls="sidebar" class="hidden p-2 mr-3 text-gray-600 rounded cursor-pointer lg:inline hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700">
                 <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12"> <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h14M1 6h14M1 11h7"/> </svg>
@@ -182,19 +205,29 @@ const Navbar = () => {
               </div>
 
             {/* --- user profile --- */}
-              <button type="button" class="flex mx-3 text-sm bg-gray-800 rounded-full mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="dropdown">
+            { user ?               
+            <button type="button" class="flex mx-3 text-sm bg-gray-800 rounded-full mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="dropdown">
                   <span class="sr-only">Open user menu</span>
-                  <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo" />
-              </button>
+                  <img class="w-8 h-8 rounded-full" src={user?.photoURL} alt="user photo" />
+              </button> 
+              :
+              <button type="button" class="flex mx-3 text-sm bg-gray-800 rounded-full mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="dropdown">
+                <span class="sr-only">Open user menu</span>
+                <img class="w-8 h-8 rounded-full" src={userLogo} alt="user photo" />
+                </button>}
+
+
               {/* <!-- Dropdown menu --> */}
-              <div class="hidden z-50 my-4 w-56 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown">
+              {
+                user ?
+                <div class="hidden z-50 my-4 w-56 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown">
                   <div class="py-3 px-4">
-                      <span class="block text-sm font-semibold text-gray-900 dark:text-white">Neil sims</span>
-                      <span class="block text-sm text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
+                      <span class="block text-sm font-semibold text-gray-900 dark:text-white">{userDisplayName}</span>
+                      <span class="block text-sm text-gray-500 truncate dark:text-gray-400">{userEmail}</span>
                   </div>
                   <ul class="py-1 text-gray-500 dark:text-gray-400" aria-labelledby="dropdown">
                       <li>
-                          <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">My profile</a>
+                          <Link to="/profile" class="block py-2 px-4 text-sm text-black font-semibold hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">My profile</Link>
                       </li>
                       <li>
                           <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">Account settings</a>
@@ -225,10 +258,19 @@ const Navbar = () => {
                   </ul>
                   <ul class="py-1 text-gray-500 dark:text-gray-400" aria-labelledby="dropdown">
                       <li>
-                          <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a>
+                          <a onClick={handleLogout} href="#" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a>
                       </li>
                   </ul>
               </div>
+              :
+              <div class="hidden z-50 my-4 w-56 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown">
+                  <div class="py-3 px-4">
+                      <Link to={'/login'} class="block text-sm font-semibold text-blue-500 dark:text-white mb-3">Login</Link>
+                      <Link to={'/signup'} class="block text-sm font-semibold text-blue-500 dark:text-white">Register</Link>
+                  </div>
+
+              </div>
+              }
 
           </div>
           
