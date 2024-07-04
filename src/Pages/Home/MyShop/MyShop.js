@@ -50,13 +50,13 @@ const MyShop = (props) => {
         setCount(count - 3);
     }
     return (
-        <div className='my-5 home-my-shop'>
-            <h2 className=''>Some Of My Product <br />You Can Buy To Decorate Your Home/Office Wall</h2>
-            <span  className='small-text'><small>(Hover on the Pic to see 'Add to Cart' & 'Details' Button)</small></span>
+        <div className='mt-20 home-my-shop'>
+            <h2 className='text-4xl font-semibold'>Some Of My Product <br />You Can Buy To Decorate Your Home/Office Wall</h2>
+            <span  className='font-semibold text-lg'><small>(Hover on the Pic to see 'Add to Cart' & 'Details' Button)</small></span>
             {content}
             {/* <p className='loading-text mt-5'><Spinner animation="border" variant="primary" /></p> */}
-            <button className='loadMoreButton' onClick={loadMoreProduct}>Load More</button>
-            {data?.length>3 && <button className='loadMoreButton' onClick={loadLess}>Load Less</button>}
+            <button className='loadMoreButton border-2 border-slate-500' onClick={loadMoreProduct}>Load More</button>
+            {data?.length>3 && <button className='loadMoreButton  border-2 border-slate-500' onClick={loadLess}>Load Less</button>}
         </div>
     );
 };

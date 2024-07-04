@@ -20,7 +20,7 @@ const Navbar = () => {
 
               {/* --- Navbar Logo --- */}
               <Link href="/" class="flex">
-                <img src={navbarLogo} class=" w-10 md:w-32" alt="Navbar Logo" />
+                <img src={navbarLogo} class=" w-24 md:w-32" alt="Navbar Logo" />
                 {/* <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span> */}
               </Link>
 

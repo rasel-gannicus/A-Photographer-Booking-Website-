@@ -68,13 +68,13 @@ const ShowCase = () => {
     }
     return (
         <div className='container showCase-div mx-auto'>
-            <h2 className='fw-bold my-5'>My Works</h2>
+            <h2 className='fw-bold mt-20 text-4xl md:text-6xl font-bold'>My Works</h2>
             <div className="row gx-0 gy-4 showcaseDiv-child h-100">
                 <div onClick={showPortrait} draggable className="col-lg-6 h-100 clickable-div">
                     <div className="h-100 layer-parent">
                         <PortraitShowcase></PortraitShowcase>
                         <div className="layer">
-                            <h1>Portrait <br /> Photography</h1>
+                            <h1 className=' text-2xl md:text-4xl'>Portrait <br /> Photography</h1>
                         </div>
                     </div>
                 </div>
@@ -82,7 +82,7 @@ const ShowCase = () => {
                     <div className="h-100 layer-parent">
                         <StreetShowcase></StreetShowcase>
                         <div className="layer layer-2">
-                            <h1>Street <br /> Photography</h1>
+                            <h1 className=' text-2xl md:text-4xl'>Street <br /> Photography</h1>
                         </div>
                     </div>
                 </div>
@@ -90,7 +90,7 @@ const ShowCase = () => {
                     <div className="h-100 layer-parent">
                         <WeddingShowcase></WeddingShowcase>
                         <div className="layer layer-3">
-                            <h1>Wedding <br /> Photography</h1>
+                            <h1 className=' text-2xl md:text-4xl'>Wedding <br /> Photography</h1>
                         </div>
                     </div>
                 </div>
@@ -98,7 +98,7 @@ const ShowCase = () => {
                     <div className="h-100 layer-parent">
                         <WildlifeShowcase></WildlifeShowcase>
                         <div className="layer layer-4">
-                            <h1>Wildlife <br /> Photography</h1>
+                            <h1 className=' text-2xl md:text-4xl'>Wildlife <br /> Photography</h1>
                         </div>
                     </div>
                 </div>

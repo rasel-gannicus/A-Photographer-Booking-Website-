@@ -27,7 +27,7 @@ const About = () => {
         <div className=' about-div mx-auto'>
             <div onMouseEnter={showAbout} onMouseLeave={hideAbout} className=" mx-auto">
                 <div className="first-part">
-                    <h2>Who am i ?</h2>
+                    <h2 className=' text-4xl  md:text-6xl font-bold mb-5'>Who am i ?</h2>
                     <p>A Professional Photographer from a Small City in Bangladesh. I am a self taught Nerd. I have been doing Photography for more than a Decade. I have won several awards and four International Awards for Photography. </p>
                     <p>Street & Wild-life Photography is my favourite Genre. I also have a good hand In Wedding & Portfolio Area. Some of my sample works are given below.  </p>
                     <div className="second-part">

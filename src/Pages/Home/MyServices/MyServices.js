@@ -9,8 +9,8 @@ const MyServices = (props) => {
     
     return (
         <div className=' myServices-div my-5 mx-auto '>
-            <h2>My Services</h2>
-            <h2 className=' pacakge-heading'>Wedding Packages</h2>
+            <h2 className=' text-4xl md:text-6xl font-bold'>My Services</h2>
+            <h2 className=' pacakge-heading text-3xl'>Wedding Packages</h2>
             <hr width='50%' className='mx-auto'/>
             <div className="wedding-packages-div">
                 {
@@ -22,7 +22,7 @@ const MyServices = (props) => {
                 }
             </div>
             
-            <h2 className='pacakge-heading'>Portrait Packages</h2>
+            <h2 className='pacakge-heading text-3xl'>Portrait Packages</h2>
             <hr width='50%' className='mx-auto'/>
             <div className="portrait-packages-div">
                 {
