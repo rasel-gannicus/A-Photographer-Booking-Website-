@@ -30,12 +30,12 @@ const About = () => {
     }
 
     const leftDiv = {
-        hidden: { x: - 900 },
-        visible: { x: 0, transition: { duration: 0.5 } }
+        hidden: { x: - 900, opacity : 0 },
+        visible: { x: 0, opacity : 1, transition: { duration: 0.7 } }
     }
     const rightDiv = {
-        hidden: { x: 900 },
-        visible: { x: 0, transition: { duration: 0.2 } }
+        // hidden: {  y: -900 },
+        // visible: { y: 0, transition: { duration: 0.2 } }
     }
 
 
@@ -49,33 +49,44 @@ const About = () => {
     }, [controls, inView]);
     return (
         <div className=' about-div mx-auto container'>
-            <h2 className=' text-4xl  md:text-6xl font-bold mb-5'>Who am i ?</h2>
-            <div className="second-part  flex justify-center items-center py-5">
-                        <motion.div
-                            variants={leftDiv}
-                            ref={ref}
-                            initial={controls}
-                            animate={controls}
-                            className="second-part-left ">
-                            <p>A Professional Photographer from a Small City in Bangladesh. I am a self taught Nerd. I have been doing Photography for more than a Decade. I have won several awards and four International Awards for Photography.
-                                <br />
-                                Street & Wild-life Photography is my favourite Genre. I also have a good hand In Wedding & Portfolio Area. Some of my sample works are given below.
-                            </p>
-                        </motion.div>
+            <h2 className=' text-4xl  md:text-6xl font-bold '>Who am i ?</h2>
+            <div className="second-part hidden  md:flex justify-center items-center py-5">
+                <motion.div
+                    variants={leftDiv}
+                    ref={ref}
+                    initial={controls}
+                    animate={controls}
+                    className="second-part-left ">
+                    <p>A Professional Photographer from a Small City in Bangladesh. I am a self taught Nerd. I have been doing Photography for more than a Decade. I have won several awards and four International Awards for Photography.
+                        <br />
+                        Street & Wild-life Photography is my favourite Genre. I also have a good hand In Wedding & Portfolio Area. Some of my sample works are given below.
+                    </p>
+                </motion.div>
 
-                        <motion.div
-                            // variants={rightDiv}
-                            // ref={ref}
-                            // initial={controls}
-                            // animate={controls}
-                            className="second-part-right">
-                            <div className="second-part-img-div">
-                                <div className="second-part-img">
-                                    <img src={profileLogo} alt="" />
-                                </div>
-                            </div>
-                        </motion.div>
+                <motion.div
+                    variants={rightDiv}
+                    ref={ref}
+                    initial={controls}
+                    animate={controls}
+                    className="second-part-right">
+                    <div className="second-part-img-div">
+                        <div className="second-part-img">
+                            <img src={profileLogo} alt="" />
+                        </div>
                     </div>
+                </motion.div>
+            </div>
+
+            {/* --- for mobile view --- */}
+            <div className="md:hidden  my-5 flex flex-col justify-center items-center text-center font-semibold text-gray-400">
+                <p>A Professional Photographer from a Small City in Bangladesh. I am a self taught Nerd. I have been doing Photography for more than a Decade. I have won several awards and four International Awards for Photography.
+                    <br />
+                    Street & Wild-life Photography is my favourite Genre. I also have a good hand In Wedding & Portfolio Area. Some of my sample works are given below.
+                </p>
+                <div className="second-part-img mt-2">
+                            <img src={profileLogo} alt="" className=' ' />
+                        </div>
+            </div>
         </div>
     );
 };

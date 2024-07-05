@@ -13,25 +13,14 @@ css codes for about section which is shown after the banner in home page
 
 .first-part{
     position: relative;
-    /* height: 200px; */
 }
 
 
 .second-part-left{
-    /* position: absolute;
-    top: 0; */
-    /* left: -200%; */
     background: white;
-    /* height: 100%;
-    width: 80%; */
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-    /* transition: all 0.5s ease; */
     border-top: 5px solid #253745;
     border-bottom: 5px solid #253745;
     border-left: 5px solid #253745;
-    /* box-shadow: 0 10px 15px rgba(0,0,0,0.5); */
     padding: 10px 15px;
 }
 .second-part-left p{
@@ -44,21 +33,10 @@ css codes for about section which is shown after the banner in home page
 }
 
 .second-part-right{
-    /* position: absolute;
-    top: 0; */
-    /* right: -200%; */
-    /* right: 0; */
     background: white;
-    /* height: 100%;
-    width: 20%; */
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-    transition: all 0.5s ease;
     border-top: 5px solid #F1341E;
     border-bottom: 5px solid #F1341E;
     border-right: 5px solid #F1341E;
-    /* box-shadow: 0 10px 15px rgba(0,0,0,0.5); */
     padding: 10px 15px;
     font-weight: 600;
     height: 300px;
@@ -76,31 +54,19 @@ css codes for about section which is shown after the banner in home page
 }
 .second-part-img img{
     width: 100%;    
-    /* position: absolute; */
-    /* top: -15px;
-    left: -15px; */
     border-radius: 5px;
-    /* box-shadow: 0 5px 7px rgba(0,0,0,0.5); */
     border: 3px solid #253745;
 }
 .second-part-img{
     border: 3px solid #253745;
     width: 200px;
-    /* height: 119px; */
     position: relative;
     border-radius: 5px;
     padding: 5px;
-    /* box-shadow: 0 5px 7px rgba(0,0,0,0.5); */
 }
 
 @media only screen and (max-width:767px){
-    .second-part-left{
-        width: 51%;
-        overflow: scroll;
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-    }
+
     .second-part-right{
         width: 50%;
     }
