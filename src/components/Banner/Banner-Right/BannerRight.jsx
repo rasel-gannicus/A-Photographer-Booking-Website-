@@ -7,7 +7,7 @@ const BannerRight = () => {
     hidden: { x: 900},
     visible: {
       x: 0,
-      transition: { ease: "easeInOut", duration: 0.5, staggerChildren: 0.4 },
+      transition: { ease: "easeInOut", duration: 0.5, staggerChildren: 0.3 },
     },
   };
   const child = {
@@ -18,7 +18,7 @@ const BannerRight = () => {
     },
   };
   return (
-    <div className="banner-right flex-1 ">
+    <div className="banner-right flex-1 overflow-hidden">
       <motion.div
         className=" flex-col justify-center items-center text-center "
         variants={parent}

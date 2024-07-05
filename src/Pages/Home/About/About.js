@@ -11,11 +11,11 @@ const About = () => {
 
     const leftDiv = {
         hidden: { x: - 900, opacity: 0 },
-        visible: { x: 0, opacity: 1, transition: { duration: 0.5 } }
+        visible: { x: 0, opacity: 1, transition: { duration: 0.8 } }
     }
     const rightDiv = {
         hidden: { x: 900, opacity: 0 },
-        visible: { x: 0, opacity: 1, transition: { duration: 0.5 } }
+        visible: { x: 0, opacity: 1, transition: { duration: 0.8 } }
     }
 
 
@@ -28,9 +28,9 @@ const About = () => {
         }
     }, [controls, inView]);
     return (
-        <div className=' about-div mx-auto container' ref={ref}>
+        <div className=' about-div mx-auto container'>
             <h2 className=' text-4xl  md:text-6xl font-bold '>Who am i ?</h2>
-            <div className="second-part hidden  md:flex justify-center items-center py-5">
+            <div className="second-part hidden  md:flex justify-center items-center my-3"  ref={ref}>
                 <motion.div
                     variants={leftDiv}
                     initial={controls}

@@ -1,12 +1,22 @@
 import React, { useEffect, useState } from 'react';
+import {motion} from 'framer-motion' ;
 import './WeddingPackages.css';
 import { useAddServiceToDbMutation, useGetServiceCartQuery } from '../../../../Redux/Features/service/serviceApi';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../../Utilities/firebase.init';
 import { toast } from 'react-toastify';
 import { errorMessage } from '../../../../Utilities/popupMsg';
+import { useInView } from 'react-intersection-observer';
 
 const WeddingPackages = (props) => {
+
+     const child = {
+         hidden: { y: 900, opacity: 0 },
+         visible: { y: 0, opacity: 1, transition: { duration: 0.5 } }
+     }
+ 
+ 
+
     const { id, packageCatagory, packageCatagoryName, cameraMan, duration, thumbImg, price } = props.index;
 
     const [button, setButton] = useState(false);
@@ -69,7 +79,7 @@ const WeddingPackages = (props) => {
         }
     }
     return (
-        <div className='mx-auto'>
+        <motion.div variants={child} className='mx-auto'>
             <div className="wedding-card ">
                 <div className="wedding-card-upper">
                     <img src={thumbImg} alt="" />
@@ -97,7 +107,7 @@ const WeddingPackages = (props) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

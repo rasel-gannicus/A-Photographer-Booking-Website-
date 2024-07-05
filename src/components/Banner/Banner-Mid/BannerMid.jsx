@@ -12,7 +12,7 @@ const BannerMid = () => {
     } }
   }
   return (
-    <div className="banner-mid  ">
+    <div className="banner-mid ">
       <motion.div className=" relative  w-full md:w-20 md:h-[570px]"
         variants={imageMotion}
         initial = 'hidden'
