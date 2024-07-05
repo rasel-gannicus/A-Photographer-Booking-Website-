@@ -1,7 +1,23 @@
+import {motion} from 'framer-motion'
+
 const BannerMid = () => {
+
+  const imageMotion = {
+    hidden : {x : 5000, rotate : 190 },
+    visible : { x : 0, rotate : 0, transition : {
+      ease : 'easeInOut' ,
+      delay : 0.3,
+      duration : 1,
+      type : 'spring'
+    } }
+  }
   return (
     <div className="banner-mid  ">
-      <div className=" relative  w-full md:w-20 md:h-[570px]">
+      <motion.div className=" relative  w-full md:w-20 md:h-[570px]"
+        variants={imageMotion}
+        initial = 'hidden'
+        animate = 'visible'
+        >
         {/* --- banner image for large screen --- */}
 
         <img
@@ -11,9 +27,6 @@ const BannerMid = () => {
           alt="banner image"
           // fill
           className=" z-50 bottom-0 absolute hidden md:block"
-          quality={100}
-          width={800}
-          height={500}
           style={{
             maxWidth: "550px",
             left: "50%",
@@ -36,7 +49,7 @@ const BannerMid = () => {
           //   maxWidth: "550px",
           // }}
         />
-      </div>
+      </motion.div>
     </div>
   );
 };

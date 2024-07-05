@@ -7,7 +7,7 @@ const BannerRight = () => {
     hidden: { x: 900},
     visible: {
       x: 0,
-      transition: { ease: "easeInOut", duration: 0.5, staggerChildren: 0.3 },
+      transition: { ease: "easeInOut", duration: 0.5, staggerChildren: 0.4 },
     },
   };
   const child = {
@@ -42,7 +42,7 @@ const BannerRight = () => {
         <motion.button
           variants={child}
           variant="outline"
-          className="h-12 rounded-full border-black border-2 px-9"
+          className="h-12 rounded-full border-black border-2 px-9 hover:bg-black hover:text-white "
         >
           Lets Talk
         </motion.button>
