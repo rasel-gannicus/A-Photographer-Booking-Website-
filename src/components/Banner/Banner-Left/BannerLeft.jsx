@@ -1,13 +1,13 @@
-import {motion} from 'framer-motion'
+import { motion } from 'framer-motion'
 
 const BannerLeft = () => {
   const parent = {
-    hidden : {opacity : 1},
-    visible : {opacity : 1 , transition : {ease : 'easeInOut', delay : 1, delayChildren : 1 , staggerChildren : 0.3}}
+    hidden: { opacity: 1 },
+    visible: { opacity: 1, transition: { ease: 'easeInOut', delay: 1, delayChildren: 1, staggerChildren: 0.3 } }
   }
   const child = {
-    hidden : {opacity : 0},
-    visible : {opacity : 1, transition: {type: 'spring'}} 
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { type: 'spring' } }
   }
   return (
     <motion.div variants={parent} initial="hidden" animate="visible" className=" hidden  md:flex  banner-left flex-1 relative  min-h-[370px] flex-col justify-center items-center  ">
@@ -25,7 +25,7 @@ const BannerLeft = () => {
       </div>
 
       <motion.div
-      variants={child}
+        variants={child}
         className=" absolute -bottom-5"
         style={{ left: "30%", transform: "translateX(-30%)" }}
       >
@@ -40,7 +40,7 @@ const BannerLeft = () => {
       </motion.div>
 
       <motion.div
-      variants={child}
+        variants={child}
         className=" absolute -bottom-5"
         style={{ left: "60%", transform: "translateX(-60%)" }}
       >
@@ -57,7 +57,7 @@ const BannerLeft = () => {
       </motion.div>
 
       <motion.div
-      variants={child}
+        variants={child}
         className=" absolute -bottom-20"
         style={{ left: "50%", transform: "translateX(-50%)" }}
       >
