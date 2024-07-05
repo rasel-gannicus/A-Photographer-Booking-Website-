@@ -1,59 +1,39 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion'
 import './About.css';
 import profileLogo from '../../../assets/img/bg-low-size.png';
 import { useInView } from 'react-intersection-observer';
 
 const About = () => {
-    const controls = useAnimation();
+    // const controls = useAnimation();
+    const[controls, setControls] = useState('hidden') ;
     const [ref, inView] = useInView();
 
-    function showAbout() {
-        const secondPart = document.querySelector('.second-part');
-        secondPart.classList.add('active');
-
-        const secondPartLeft = document.querySelector('.second-part-left');
-        secondPartLeft.classList.add('active');
-
-        const secondPartRight = document.querySelector('.second-part-right');
-        secondPartRight.classList.add('active');
-    }
-    function hideAbout() {
-        const secondPart = document.querySelector('.second-part');
-        secondPart.classList.remove('active');
-
-        const secondPartLeft = document.querySelector('.second-part-left');
-        secondPartLeft.classList.remove('active');
-
-        const secondPartRight = document.querySelector('.second-part-right');
-        secondPartRight.classList.remove('active');
-    }
 
     const leftDiv = {
         hidden: { x: - 900, opacity : 0 },
-        visible: { x: 0, opacity : 1, transition: { duration: 0.7 } }
+        visible: { x: 0, opacity : 1, transition: { duration: 0.4 } }
     }
     const rightDiv = {
-        // hidden: {  y: -900 },
-        // visible: { y: 0, transition: { duration: 0.2 } }
+        hidden: { x: 900, opacity : 0 },
+        visible: { x: 0, opacity : 1, transition: { duration: 0.4 } }
     }
 
 
     useEffect(() => {
         if (inView) {
-            controls.start("visible");
+            setControls('visible')
         }
         if (!inView) {
-            controls.start("hidden");
+            setControls('hidden') 
         }
     }, [controls, inView]);
     return (
-        <div className=' about-div mx-auto container'>
+        <div className=' about-div mx-auto container' ref={ref}>
             <h2 className=' text-4xl  md:text-6xl font-bold '>Who am i ?</h2>
             <div className="second-part hidden  md:flex justify-center items-center py-5">
                 <motion.div
                     variants={leftDiv}
-                    ref={ref}
                     initial={controls}
                     animate={controls}
                     className="second-part-left ">
@@ -65,7 +45,6 @@ const About = () => {
 
                 <motion.div
                     variants={rightDiv}
-                    ref={ref}
                     initial={controls}
                     animate={controls}
                     className="second-part-right">
