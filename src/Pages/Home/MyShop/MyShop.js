@@ -50,7 +50,7 @@ const MyShop = (props) => {
         setCount(count - 3);
     }
     return (
-        <div className='mt-20 home-my-shop'>
+        <div className='mt-20 home-my-shop overflow-hidden'>
             <h2 className='text-4xl font-semibold'>Some Of My Product <br />You Can Buy To Decorate Your Home/Office Wall</h2>
             <span  className='font-semibold text-lg'><small>(Hover on the Pic to see 'Add to Cart' & 'Details' Button)</small></span>
             {content}

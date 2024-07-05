@@ -10,7 +10,7 @@ const BannerLeft = () => {
     visible: { opacity: 1, transition: { type: 'spring' } }
   }
   return (
-    <motion.div variants={parent} initial="hidden" animate="visible" className=" hidden  md:flex  banner-left flex-1 relative  min-h-[370px] flex-col justify-center items-center  overflow-hidden">
+    <motion.div variants={parent} initial="hidden" animate="visible" className=" hidden  md:flex  banner-left flex-1 relative  min-h-[370px] flex-col justify-center items-center  ">
       <div
         className=" absolute -top-5"
         style={{ left: "50%", transform: "translateX(-50%)" }}

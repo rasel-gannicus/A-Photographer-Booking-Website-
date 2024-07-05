@@ -46,7 +46,7 @@ const MyServices = (props) => {
     }, [controls, inView, controls2, inView2]);
 
     return (
-        <div className=' myServices-div my-5 mx-auto '>
+        <div className=' myServices-div my-5 mx-auto overflow-hidden py-10 '>
             <h2 className=' text-4xl md:text-6xl font-bold'>My Services</h2>
             <h2 className=' pacakge-heading text-3xl'>Wedding Packages</h2>
             <hr width='50%' className='mx-auto' />
