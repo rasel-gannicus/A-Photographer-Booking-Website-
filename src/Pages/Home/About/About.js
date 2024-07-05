@@ -5,18 +5,17 @@ import profileLogo from '../../../assets/img/bg-low-size.png';
 import { useInView } from 'react-intersection-observer';
 
 const About = () => {
-    // const controls = useAnimation();
-    const[controls, setControls] = useState('hidden') ;
+    const [controls, setControls] = useState('hidden');
     const [ref, inView] = useInView();
 
 
     const leftDiv = {
-        hidden: { x: - 900, opacity : 0 },
-        visible: { x: 0, opacity : 1, transition: { duration: 0.4 } }
+        hidden: { x: - 900, opacity: 0 },
+        visible: { x: 0, opacity: 1, transition: { duration: 0.5 } }
     }
     const rightDiv = {
-        hidden: { x: 900, opacity : 0 },
-        visible: { x: 0, opacity : 1, transition: { duration: 0.4 } }
+        hidden: { x: 900, opacity: 0 },
+        visible: { x: 0, opacity: 1, transition: { duration: 0.5 } }
     }
 
 
@@ -25,7 +24,7 @@ const About = () => {
             setControls('visible')
         }
         if (!inView) {
-            setControls('hidden') 
+            setControls('hidden')
         }
     }, [controls, inView]);
     return (
@@ -63,8 +62,8 @@ const About = () => {
                     Street & Wild-life Photography is my favourite Genre. I also have a good hand In Wedding & Portfolio Area. Some of my sample works are given below.
                 </p>
                 <div className="second-part-img mt-2">
-                            <img src={profileLogo} alt="" className=' ' />
-                        </div>
+                    <img src={profileLogo} alt="" className=' ' />
+                </div>
             </div>
         </div>
     );
