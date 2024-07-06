@@ -1,8 +1,8 @@
 import { signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import auth from "../../../../../Utilities/firebase.init";
-import userLogo from "../../../../../assets/img/Icons/user(1).png"
+import auth from "../../../../../../Utilities/firebase.init";
+import userLogo from "../../../../../../assets/img/Icons/user(1).png"
 import { Link } from "react-router-dom";
 
 const NavbarRight = () => {

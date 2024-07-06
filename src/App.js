@@ -37,7 +37,8 @@ function App() {
     <div className='App'>
       <RouterProvider router={Routes} ></RouterProvider>
       <ToastContainer />
-      <Modals2 />
+      <Modals2 />   
+      
     </div>
   );
 }

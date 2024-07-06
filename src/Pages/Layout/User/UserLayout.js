@@ -1,26 +1,27 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
-import Navbar from './Navbar & Sidebar/Navbar/Navbar';
-import Sidebar from './Navbar & Sidebar/Sidebar/Sidebar';
+import React from "react";
+import { Outlet } from "react-router-dom";
+import Sidebar from "././Shared/Navbar & Sidebar/Sidebar/Sidebar";
+import { NavbarTest } from "../../../Utilities/Test/NavbarTest";
+import { Navbars } from "./Shared/Navbar & Sidebar/Navbar/Navbar";
 
 const UserLayout = () => {
-    return (
-        <div>
-            <div className="antialiased bg-gray-50 dark:bg-gray-900">
-                {/* --- Navbar --- */}
-                <Navbar />
+  return (
+    <div>
+      <div className="antialiased bg-gray-50 dark:bg-gray-900">
+        
+        {/* --- Navbar --- */}
+        <Navbars />
 
-                {/*  Sidebar  */}
+        {/*  Sidebar  */}
+        <Sidebar />
 
-                <Sidebar />
-
-                {/* --- main section --- */}
-                <main className="p-4 md:ml-64 h-auto pt-20 mt-20">
-                    <Outlet />
-                </main>
-            </div>
-        </div>
-    );
+        {/* --- main section --- */}
+        <main className="p-4 md:ml-64 h-auto pt-20 mt-20">
+          <Outlet />
+        </main>
+      </div>
+    </div>
+  );
 };
 
 export default UserLayout;

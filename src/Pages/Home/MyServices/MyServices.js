@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
 // import { addToBookingDb } from '../../../utilities/Local Storage/bookings-storage';
 import './MyServices.css';
 import WeddingPackages from './WeddingPackages/WeddingPackages';
 import usePackages from '../../../Utilities/hooks/usePackages';
-import { useInView } from 'react-intersection-observer';
 
 const MyServices = (props) => {
     const [packages, setPackages] = usePackages();
