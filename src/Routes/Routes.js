@@ -19,6 +19,8 @@ import ProfileDetails from '../Pages/Profile/ProfileDetails/ProfileDetails';
 import EditProfile from '../Pages/Profile/EditProfile/EditProfile';
 import Cart from '../Pages/Cart/Cart';
 import Bookings from '../Pages/Profile/Bookings/Bookings';
+import UserLayout from '../Pages/Layout/User/UserLayout';
+import Dashboard from '../Pages/Layout/User/Dashboard/Dashboard';
 
 const Routes = createBrowserRouter([
     {
@@ -99,6 +101,17 @@ const Routes = createBrowserRouter([
                 path : '*',
                 element : <Error></Error>
             }
+        ]
+    },
+    {
+        path : '/user',
+        element : <UserLayout />,
+        children : [
+            {
+                index : true ,
+                element : <Dashboard /> 
+            }
+
         ]
     }
 ])
