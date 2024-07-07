@@ -10,7 +10,7 @@ const Main = () => {
   return (
     <div className="home-div">
       {/* <Header></Header> */}
-      <Navbars />
+      <Navbars layout="user-homepage" />
       <div className=" my-28 pb-4">
         <Outlet></Outlet>
       </div>

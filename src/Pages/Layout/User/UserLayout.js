@@ -9,7 +9,7 @@ const UserLayout = () => {
       <div className="antialiased bg-gray-50 dark:bg-gray-900">
         
         {/* --- Navbar --- */}
-        <Navbars />
+        <Navbars layout="user-dashboard" />
 
         {/*  Sidebar  */}
         <Sidebar />
