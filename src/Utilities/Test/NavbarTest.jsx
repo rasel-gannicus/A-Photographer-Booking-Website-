@@ -12,14 +12,19 @@ import {
 } from "flowbite-react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import navbarLogo from '../../assets/img/navbar logo.png'
-import { activeSidebar, toggleSidebar } from "../../Redux/Features/user dashboard sidebar/sidebarSlice";
-import hamburgerMenu from '../../assets/img/Icons/hamburger-menu-svgrepo-com(1).svg';
+import navbarLogo from "../../assets/img/navbar logo.png";
+import {
+  activeSidebar,
+  toggleSidebar,
+} from "../../Redux/Features/user dashboard sidebar/sidebarSlice";
+import hamburgerMenu from "../../assets/img/Icons/hamburger-menu-svgrepo-com(1).svg";
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../firebase.init";
-import { signOut } from "firebase/auth";
-import userLogo from '../../assets/img/Icons/user(1).png'
+import { GiHamburgerMenu } from "react-icons/gi";
+import { IoMdCloseCircle } from "react-icons/io";
+import userLogo from "../../assets/img/Icons/user(1).png";
+import ModalFlowBite from "../Modal Flowbite/ModalFlowBite";
 
 export function NavbarTest() {
   const [userEmail, setUserEmail] = useState("");
@@ -34,45 +39,41 @@ export function NavbarTest() {
     }
   }, [user]);
 
-  // --- logging out user
-  const handleLogout = (e) => {
-    e.preventDefault();
-    let confirmation = window.confirm("Are You sure you want to log out ?");
-    if (confirmation) {
-      signOut(auth)
-        .then(() => {
-          console.log("Sign Out Successfully");
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  };
+  // --- modal for logout
+  const [openModal, setOpenModal] = useState(false);
 
-  // --- controlling mobile sidebar with redux
-  const sidebarState = useSelector(state => state.sidebar.sidebarShow);
+
+  // --- controlling mobile menu sidebar with redux
+  const sidebarState = useSelector((state) => state.sidebar.sidebarShow);
   const dispatch = useDispatch();
 
   const handleSidebar = () => {
     dispatch(toggleSidebar(!sidebarState));
-  }
+  };
   return (
     <Navbar fluid rounded className="z-50  ">
       <Link to="/" className="hidden md:block">
         <img
           src={navbarLogo}
-          className=" w-24 md:w-40 "
+          className=" w-24 xl:w-40 "
           alt="Photographer Logo"
         />
       </Link>
 
       {/* --- Button for opening sidebar in mobile view --- */}
-      <button onClick={handleSidebar} type="button" class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+      <button
+        onClick={handleSidebar}
+        type="button"
+        class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+      >
         <span class="sr-only">Open sidebar</span>
-        {sidebarState ? <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
-        </svg> : <img src={hamburgerMenu} alt="" className="w-6" />}
+        {sidebarState ? (
+          <IoMdCloseCircle className="w-6 h-6 text-slate-800" />
 
+        ) : (
+          // <img src={hamburgerMenu} alt="" className="w-6" />
+          <GiHamburgerMenu className="w-6 h-6 " />
+        )}
       </button>
 
       {/* --- Navbar Search Box --- */}
@@ -80,7 +81,7 @@ export function NavbarTest() {
         <label for="topbar-search" className="sr-only">
           Search
         </label>
-        <div className="relative mt-1 lg:w-96">
+        <div className="relative mt-1 xl:w-96">
           <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
             <svg
               className="w-4 h-4 text-gray-500 dark:text-gray-400"
@@ -109,30 +110,7 @@ export function NavbarTest() {
         </div>
       </form>
 
-      {/* --- search bar for mobile ---- */}
-      <button
-        id="toggleSidebarMobileSearch"
-        type="button"
-        className="p-2 text-gray-500 rounded-lg lg:hidden hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-      >
-        <span className="sr-only">Search</span>
-        {/* {/* <!-- Search icon --> */}
-        <svg
-          className="w-4 h-4"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 20 20"
-        >
-          <path
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-          />
-        </svg>
-      </button>
+
 
       <div className="flex gap-4 md:order-2">
         <NavbarCollapse>
@@ -145,56 +123,55 @@ export function NavbarTest() {
           <Link to="/contact">Contact</Link>
         </NavbarCollapse>
 
-        { 
-        user ? 
-        <Dropdown
-        arrowIcon={false}
-        inline
-        label={
-          <Avatar
-            alt="User settings"
-            img={user?.photoURL}
-            rounded
-          />
-        }
-      >
-        <DropdownHeader className="text-left">
-          <span className="block text-sm">{userDisplayName}</span>
-          <span className="block truncate text-sm font-medium">
-            {userEmail}
-          </span>
-        </DropdownHeader>
-        <DropdownItem>Dashboard</DropdownItem>
-        <DropdownItem>Settings</DropdownItem>
-        <DropdownItem>Earnings</DropdownItem>
-        <DropdownDivider />
-        <DropdownItem> <span onClick={handleLogout}>Sign out</span> </DropdownItem>
-      </Dropdown>
-      :
-      <Dropdown
-      arrowIcon={false}
-      inline
-      label={
-        <Avatar
-          alt="User settings"
-          img={userLogo}
-          rounded
-        />
-      }
-    >
-      <DropdownHeader className="text-left">
-        <span className="block truncate text-sm font-medium text-blue-800">
-        <Link to='/signup' >Register</Link>
-        </span>
-      </DropdownHeader>
-      <DropdownItem> <Link to='/login'  className="block truncate text-sm font-medium text-blue-800" >Log in</Link> </DropdownItem>
-    </Dropdown>
-        }
+        {user ? (
+          <Dropdown
+            arrowIcon={false}
+            inline
+            label={<Avatar alt="User settings" img={user?.photoURL} rounded />}
+          >
+            <DropdownHeader className="text-left">
+              <span className="block text-sm">{userDisplayName}</span>
+              <span className="block truncate text-sm font-medium">
+                {userEmail}
+              </span>
+            </DropdownHeader>
+            <DropdownItem> <Link to={'/user/dashboard'}>Dashboard</Link> </DropdownItem>
+            <DropdownItem>Settings</DropdownItem>
+            <DropdownItem>Contact</DropdownItem>
+            <DropdownDivider />
+            <DropdownItem>
+              {" "}
+              <span onClick={()=>setOpenModal(true)} 
+              // className="bg-pink-700 text-white px-3 py-2 font-semibold rounded-sm text-xs" 
+              >Sign out</span>{" "}
+            </DropdownItem>
+          </Dropdown>
+        ) : (
+          <Dropdown
+            arrowIcon={false}
+            inline
+            label={<Avatar alt="User settings" img={userLogo} rounded />}
+          >
+            <DropdownHeader className="text-left">
+              <span className="block truncate text-sm font-medium text-blue-800">
+                <Link to="/signup">Register</Link>
+              </span>
+            </DropdownHeader>
+            <DropdownItem>
+              {" "}
+              <Link
+                to="/login"
+                className="block truncate text-sm font-medium text-blue-800"
+              >
+                Log in
+              </Link>{" "}
+            </DropdownItem>
+          </Dropdown>
+        )}
         {/* <NavbarToggle /> */}
-
       </div>
 
-
+      <ModalFlowBite openModal={openModal} setOpenModal={setOpenModal} />
     </Navbar>
   );
 }

@@ -1,7 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "././Shared/Navbar & Sidebar/Sidebar/Sidebar";
-import { NavbarTest } from "../../../Utilities/Test/NavbarTest";
 import { Navbars } from "./Shared/Navbar & Sidebar/Navbar/Navbar";
 
 const UserLayout = () => {

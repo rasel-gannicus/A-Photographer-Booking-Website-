@@ -110,6 +110,10 @@ const Routes = createBrowserRouter([
             {
                 index : true ,
                 element : <Dashboard /> 
+            },
+            {
+                path : '/user/dashboard',
+                element : <Dashboard /> 
             }
 
         ]
