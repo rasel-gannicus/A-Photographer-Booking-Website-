@@ -19,6 +19,7 @@ import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../firebase.init";
 import { signOut } from "firebase/auth";
+import userLogo from '../../assets/img/Icons/user(1).png'
 
 export function NavbarTest() {
   const [userEmail, setUserEmail] = useState("");
@@ -61,7 +62,7 @@ export function NavbarTest() {
         <img
           src={navbarLogo}
           className=" w-24 md:w-40 "
-          alt="Flowbite React Logo"
+          alt="Photographer Logo"
         />
       </Link>
 
@@ -144,29 +145,51 @@ export function NavbarTest() {
           <Link to="/contact">Contact</Link>
         </NavbarCollapse>
 
+        { 
+        user ? 
         <Dropdown
-          arrowIcon={false}
-          inline
-          label={
-            <Avatar
-              alt="User settings"
-              img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-              rounded
-            />
-          }
-        >
-          {user && <DropdownHeader className="text-left">
-            <span className="block text-sm">{userDisplayName}</span>
-            <span className="block truncate text-sm font-medium">
-              {userEmail}
-            </span>
-          </DropdownHeader>}
-          <DropdownItem>Dashboard</DropdownItem>
-          <DropdownItem>Settings</DropdownItem>
-          <DropdownItem>Earnings</DropdownItem>
-          <DropdownDivider />
-          <DropdownItem>Sign out</DropdownItem>
-        </Dropdown>
+        arrowIcon={false}
+        inline
+        label={
+          <Avatar
+            alt="User settings"
+            img={user?.photoURL}
+            rounded
+          />
+        }
+      >
+        <DropdownHeader className="text-left">
+          <span className="block text-sm">{userDisplayName}</span>
+          <span className="block truncate text-sm font-medium">
+            {userEmail}
+          </span>
+        </DropdownHeader>
+        <DropdownItem>Dashboard</DropdownItem>
+        <DropdownItem>Settings</DropdownItem>
+        <DropdownItem>Earnings</DropdownItem>
+        <DropdownDivider />
+        <DropdownItem> <span onClick={handleLogout}>Sign out</span> </DropdownItem>
+      </Dropdown>
+      :
+      <Dropdown
+      arrowIcon={false}
+      inline
+      label={
+        <Avatar
+          alt="User settings"
+          img={userLogo}
+          rounded
+        />
+      }
+    >
+      <DropdownHeader className="text-left">
+        <span className="block truncate text-sm font-medium text-blue-800">
+        <Link to='/signup' >Register</Link>
+        </span>
+      </DropdownHeader>
+      <DropdownItem> <Link to='/login'  className="block truncate text-sm font-medium text-blue-800" >Log in</Link> </DropdownItem>
+    </Dropdown>
+        }
         {/* <NavbarToggle /> */}
 
       </div>
