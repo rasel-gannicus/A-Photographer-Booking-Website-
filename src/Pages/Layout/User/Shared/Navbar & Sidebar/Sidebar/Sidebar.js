@@ -1,25 +1,26 @@
 import { IoMdHome } from "react-icons/io";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { RiCalendarScheduleFill } from "react-icons/ri";
 
 
 const Sidebar = () => {
-  // --- showing or hiding sidebar with redux 
-  const sidebarState = useSelector(state => state.sidebar.sidebarShow) ;
+  // --- showing or hiding sidebar with redux
+  const sidebarState = useSelector((state) => state.sidebar.sidebarShow);
   return (
     <aside
-      className={`fixed top-0 left-0 z-40 w-64 h-screen pt-14 transition-transform ${!sidebarState && '-translate-x-full' } bg-white border-r border-gray-200 md:-translate-x-0 dark:bg-gray-800 dark:border-gray-700`}
+      className={`fixed top-0 left-0 z-40 w-64 h-screen pt-14 shadow-sm transition-transform ${
+        !sidebarState && "-translate-x-full"
+      } bg-white border-r border-gray-200 md:-translate-x-0 dark:bg-gray-800 dark:border-gray-700`}
     >
       <div className="overflow-y-auto py-5 px-3 h-full bg-white dark:bg-gray-800">
-
         {/* --- search bar --- */}
         <form action="#" method="GET" className="md:hidden mb-2">
-
-          <label for="sidebar-search" className="sr-only">Search</label>
+          <label for="sidebar-search" className="sr-only">
+            Search
+          </label>
           <div className="relative">
-            <div
-              className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none"
-            >
+            <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
               <svg
                 className="w-5 h-5 hidden text-gray-500 dark:text-gray-400"
                 fill="currentColor"
@@ -45,8 +46,8 @@ const Sidebar = () => {
 
         <ul className="space-y-2">
           <li>
-            <a
-              href="#"
+            <Link
+              to={'/user'}
               className="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
             >
               <svg
@@ -60,14 +61,25 @@ const Sidebar = () => {
                 <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
               </svg>
               <span className="ml-3">Overview</span>
-            </a>
+            </Link>
+          </li>
+
+
+          <li>
+            <Link
+              to={'/user/bookings'}
+              className="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+            >
+              <RiCalendarScheduleFill className="w-6 h-6 text-gray-500" />
+
+              <span className="ml-3">Bookings</span>
+            </Link>
           </li>
 
           <li>
-            <button
+          <NavLink to='/user/cart' className={({ isActive }) => (isActive ? 'bg-yellow-400' : 'inactive')}> <button
               type="button"
               className="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-
             >
               <svg
                 aria-hidden="true"
@@ -82,22 +94,20 @@ const Sidebar = () => {
                   clip-rule="evenodd"
                 ></path>
               </svg>
-              <span className="flex-1 ml-3 text-left whitespace-nowrap"
-              >Sales</span
-              >
-
-            </button>
+              <span className="flex-1 ml-3 text-left whitespace-nowrap">
+                 Cart
+              </span>
+            </button> </NavLink>            
           </li>
+
 
         </ul>
 
         {/* --- sidebar bottom part --- */}
-        <ul
-          className="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700"
-        >
+        <ul className="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
           <li>
             <Link
-              to={'/'}
+              to={"/"}
               className="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
             >
               <IoMdHome className="w-6 h-6 text-slate-500" />
@@ -138,9 +148,7 @@ const Sidebar = () => {
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path
-                  d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"
-                ></path>
+                <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"></path>
               </svg>
               <span className="ml-3">Components</span>
             </a>
@@ -168,8 +176,6 @@ const Sidebar = () => {
           </li>
         </ul>
       </div>
-
-
     </aside>
   );
 };

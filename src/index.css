@@ -42,3 +42,10 @@ code {
 .Toastify__toast-container{
   width: fit-content !important;
 }
+
+.active{
+  background: #292929;
+  border-radius: 3px;
+  color: white;
+  box-shadow: 0 10px 12px rgba(0,0,0,0.5);
+}

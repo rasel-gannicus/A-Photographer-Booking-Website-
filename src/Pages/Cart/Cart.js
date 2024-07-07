@@ -42,8 +42,8 @@ const Cart = () => {
     }
 
     return (
-        <div className="cart-div-parent">
-            <div className='cart-div'>
+        <div className="flex flex-col  lg:flex-row gap-4 justify-center items-center">
+            <div className='cart-div flex gap-4 flex-col'>
                 {content}
             </div>
         

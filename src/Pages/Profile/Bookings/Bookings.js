@@ -24,14 +24,13 @@ const Bookings = () => {
 
     return (
         <div className='booking-div'>
-            <h2>Total Bookings : {data?.length} </h2>
-            <div >
-                <table className="booking-cart-card">
-                    <tbody>
+            <h2 className='text-2xl font-semibold'>Total Bookings : {data?.length} </h2>
+            <div className='' >
+                <table className="booking-cart-card ">
+                    <tbody >
                         <tr className='table-header'>
                             <th className='booking-title'>Booking Title</th>
-                            <th className='booking-time'>Date</th>
-                            <th className='booking-time'>Time</th>
+                            <th className='booking-time text-center'>Date & Time</th>
                             <th className='booking-price'>Price</th>
                             <th className='booking-pending'>Status</th>
                             <th className='booking-decision'>Decision</th>

@@ -23,7 +23,6 @@ import ModalFlowBite from "../../../../../../Utilities/Modal Flowbite/ModalFlowB
 import { toggleSidebar } from "../../../../../../Redux/Features/user dashboard sidebar/sidebarSlice";
 
 export const Navbars = ({ layout }) => {
-  console.log(layout);
   const [userEmail, setUserEmail] = useState("");
   const [userDisplayName, setUserDisplayName] = useState("");
   // --- using react-firebase-hook to sign out and to get user data

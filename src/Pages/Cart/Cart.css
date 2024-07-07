@@ -1,9 +1,9 @@
-.cart-div-parent {
+/* .cart-div-parent {
     display: flex;
     min-height: 100vh;
-}
+} */
 
-.cart-div {
+/* .cart-div {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -11,7 +11,7 @@
     align-items: center;
     width: 90%;
 
-}
+} */
 
 .cart-cards {
     display: flex;
@@ -124,16 +124,15 @@
 --------------------------*/
 
 .sideCart-div {
-    position: absolute;
-    right: 30px;
+    /* position: absolute;
+    right: 30px; */
     background: #383735;
-    min-width: 300px;
+    max-width: 300px;
     min-height: 400px;
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
     padding: 10px 25px;
     color: white;
-    z-index: 50;
 }
 
 .sideCart-div.sticky {
@@ -217,13 +216,13 @@
 For mobile:  
 ---------------------------------------------------------------------------*/
 @media only screen and (max-width:480px) {
-    .cart-div-parent {
+    /* .cart-div-parent {
         display: flex;
         flex-direction: column-reverse;
         justify-content: center;
         align-items: center;
-    }
-
+    } */
+/* 
     .cart-div {
         display: flex;
         flex-direction: column;
@@ -232,7 +231,7 @@ For mobile:
         align-items: center;
         width: 100%;
 
-    }
+    } */
 
     .cart-cards {
         display: flex;
@@ -271,7 +270,7 @@ For mobile:
     /* ------------------------
     side cart css
     --------------------------*/
-    .sideCart-div {
+    /* .sideCart-div {
         position: relative;
         right: unset;
         background: #383735;
@@ -286,32 +285,31 @@ For mobile:
     }
     .sideCart-div.sticky {
         position: relative;
-        /* right: 1%; */
         top:unset;
         transform: unset;
-        right: unset;
-    }
+        right: unset; */
+    /* } */
 }
 
 /*--------------------------------------------------- 
 For ipads, tablet:  
 ---------------------------------------------------*/
 @media only screen and (min-width:481px) and (max-width:768px) {
-    .cart-div-parent {
+    /* .cart-div-parent {
         display: flex;
         flex-direction: column-reverse;
         justify-content: center;
         align-items: center;
-    }
+    } */
 
-    .cart-div {
+    /* .cart-div {
         display: flex;
         flex-direction: column;
         gap: 20px;
         justify-content: center;
         align-items: center;
         width: 100%;    
-    }
+    } */
 
     .cart-cards {
         display: flex;
@@ -348,7 +346,7 @@ For ipads, tablet:
     /* ------------------------
     side cart css
     --------------------------*/
-    .sideCart-div {
+    /* .sideCart-div {
         position: relative;
         right: unset;
         background: #383735;
@@ -363,23 +361,23 @@ For ipads, tablet:
     }
     .sideCart-div.sticky {
         position: relative;
-        /* right: 1%; */
+        right: 1%;
         top:unset;
         transform: unset;
         right: unset;
-    }
+    } */
 }
 
 /*-----------------------------------------
  For Small screen, laptop:  
 -----------------------------------------*/
 @media only screen and (min-width:769px) and (max-width:1024px) {
-    .cart-div-parent {
+    /* .cart-div-parent {
         display: flex;
         flex-direction: column-reverse;
         justify-content: center;
         align-items: center;
-    }
+    } */
 
     .cart-div {
         display: flex;
@@ -435,7 +433,7 @@ For ipads, tablet:
         border-radius: 5px;
         padding: 10px 25px;
         color: white;
-        z-index: 50;
+        z-index: 10;
         margin: 30px 0;
     }
     .sideCart-div.sticky {

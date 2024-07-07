@@ -15,7 +15,7 @@ const UserLayout = () => {
         <Sidebar />
 
         {/* --- main section --- */}
-        <main className="p-4 md:ml-64 h-auto pt-20 mt-20">
+        <main className="p-4 md:ml-64 h-auto pt-20 mt-20 min-h-screen bg-white">
           <Outlet />
         </main>
       </div>

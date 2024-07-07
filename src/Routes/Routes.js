@@ -114,6 +114,18 @@ const Routes = createBrowserRouter([
             {
                 path : '/user/dashboard',
                 element : <Dashboard /> 
+            },
+            {
+                path : '/user/cart',
+                element : <Cart />
+            },
+            {
+                path : '/user/bookings',
+                element : <Bookings />
+            },
+            {
+                path : '*',
+                element : <Error></Error>
             }
 
         ]

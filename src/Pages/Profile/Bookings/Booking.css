@@ -140,10 +140,8 @@ For ipads, tablet:
     }
 
     .first-td img {
-        /* margin-left: 0; */
         width: 90%;
         border-radius: 5px;
-        /* margin: 0; */
     }
 
     .booking-cart-card tr {
@@ -166,7 +164,7 @@ For ipads, tablet:
 /*-----------------------------------------
  For Small screen, laptop:  
 -----------------------------------------*/
-@media only screen and (min-width:769px) and (max-width:1200px) {
+/* @media only screen and (min-width:769px) and (max-width:1200px) {
 
     .booking-price,
     .booking-pending {
@@ -197,4 +195,4 @@ For ipads, tablet:
         justify-content: flex-end;
         align-items: flex-start;
     }
-}
+} */
