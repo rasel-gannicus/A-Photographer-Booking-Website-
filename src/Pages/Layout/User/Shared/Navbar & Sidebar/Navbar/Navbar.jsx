@@ -34,7 +34,6 @@ export const Navbars = ({ layout }) => {
 
   // -- checking admin role
   const adminState = useSelector((state) => state.admin.adminRole);
-  console.log(adminState);
 
   // --- using react-firebase-hook to sign out and to get user data
   const [user] = useAuthState(auth);
@@ -171,7 +170,7 @@ export const Navbars = ({ layout }) => {
                 </span>
               </DropdownHeader>
               <DropdownItem>
-                <Link to={"/user/dashboard"}>Admin Dashboard</Link>{" "}
+                <Link to={"/admin/dashboard"}>Admin Dashboard</Link>{" "}
               </DropdownItem>
               <DropdownItem>
                 <Link to={"/"}>Home Page</Link>{" "}
@@ -193,7 +192,7 @@ export const Navbars = ({ layout }) => {
 
           {/* <NavbarToggle /> */}
         </div>
-        {layout == "user-homepage" && (
+        {(layout == "user-homepage" && !adminState) && (
           <>
             {" "}
             <NavbarToggle />{" "}

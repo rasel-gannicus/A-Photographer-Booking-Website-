@@ -2,7 +2,7 @@
 .dashboard-header{
     /* background-image: url(https://websitedemos.net/brandstore-02/wp-content/uploads/sites/150/2019/12/home-new-bg-free-img.jpg); */
     background-image: url('../../../../../assets/img/background\ img.jpg');
-    background-position: center center;
+    background-position: top center;
     background-repeat: no-repeat;
     background-size: cover;
 }
