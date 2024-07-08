@@ -63,7 +63,7 @@ const MyShop = (props) => {
     visible: {
       y: 0,
       opacity: 1,
-      transition: { ease: "easeInOut", duration: 1, staggerChildren: 0.2 },
+      transition: { ease: "easeInOut", duration: 2, staggerChildren: 0.2 },
     },
   };
 

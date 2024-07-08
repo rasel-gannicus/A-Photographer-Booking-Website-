@@ -104,7 +104,6 @@ export const Navbars = ({ layout }) => {
               </DropdownItem>
               <DropdownDivider />
               <DropdownItem>
-                {" "}
                 <span
                   onClick={() => setOpenModal(true)}
                   className="bg-pink-700 text-white px-3 py-2 font-semibold rounded text-xs"
@@ -142,7 +141,7 @@ export const Navbars = ({ layout }) => {
           <NavbarLink href="#" active className="hidden md:block">
             Home
           </NavbarLink>
-          <Link to="/">Home</Link>
+          <Link to="/shop">Shop</Link>
           <Link to="/about">About</Link>
           <Link to="/user/cart">Cart</Link>
           <Link to="/user/bookings">Bookings</Link>

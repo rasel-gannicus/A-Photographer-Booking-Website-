@@ -37,12 +37,13 @@ const Modals2 = () => {
 
   // --- when there is a error happened while fetching-data
   if (!isLoading && isError) {
-    // console.log(error);
+    console.log(error);
     content = <div className="error-text">{error?.error}</div>;
   }
 
   // --- when we finally get the data
   if (!isLoading && !isError && isSuccess) {
+    console.log(data);
     content = (
       <div className="modals-2-innerBody">
         <div className="modal-left-side">
@@ -54,11 +55,11 @@ const Modals2 = () => {
         </div>
         <div className="modal-right-side">
           <div>
-            <p>Category : </p>
+            <p className="text-yellow-400">Category : </p>
             <p>{data?.catagory} Photography </p>
           </div>
           <div>
-            <p>Price : </p>
+            <p className="font-bold">Price : </p>
             <p> $ {data?.price} </p>
           </div>
           <div>
