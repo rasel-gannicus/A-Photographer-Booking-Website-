@@ -80,7 +80,7 @@ const OrderSummaryCard = () => {
     };
   }, []);
   return (
-    <div className={`sideCart-div -z-20`}>
+    <div className={`sideCart-div `}>
         {/* ${isSticky ? "sticky" : ""} */}
       <div className="order-summary">
         <h2>Order Summary</h2>
