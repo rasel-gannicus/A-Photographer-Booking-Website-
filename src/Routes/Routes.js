@@ -124,6 +124,10 @@ const Routes = createBrowserRouter([
                 element : <Bookings />
             },
             {
+                path : '/user/editProfile',
+                element : <ProfileDetails />
+            },
+            {
                 path : '*',
                 element : <Error></Error>
             }

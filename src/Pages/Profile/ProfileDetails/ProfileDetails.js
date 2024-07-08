@@ -7,11 +7,11 @@ import { toast } from 'react-toastify';
 
 const ProfileDetails = () => {
     const [user, loading, error] = useAuthState(auth);
-    const { displayName: currentUserName, email: userEmail, photoURL, } = user;
+    const { email: userEmail, photoURL, } = user;
     const [updateProfile, updating,] = useUpdateProfile(auth);
 
     // --- to fill up the input field with user info
-    const [username, setUsername] = useState(currentUserName);
+    const [username, setUsername] = useState(user?.displayName);
     const [email, setEmail] = useState(userEmail);
     const [photo, setPhoto] = useState(photoURL);
 
@@ -19,10 +19,10 @@ const ProfileDetails = () => {
     const [isChanged, setIsChanged] = useState(false);
     let btnLoader = <ClipLoader color="black" size={20} />
     useEffect(() => {
-        if (username !== currentUserName || photo !== photoURL) {
+        if (username !== user?.displayName || photo !== photoURL) {
             setIsChanged(true);
         }
-    }, [username, photo, photoURL, currentUserName]);
+    }, [username, photo, photoURL, user?.displayName]);
 
     // --- update user functionality
     const handleUpdateUser = async () => {

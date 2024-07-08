@@ -33,13 +33,13 @@ const CartPopup = () => {
     const { data: products } = useGetUserAllProductQuery(user?.email);
     // console.log(products);
     return ( !isLocation && <div className='mini-popup'>
-            <div onClick={() => navigation('/profile/bookings')} draggable className="booking-cart">
+            <div onClick={() => navigation('/user/bookings')} draggable className="booking-cart">
                 {data?.length > 0 && <div className="booking-cart-child">
                     <img src="https://i.ibb.co/BGLHLcM/clock.png" alt="" />
                     <span><p>{data?.length}</p></span>
                 </div>}
             </div>
-            <div onClick={() => navigation('/profile/cart')} draggable className="products-cart">
+            <div onClick={() => navigation('/user/cart')} draggable className="products-cart">
                 {products?.length > 0 && <div className="booking-cart-child">
                     <img src="https://i.ibb.co/9b9NP7G/shopping-cart-2.png" alt="" />
                     <span><p>{products?.length}</p></span>
