@@ -36,11 +36,9 @@ const MyServices = (props) => {
 
         if (inView2) {
             setControls2('visible')
-            console.log('in');
         }
         if (!inView2) {
             setControls2('hidden');
-            console.log('out');
         }
 
     }, [controls, inView, controls2, inView2]);

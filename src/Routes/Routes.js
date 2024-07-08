@@ -105,7 +105,7 @@ const Routes = createBrowserRouter([
     },
     {
         path : '/user',
-        element : <UserLayout />,
+        element : <PrivateRoute><UserLayout /></PrivateRoute>,
         children : [
             {
                 index : true ,

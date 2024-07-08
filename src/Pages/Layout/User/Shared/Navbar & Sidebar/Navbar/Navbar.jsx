@@ -88,17 +88,26 @@ export const Navbars = ({ layout }) => {
                 </span>
               </DropdownHeader>
               <DropdownItem>
-                {" "}
-                <Link to={"/user/dashboard"}>Dashboard</Link>{" "}
+                <Link to={"/user/dashboard"}>Profile</Link>{" "}
               </DropdownItem>
-              <DropdownItem>Settings</DropdownItem>
-              <DropdownItem>Contact</DropdownItem>
+              <DropdownItem>
+                <Link to={"/"}>Home Page</Link>{" "}
+              </DropdownItem>
+              <DropdownItem>
+                <Link to={"/user/cart"}>Cart</Link>{" "}
+              </DropdownItem>
+              <DropdownItem>
+                <Link to={"/user/bookings"}>Bookings</Link>{" "}
+              </DropdownItem>
+              <DropdownItem>
+                <Link to={"/user/editProfile"}>Edit Profile</Link>{" "}
+              </DropdownItem>
               <DropdownDivider />
               <DropdownItem>
                 {" "}
                 <span
                   onClick={() => setOpenModal(true)}
-                  // className="bg-pink-700 text-white px-3 py-2 font-semibold rounded-sm text-xs"
+                  className="bg-pink-700 text-white px-3 py-2 font-semibold rounded text-xs"
                 >
                   Sign out
                 </span>{" "}
@@ -135,8 +144,8 @@ export const Navbars = ({ layout }) => {
           </NavbarLink>
           <Link to="/">Home</Link>
           <Link to="/about">About</Link>
-          <Link to="/services">Services</Link>
-          <Link to="/contact">Contact</Link>
+          <Link to="/user/cart">Cart</Link>
+          <Link to="/user/bookings">Bookings</Link>
         </NavbarCollapse></>
         }
 

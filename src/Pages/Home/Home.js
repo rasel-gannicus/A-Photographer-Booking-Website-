@@ -9,6 +9,7 @@ import Contact from "./Contact/Contact";
 import Banner from "../../components/Banner/Banner";
 import Testimonials from "./Testimonials/Testimonials";
 import HireMe from "./HireMe/HireMe";
+import MyGear from "./MyGear/MyGear";
 
 const Home = () => {
   return (
@@ -21,6 +22,7 @@ const Home = () => {
       <MyShop></MyShop>
       <Testimonials></Testimonials>
       <HireMe></HireMe>
+      <MyGear />
       <Contact></Contact>
     </div>
   );
