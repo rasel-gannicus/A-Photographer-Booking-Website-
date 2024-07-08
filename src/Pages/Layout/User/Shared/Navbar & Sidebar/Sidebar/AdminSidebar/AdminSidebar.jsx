@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import { RiCalendarScheduleFill } from "react-icons/ri";
 import { FaUserEdit } from "react-icons/fa";
+import { GiBeachBag } from "react-icons/gi";
 
 const AdminSidebar = () => {
   // --- showing or hiding sidebar with redux
@@ -84,6 +85,27 @@ const AdminSidebar = () => {
 
                 <span className="flex-1 ml-3 text-left whitespace-nowrap">
                   Edit Profile
+                </span>
+              </button>{" "}
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="/admin/allProducts"
+              className={({ isActive }) =>
+                isActive ? "bg-yellow-400" : "inactive"
+              }
+            >
+              {" "}
+              <button
+                type="button"
+                className="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+              >
+                <GiBeachBag className="w-6 h-6 text-gray-500" />
+
+                <span className="flex-1 ml-3 text-left whitespace-nowrap">
+                  All Products
                 </span>
               </button>{" "}
             </NavLink>

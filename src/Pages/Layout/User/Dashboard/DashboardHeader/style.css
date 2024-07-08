@@ -1,8 +1,7 @@
-
-.dashboard-header{
-    /* background-image: url(https://websitedemos.net/brandstore-02/wp-content/uploads/sites/150/2019/12/home-new-bg-free-img.jpg); */
-    background-image: url('../../../../../assets/img/background\ img.jpg');
-    background-position: top center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.dashboard-header {
+  background-image: url(https://png.pngtree.com/background/20210715/original/pngtree-plant-shadow-with-green-wallpaper-svg-picture-image_1259492.jpg);
+  /* background-image: url('../../../../../assets/img/background\ img.jpg'); */
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

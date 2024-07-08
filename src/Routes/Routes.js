@@ -22,6 +22,7 @@ import Bookings from "../Pages/Profile/Bookings/Bookings";
 import UserLayout from "../Pages/Layout/User/UserLayout";
 import Dashboard from "../Pages/Layout/User/Dashboard/Dashboard";
 import AdminLayout from "../Pages/Layout/Admin Layout/AdminLayout";
+import AllProductsAdmin from "../Pages/Layout/Admin Layout/All Products/AllProductsAdmin";
 
 const Routes = createBrowserRouter([
   {
@@ -161,6 +162,10 @@ const Routes = createBrowserRouter([
       {
         path: "/admin/editProfile",
         element: <ProfileDetails />,
+      },
+      {
+        path: "/admin/allProducts",
+        element: <AllProductsAdmin />,
       },
       {
         path: "*",
