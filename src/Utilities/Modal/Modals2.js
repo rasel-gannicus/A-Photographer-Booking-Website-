@@ -43,7 +43,6 @@ const Modals2 = () => {
 
   // --- when we finally get the data
   if (!isLoading && !isError && isSuccess) {
-    console.log(data);
     content = (
       <div className="modals-2-innerBody">
         <div className="modal-left-side">

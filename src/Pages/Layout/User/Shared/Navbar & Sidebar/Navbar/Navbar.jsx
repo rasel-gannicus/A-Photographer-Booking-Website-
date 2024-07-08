@@ -21,10 +21,21 @@ import userLogo from "../../../../../../assets/img/Icons/user(1).png";
 import auth from "../../../../../../Utilities/firebase.init";
 import ModalFlowBite from "../../../../../../Utilities/Modal Flowbite/ModalFlowBite";
 import { toggleSidebar } from "../../../../../../Redux/Features/user dashboard sidebar/sidebarSlice";
+import { toggleAdminRole } from "../../../../../../Redux/Features/admin/adminSlice";
 
 export const Navbars = ({ layout }) => {
   const [userEmail, setUserEmail] = useState("");
+  const [admin, setAdmin] = useState(false);
   const [userDisplayName, setUserDisplayName] = useState("");
+
+  // --- controlling mobile menu sidebar with redux
+  const sidebarState = useSelector((state) => state.sidebar.sidebarShow);
+  const dispatch = useDispatch();
+
+  // -- checking admin role
+  const adminState = useSelector((state) => state.admin.adminRole);
+  console.log(adminState);
+
   // --- using react-firebase-hook to sign out and to get user data
   const [user] = useAuthState(auth);
 
@@ -33,20 +44,23 @@ export const Navbars = ({ layout }) => {
       setUserEmail(user.email);
       setUserDisplayName(user.displayName);
     }
-  }, [user]);
+    if (user?.email == "admin@admin.com") {
+      setAdmin(true);
+    } else {
+      setAdmin(false);
+    }
+
+    dispatch(toggleAdminRole(admin));
+  }, [user, admin, userEmail, userDisplayName]);
 
   // --- modal for logout
   const [openModal, setOpenModal] = useState(false);
-
-  // --- controlling mobile menu sidebar with redux
-  const sidebarState = useSelector((state) => state.sidebar.sidebarShow);
-  const dispatch = useDispatch();
 
   const handleSidebar = () => {
     dispatch(toggleSidebar(!sidebarState));
   };
   return (
-    <nav className=" border-b border-gray-200  bg-white dark:bg-gray-800 dark:border-gray-700 fixed left-0 right-0 top-0 z-50">
+    <nav className=" border-b border-gray-200  bg-white dark:bg-gray-800 dark:border-gray-700 fixed left-0 right-0 top-0 z-[5000] ">
       <Navbar fluid rounded className="z-50  ">
         <Link to="/" className="hidden md:block">
           <img
@@ -72,8 +86,34 @@ export const Navbars = ({ layout }) => {
             )}
           </button>
         )}
-                <div className="flex gap-4 md:order-2">
-          {user ? (
+
+        <div className="flex gap-4 md:order-2">
+          {/* --- guest menu --- */}
+          {!user && !adminState && (
+            <Dropdown
+              arrowIcon={false}
+              inline
+              label={<Avatar alt="User settings" img={userLogo} rounded />}
+            >
+              <DropdownHeader className="text-left">
+                <span className="block truncate text-sm font-medium text-blue-800">
+                  <Link to="/signup">Register</Link>
+                </span>
+              </DropdownHeader>
+              <DropdownItem>
+                {" "}
+                <Link
+                  to="/login"
+                  className="block truncate text-sm font-medium text-blue-800"
+                >
+                  Log in
+                </Link>{" "}
+              </DropdownItem>
+            </Dropdown>
+          )}
+
+          {/* --- logged in user menu --- */}
+          {user && !adminState && (
             <Dropdown
               arrowIcon={false}
               inline
@@ -112,41 +152,62 @@ export const Navbars = ({ layout }) => {
                 </span>{" "}
               </DropdownItem>
             </Dropdown>
-          ) : (
+          )}
+
+          {/* --- admin menu --- */}
+
+          {adminState && (
             <Dropdown
               arrowIcon={false}
               inline
-              label={<Avatar alt="User settings" img={userLogo} rounded />}
+              label={
+                <Avatar alt="User settings" img={user?.photoURL} rounded />
+              }
             >
               <DropdownHeader className="text-left">
-                <span className="block truncate text-sm font-medium text-blue-800">
-                  <Link to="/signup">Register</Link>
+                <span className="block text-sm">{userDisplayName}</span>
+                <span className="block truncate text-sm font-medium">
+                  {userEmail}
                 </span>
               </DropdownHeader>
               <DropdownItem>
-                {" "}
-                <Link
-                  to="/login"
-                  className="block truncate text-sm font-medium text-blue-800"
+                <Link to={"/user/dashboard"}>Admin Dashboard</Link>{" "}
+              </DropdownItem>
+              <DropdownItem>
+                <Link to={"/"}>Home Page</Link>{" "}
+              </DropdownItem>
+              <DropdownItem>
+                <Link to={"/admin/editProfile"}>Edit Profile</Link>{" "}
+              </DropdownItem>
+              <DropdownDivider />
+              <DropdownItem>
+                <span
+                  onClick={() => setOpenModal(true)}
+                  className="bg-pink-700 text-white px-3 py-2 font-semibold rounded text-xs"
                 >
-                  Log in
-                </Link>{" "}
+                  Sign out
+                </span>{" "}
               </DropdownItem>
             </Dropdown>
           )}
+
           {/* <NavbarToggle /> */}
         </div>
-        {
-          layout == 'user-homepage' && <>      <NavbarToggle />           <NavbarCollapse>
-          <NavbarLink href="#" active className="hidden md:block">
-            Home
-          </NavbarLink>
-          <Link to="/shop">Shop</Link>
-          <Link to="/about">About</Link>
-          <Link to="/user/cart">Cart</Link>
-          <Link to="/user/bookings">Bookings</Link>
-        </NavbarCollapse></>
-        }
+        {layout == "user-homepage" && (
+          <>
+            {" "}
+            <NavbarToggle />{" "}
+            <NavbarCollapse>
+              <NavbarLink href="#" active className="hidden md:block">
+                Home
+              </NavbarLink>
+              <Link to="/shop">Shop</Link>
+              <Link to="/about">About</Link>
+              <Link to="/user/cart">Cart</Link>
+              <Link to="/user/bookings">Bookings</Link>
+            </NavbarCollapse>
+          </>
+        )}
 
         {/* --- Navbar Search Box --- */}
         <form action="#" method="GET" className="hidden lg:block lg:pl-2 ">
@@ -181,8 +242,6 @@ export const Navbars = ({ layout }) => {
             />
           </div>
         </form>
-
-
 
         <ModalFlowBite openModal={openModal} setOpenModal={setOpenModal} />
       </Navbar>

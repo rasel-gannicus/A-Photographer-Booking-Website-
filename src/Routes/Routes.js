@@ -21,6 +21,7 @@ import Cart from '../Pages/Cart/Cart';
 import Bookings from '../Pages/Profile/Bookings/Bookings';
 import UserLayout from '../Pages/Layout/User/UserLayout';
 import Dashboard from '../Pages/Layout/User/Dashboard/Dashboard';
+import AdminLayout from '../Pages/Layout/Admin Layout/AdminLayout';
 
 const Routes = createBrowserRouter([
     {
@@ -132,6 +133,16 @@ const Routes = createBrowserRouter([
                 element : <Error></Error>
             }
 
+        ]
+    },
+    {
+        path : '/admin',
+        element : <AdminLayout /> ,
+        children : [
+            {
+                index : true ,
+                element : <AdminLayout />
+            }
         ]
     }
 ])
