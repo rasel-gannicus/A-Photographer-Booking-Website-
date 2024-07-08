@@ -5,7 +5,7 @@ import './style.css' ;
 const DashboardHeader = () => {
     return (
         <div>
-            <div className="dashboard-header  min-h-[250px] shadow-2xl w-full relative rounded overflow-hidden">
+            <div className="dashboard-header  min-h-[250px]  w-full relative rounded overflow-hidden shadow">
                 <div className="bg-gradient-to-r from-indigo-500 to-blue-500 absolute top-0 bottom-0 left-0 right-0 opacity-90  text-white md:text-4xl font-semibold px-10 flex justify-end items-center">
                     <div className=" text-right flex justify-end flex-col items-end gap-1 ">
                         <h2>Your profile dashboard</h2>
