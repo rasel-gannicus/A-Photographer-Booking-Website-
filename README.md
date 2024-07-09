@@ -4,9 +4,9 @@ A full-stack, mobile-responsive website enabling users to book photographers for
 
 ## Technologies Used
 
-- **Frontend:** React, Redux, HTML, CSS, Javascript, React Spinner, Toastify, Swiper, Font Awesome, 
+- **Frontend:** React, Redux, Tailwind Css, HTML, CSS, Javascript, React Spinner, React icons, Toastify, Swiper, Font Awesome,  
 - **Backend:** Node.js, Express, MongoDB, Firebase
-- **Authentication:** JWT Token
+- **Authentication:** JWT Token , Firebase Auth
 - **State Management:** RTK Query, Redux
 
 ## Features
@@ -33,13 +33,13 @@ A full-stack, mobile-responsive website enabling users to book photographers for
 
 ### Live Site
 
-Explore the live site [here](https://photographer-portfolio-website-advance.vercel.app/).
+live site : [here](https://photographer-portfolio-website-advance.vercel.app/).
 
-### Repository
+### Github Repository
 
-Github Client Repository : [here](https://github.com/rasel-gannicus/A-Photographer-s-Website-with-E-commerce-and-Portfolio).
+Client : [here](https://github.com/rasel-gannicus/A-Photographer-s-Website-with-E-commerce-and-Portfolio).
 
-Github Server Repository : [here](https://github.com/rasel-gannicus/server-for-Photographer-portfolio-website).
+Server : [here](https://github.com/rasel-gannicus/server-for-Photographer-portfolio-website).
 
 ## Getting Started
 
