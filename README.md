@@ -4,7 +4,7 @@ A full-stack, mobile-responsive website enabling users to book photographers for
 
 ## Technologies Used
 
-- **Frontend:** React, Redux, Tailwind Css, HTML, CSS, Javascript, React Spinner, React icons, Toastify, Swiper, Font Awesome,  
+- **Frontend:** React, Redux, Tailwind Css, Framer Motion, Flowbite, HTML, CSS, Javascript, React Spinner, React icons, Toastify, Swiper, Font Awesome,  
 - **Backend:** Node.js, Express, MongoDB, Firebase
 - **Authentication:** JWT Token , Firebase Auth
 - **State Management:** RTK Query, Redux
