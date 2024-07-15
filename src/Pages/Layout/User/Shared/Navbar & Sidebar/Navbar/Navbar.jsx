@@ -201,7 +201,7 @@ export const Navbars = ({ layout }) => {
                 Home
               </NavbarLink>
               <Link to="/shop">Shop</Link>
-              <Link to="/bookNow">Schedules</Link>
+              <Link to="/bookNow">Services</Link>
               <Link to="/user/cart">Cart</Link>
               <Link to="/user/bookings">Bookings</Link>
             </NavbarCollapse>

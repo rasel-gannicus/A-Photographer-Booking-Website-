@@ -8,16 +8,16 @@ const BookNowPage = () => {
   // console.log(data);
 
   return (
-    <div className=" md:grid grid-cols-3">
-      <div className="service-div  relative order-1 min-h-[757px]">
-        <h2 className=" text-6xl md:text-7xl font-bold text-[#4A4B7C]">
+    <div className=" md:grid grid-cols-3 container">
+      <div className="service-div  relative  md:top-44  order-1 min-h-[757px]  flex flex-col justify-start items-center">
+        <h2 className=" text-4xl lg:text-7xl font-bold text-[#4A4B7C]">
           Services
         </h2>
         <img
           src={serviceImg}
           alt="service img"
           quality={100}
-          className="md:absolute top-14"
+          className="md:absolute -top-4 -mt-20 "
         />
       </div>
 
