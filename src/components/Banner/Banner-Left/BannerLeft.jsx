@@ -12,12 +12,12 @@ const BannerLeft = () => {
   return (
     <motion.div variants={parent} initial="hidden" animate="visible" className=" hidden  md:flex  banner-left flex-1 relative  min-h-[370px] flex-col justify-center items-center  ">
       <div
-        className=" absolute -top-5"
+        className=" absolute top-5"
         style={{ left: "50%", transform: "translateX(-50%)" }}
       >
         <div className="-rotate-[30deg] ">
-          <h2 className="text-6xl font-bold text-[#F67055]">20K+</h2>
-          <p className="font-bold text-gray-400 ">
+          <h2 className="text-4xl font-bold text-[#F67055]">20K+</h2>
+          <p className="text-lg font-bold text-gray-400 ">
             Customers all over <br />
             the world
           </p>

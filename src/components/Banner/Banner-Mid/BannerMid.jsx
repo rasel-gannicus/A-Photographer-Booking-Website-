@@ -1,4 +1,5 @@
 import {motion} from 'framer-motion'
+import photographerImg from '../../../assets/img/Photographer.png' ;
 
 const BannerMid = () => {
 
@@ -13,7 +14,7 @@ const BannerMid = () => {
   }
   return (
     <div className="banner-mid ">
-      <motion.div className=" relative  w-full md:w-20 md:h-[570px]"
+      <motion.div className=" relative  w-full md:w-20 md:h-[520px]"
         variants={imageMotion}
         initial = 'hidden'
         animate = 'visible'
@@ -21,9 +22,10 @@ const BannerMid = () => {
         {/* --- banner image for large screen --- */}
 
         <img
-          src={
-            "https://photographer-portfolio-website-advance.vercel.app/static/media/banner-bg.bd7782d8b5405a4d62c3.png"
-          }
+          // src={
+          //   "https://photographer-portfolio-website-advance.vercel.app/static/media/banner-bg.bd7782d8b5405a4d62c3.png"
+          // }
+          src={photographerImg}
           alt="banner image"
           // fill
           className=" z-50 bottom-0 absolute hidden md:block"

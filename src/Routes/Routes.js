@@ -23,6 +23,7 @@ import UserLayout from "../Pages/Layout/User/UserLayout";
 import Dashboard from "../Pages/Layout/User/Dashboard/Dashboard";
 import AdminLayout from "../Pages/Layout/Admin Layout/AdminLayout";
 import AllProductsAdmin from "../Pages/Layout/Admin Layout/All Products/AllProductsAdmin";
+import BookNowPage from "../Pages/BookNowPage/BookNowPage";
 
 const Routes = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const Routes = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "/bookNow",
+        element: <BookNowPage />,
       },
       {
         path: "/profile/",

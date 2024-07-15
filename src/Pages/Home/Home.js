@@ -13,7 +13,7 @@ import MyGear from "./MyGear/MyGear";
 
 const Home = () => {
   return (
-    <div className="home-div app-div">      
+    <div className="home-div app-div ">      
       <Banner />
 
       <About></About>

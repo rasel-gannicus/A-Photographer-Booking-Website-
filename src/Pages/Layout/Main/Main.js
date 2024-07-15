@@ -11,7 +11,7 @@ const Main = () => {
     <div className="home-div">
       {/* <Header></Header> */}
       <Navbars layout="user-homepage" />
-      <div className=" my-28 pb-4">
+      <div className=" my-28 pb-4 min-h-screen">
         <Outlet></Outlet>
       </div>
 

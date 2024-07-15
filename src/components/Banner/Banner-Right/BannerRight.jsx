@@ -1,20 +1,22 @@
+import { useNavigate } from "react-router-dom";
 import signature2 from "../../../assets/img/signature bold.png";
 import { motion } from "framer-motion";
 
 const BannerRight = () => {
+  const navigate = useNavigate();
   //   --- frame motion functionality
   const parent = {
-    hidden: { x: 900},
+    hidden: { x: 900 },
     visible: {
       x: 0,
       transition: { ease: "easeInOut", duration: 0.5, staggerChildren: 0.3 },
     },
   };
   const child = {
-    hidden: { x: 900},
+    hidden: { x: 900 },
     visible: {
       x: 0,
-      transition : { ease : "easeInOut", type : 'spring', }
+      transition: { ease: "easeInOut", type: "spring" },
     },
   };
   return (
@@ -41,6 +43,7 @@ const BannerRight = () => {
         </motion.h3>
         <motion.button
           variants={child}
+          onClick={()=>navigate('/bookNow')}
           variant="outline"
           className="h-12 rounded-full border-black border-2 px-9 hover:bg-black hover:text-white "
         >
