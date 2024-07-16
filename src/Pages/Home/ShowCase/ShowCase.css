@@ -10,6 +10,10 @@
     width: 100%
 }
 
+.showcase-mid-div{
+    
+}
+
 .showcase-card{
     overflow: hidden;
     z-index: -5000;
@@ -26,7 +30,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    padding: 50px;
+    padding: 50px 0;
     color: white;
 }
 
@@ -54,6 +58,9 @@
 .showcase-popup-parent{
     display: none;
 }
+.showcase-popup-parent h2 {
+    display: none;
+}
 .showcase-popup-parent.active{
     background: rgba(0, 0, 0, 0.529);
     position: fixed;
@@ -62,10 +69,11 @@
     right: 0;
     bottom: 0;
     display: block;
-    z-index: 60;
+    z-index: 600;
 }
 .showcase-popup{
     background: white;
+    
 }
 
 /* -------------- style for  Photography Pop Up display -----------------*/
@@ -84,7 +92,8 @@
     transform: translate(-50%, -50%);
     width: 68%;
     height: 90%;
-    border: 5px solid black;
+    padding: 20px 0;
+    /* border: 5px solid black; */
 }
 .clickable-div{
     cursor: pointer;
@@ -93,17 +102,20 @@
 /* style for close icon at the top right corner for closing pop up display  */
 .close-icon{
     position: absolute;
-    top: 10px;
-    right: 20px;
-    width: 30px;
-    height: 30px;
+    top: -25px;
+    right: -20px;
+    width: 50px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     background: #2c2c2c;
-    color: #C6C6C6;
-    font-size: 20px;      
+    /* color: #C6C6C6; */
+    font-weight: bold;
+    border-radius: 100%;
+    font-size: 25px;      
     cursor: pointer;  
+    z-index: 500;
 }
 
 

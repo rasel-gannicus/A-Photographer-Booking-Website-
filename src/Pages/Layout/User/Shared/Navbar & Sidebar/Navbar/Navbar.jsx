@@ -59,7 +59,7 @@ export const Navbars = ({ layout }) => {
     dispatch(toggleSidebar(!sidebarState));
   };
   return (
-    <nav className=" border-b border-gray-200  bg-white dark:bg-gray-800 dark:border-gray-700 fixed left-0 right-0 top-0 z-[5000] ">
+    <nav className=" border-b border-gray-200  bg-white dark:bg-gray-800 dark:border-gray-700 fixed left-0 right-0 top-0 z-[200] ">
       <Navbar fluid rounded className="z-50  ">
         <Link to="/" className="hidden md:block">
           <img
